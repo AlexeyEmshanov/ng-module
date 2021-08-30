@@ -26,7 +26,7 @@ export const COURSES: ICourse[] = [
   {
     id: 4,
     title: 'Course 4',
-    creationDate: '03.09.2021',
+    creationDate: '05.09.2021',
     duration: 100,
     description: 'course description ...',
   },
