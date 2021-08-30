@@ -1,8 +1,8 @@
-<div class="course-container">
-  <div>{{id}}</div>
-  <h3>{{title}}</h3>
-  <div>{{creationDate}}</div>
-  <div>{{duration}} min</div>
-  <div>{{description}}</div>
+<li class="course-container" *ngFor="let course of courses">
+  <div>{{course.id}}</div>
+  <h3>{{course.title}}</h3>
+  <div>{{course.creationDate}}</div>
+  <div>{{course.duration}} min</div>
+  <div>{{course.description}}</div>
 
-</div>
+</li>

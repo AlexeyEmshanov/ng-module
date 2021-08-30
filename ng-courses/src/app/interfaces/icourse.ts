@@ -1,4 +1,4 @@
-interface ICourse {
+export interface ICourse {
   id: number,
   title: string,
   creationDate: string,
@@ -6,5 +6,3 @@ interface ICourse {
   description: string,
 
 }
-
-export default ICourse;

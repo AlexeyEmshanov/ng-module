@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import ICourse from 'src/app/interfaces/icourse';
+import { Component, Input, OnInit } from '@angular/core';
+import { ICourse } from 'src/app/interfaces/icourse';
+import { COURSES } from 'src/mock-data';
 
 
 @Component({
@@ -7,16 +8,27 @@ import ICourse from 'src/app/interfaces/icourse';
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.scss']
 })
-export class CourseComponent implements ICourse {
-  public id = 1;
+export class CourseComponent implements OnInit {
 
-  public title = 'Test 1';
+  courses = COURSES;
 
-  public creationDate = '01.09.2021';
+  // public course: ICourse = {
+  //   id: 1,
+  //   title: 'Course 1',
+  //   creationDate: '01.09.2021',
+  //   duration: 120,
+  //   description: 'course description ...',
+  // }
 
-  public duration = 120;
+  // public id = 1;
 
-  public description = 'new course';
+  // public title = 'Test 1';
+
+  // public creationDate = '01.09.2021';
+
+  // public duration = 120;
+
+  // public description = 'new course';
 
   constructor() {
 
