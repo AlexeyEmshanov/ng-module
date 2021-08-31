@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import ICourse from 'src/app/interfaces/icourse';
+import { ICourse } from 'src/app/model/interfaces/Icourse';
+import { COURSES } from 'src/app/model/mock-data';
 
 @Component({
   selector: 'app-courses-page',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesPageComponent implements OnInit {
 
-  // public courses: ICourse[];
+  public courses: ICourse[] = COURSES;
 
   constructor() { }
 
