@@ -8,13 +8,18 @@ import { COURSES } from 'src/app/model/mock-data';
   styleUrls: ['./courses-page.component.scss']
 })
 export class CoursesPageComponent implements OnInit {
-
   public courses: ICourse[] = COURSES;
+
+  public searchField: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  onSearchClick() {
+    console.log(this.searchField);
   }
 
 }

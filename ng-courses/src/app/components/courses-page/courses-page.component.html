@@ -2,8 +2,21 @@
   <ul class="breadcrumbs-nav">
     <li class="breadcrumb"><a class="breadcrumb-link" href="#">Courses</a></li>
   </ul>
-  <ul class="courses-list" *ngFor="let course of courses">
-    <li class="course-plate">
+
+  <div class="course-page_nav">
+    <div class="search-bar">
+      <input
+        class="search-bar_input"
+        placeholder="Text to search"
+        [(ngModel)]="searchField"
+      >
+      <button class="btn" (click)="onSearchClick()">Search</button>
+    </div>
+    <button class="btn">Add Course</button>
+  </div>
+
+  <ul class="courses-list" >
+    <li class="course-plate" *ngFor="let course of courses">
       <div>{{course.id}}</div>
       <div>{{course.title}}</div>
       <div>{{course.creationDate}}</div>

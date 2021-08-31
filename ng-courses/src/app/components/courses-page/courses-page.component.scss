@@ -47,3 +47,22 @@
   text-decoration: none;
   color: inherit;
 }
+
+.course-page_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.search-bar_input {
+  width: 30vw;
+  padding: 0.5em;
+}
