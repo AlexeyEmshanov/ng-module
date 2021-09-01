@@ -26,4 +26,8 @@ export class CoursesPageComponent implements OnInit {
     console.log('Add Course btn clicked!');
   }
 
+  onLoadMoreClick() {
+    console.log('Load more btn clicked!');
+  }
+
 }
