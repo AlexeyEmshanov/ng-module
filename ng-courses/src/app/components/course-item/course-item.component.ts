@@ -8,7 +8,6 @@ import { ICourse } from 'src/app/model/interfaces/icourse';
 })
 export class CourseItemComponent implements OnInit {
   @Input() courseItem?: ICourse;
-  @Input() test?: string;
 
   constructor() { }
 
