@@ -8,6 +8,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { FormsModule } from '@angular/forms';
+import { CourseItemComponent } from './components/course-item/course-item.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     LogoComponent,
     FooterComponent,
     CoursesPageComponent,
+    CourseItemComponent,
   ],
   imports: [
     BrowserModule,
