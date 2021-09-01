@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICourse } from 'src/app/model/interfaces/Icourse';
-import { COURSES } from 'src/app/model/mock-data';
+import { ICourse } from './../../model/interfaces/icourse';
+import { COURSES } from './../../model/mock-data';
 
 @Component({
   selector: 'app-courses-page',
@@ -20,6 +20,10 @@ export class CoursesPageComponent implements OnInit {
 
   onSearchClick() {
     console.log(this.searchField);
+  }
+
+  onAddCourseClick() {
+    console.log('Add Course btn clicked!');
   }
 
 }
