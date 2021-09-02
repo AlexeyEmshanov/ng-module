@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { ICourse } from './../../model/interfaces/icourse';
 import { COURSES } from './../../model/mock-data';
 
@@ -14,9 +14,6 @@ export class CoursesPageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-
-  }
 
   onSearchClick() {
     console.log(this.searchField);
@@ -32,6 +29,16 @@ export class CoursesPageComponent implements OnInit {
 
   public deleteItem(idToDelete: number): void {
     this.courses = this.courses.filter((course: ICourse) => course.id !== idToDelete)
+  }
+
+  ngOnInit(): void {
+    let test = 'test values in ngOnInit at courses page';
+    console.log('course-page ngOnInit!!!', test);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('course-page ngOnChange!!!', changes)
+
   }
 
 }
