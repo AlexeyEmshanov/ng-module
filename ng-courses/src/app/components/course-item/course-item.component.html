@@ -1,8 +1,16 @@
 <div class="course-item">
-  <div>{{courseItem?.id}}</div>
-  <div>{{courseItem?.title}}</div>
-  <div>{{courseItem?.creationDate}}</div>
-  <div>{{courseItem?.duration}}</div>
-  <div>{{courseItem?.description}}</div>
-  <button class="btn" (click)="delete()">delete course</button>
+  <div class="course-item__container">
+    <div class="course-item__headline">
+      <div class="course-item__title">{{courseItem?.title}}</div>
+      <div class="course-item__info">
+        <div class="course-item__duration">{{courseItem?.duration}} min</div>
+        <div class="course-item__date">{{courseItem?.date}}</div>
+      </div>
+    </div>
+    <div class="course-item__description">{{courseItem?.description}}</div>
+  </div>
+  <div class="course-item__controls">
+    <button class="btn">edit</button>
+    <button class="btn" (click)="delete()">delete</button>
+  </div>
 </div>

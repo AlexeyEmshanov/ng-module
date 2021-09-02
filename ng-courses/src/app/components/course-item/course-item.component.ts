@@ -18,6 +18,7 @@ export class CourseItemComponent implements OnInit {
   }
 
   public delete(): void {
+    console.log(`Course with ID ${this.courseItem.id} was deleted!`)
     this.onDelete.emit(this.courseItem.id);
   }
 
