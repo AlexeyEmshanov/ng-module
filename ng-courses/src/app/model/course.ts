@@ -1,22 +1,15 @@
 import { ICourse } from "./interfaces/icourse";
 
 export class Course implements ICourse {
-  public id;
 
-  public title;
+  constructor(
+    public id: number,
+    public title: string,
+    public date: string,
+    public duration: number,
+    public description: string
+  ) {
 
-  public creationDate;
-
-  public duration;
-
-  public description;
-
-  constructor(id: number, title: string, creationDate: string, duration: number, description: string) {
-    this.id = id;
-    this.title = title;
-    this.creationDate = creationDate;
-    this.duration = duration;
-    this.description = description;
   }
 
 }
