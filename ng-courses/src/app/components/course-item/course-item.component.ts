@@ -7,7 +7,7 @@ import { ICourse } from 'src/app/model/interfaces/icourse';
   styleUrls: ['./course-item.component.scss']
 })
 export class CourseItemComponent implements OnInit {
-  @Input() courseItem!: ICourse;
+  @Input() courseItem?: ICourse;
 
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
 
@@ -16,8 +16,8 @@ export class CourseItemComponent implements OnInit {
   }
 
   public delete(): void {
-    console.log(`Course with ID ${this.courseItem.id} was deleted!`)
-    this.onDelete.emit(this.courseItem.id);
+    console.log(`Course with ID ${this.courseItem?.id} was deleted!`)
+    this.onDelete.emit(this.courseItem?.id);
   }
 
   ngOnInit(): void {
