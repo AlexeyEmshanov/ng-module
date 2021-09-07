@@ -9,7 +9,7 @@ import { ICourse } from 'src/app/model/interfaces/icourse';
 export class CourseItemComponent implements OnInit {
   @Input() courseItem?: ICourse;
 
-  @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
+  @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
   public test = false;
 
@@ -19,7 +19,7 @@ export class CourseItemComponent implements OnInit {
 
   public delete(): void {
     console.log(`Course with ID ${this.courseItem?.id} was deleted!`)
-    this.onDelete.emit(this.courseItem?.id);
+    this.deleteCourse.emit();
   }
 
   ngOnInit(): void {

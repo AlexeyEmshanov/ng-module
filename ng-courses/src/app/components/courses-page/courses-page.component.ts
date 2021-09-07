@@ -27,7 +27,7 @@ export class CoursesPageComponent implements OnInit {
     console.log('Load more btn clicked!');
   }
 
-  public deleteItem(idToDelete: number): void {
+  public onDeleteCourse(idToDelete: number): void {
     this.courses = this.courses.filter((course: ICourse) => course.id !== idToDelete)
   }
 
