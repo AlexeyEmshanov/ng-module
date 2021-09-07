@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { FormsModule } from '@angular/forms';
 import { CourseItemComponent } from './components/course-item/course-item.component';
+import { ExpectedCourseDirective } from './directives/expected-course.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CourseItemComponent } from './components/course-item/course-item.compon
     FooterComponent,
     CoursesPageComponent,
     CourseItemComponent,
+    ExpectedCourseDirective,
   ],
   imports: [
     BrowserModule,

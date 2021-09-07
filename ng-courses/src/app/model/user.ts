@@ -1,16 +1,13 @@
-import { IUser } from "./interfaces/Iuser";
+import { IUser } from "./interfaces/iuser";
 
 export class User implements IUser {
-  public id;
 
-  public firstName;
+  constructor(
+    public id: number,
+    public firstName: string,
+    public lastName: string
+  ) {
 
-  public lastName;
-
-  constructor(id: number, firstName: string, lastName: string) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
   }
 
 }

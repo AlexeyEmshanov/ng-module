@@ -44,6 +44,8 @@ body {
   cursor: pointer;
   color: whitesmoke;
   font-weight: 900;
+  font-family: inherit;
+  font-size: .9rem;
   transition: all linear 0.2s;
 
   &:hover {
