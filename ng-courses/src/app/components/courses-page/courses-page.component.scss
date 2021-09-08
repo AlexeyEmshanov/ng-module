@@ -53,3 +53,15 @@
   width: 30vw;
   padding: 0.5em;
 }
+
+.course-page__empty-message {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  padding: 2em;
+  background-color: #d3d3d361;
+  border-radius: 0.5em;
+  box-shadow: 0px 1px 5px 0px rgb(95 91 91 / 75%);
+  color: slategray;
+  font-weight: 900;
+}

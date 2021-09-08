@@ -13,9 +13,7 @@ export class CourseItemComponent implements OnInit {
 
   public test = false;
 
-  constructor() {
-
-  }
+  constructor() { }
 
   public delete(): void {
     console.log(`Course with ID ${this.courseItem?.id} was deleted!`)

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { ICourse } from './../../model/interfaces/icourse';
 import { COURSES } from './../../model/mock-data';
 
@@ -7,10 +7,14 @@ import { COURSES } from './../../model/mock-data';
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss']
 })
-export class CoursesPageComponent implements OnInit {
+export class CoursesPageComponent implements DoCheck {
   public courses: ICourse[] = COURSES;
 
   public searchField: string = '';
+
+  public courseCounter?: number;
+
+  public isEmpty?: boolean;
 
   constructor() { }
 
@@ -34,10 +38,21 @@ export class CoursesPageComponent implements OnInit {
   ngOnInit(): void {
     let test = 'test values in ngOnInit at courses page';
     console.log('course-page ngOnInit!!!', test);
+    this.courseCounter = this.courses.length;
   }
 
   // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log('course-page ngOnChange!!!', changes)
-
+  //   console.log('course-page ngOnChange!!!', changes);
+  //   console.log(this.isEmpty);
+  //   this.courseCounter = this.courses.length;
+  //   this.isEmpty = this.courses.length === 0;
   // }
+
+  ngDoCheck() {
+    if (this.courses.length === 0) {
+      this.isEmpty = true
+    } else {
+      this.isEmpty = false
+    }
+  }
 }

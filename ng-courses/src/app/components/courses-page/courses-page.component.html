@@ -23,6 +23,7 @@
     ></app-course-item>
   </ul>
 
-  <button class="btn btn_load-more" (click)="onLoadMoreClick()">load more</button>
+  <div class="course-page__empty-message" *ngIf="isEmpty">no data. feel free to add new course</div>
+  <button class="btn btn_load-more" *ngIf="!isEmpty">load more</button>
 
 </div>
