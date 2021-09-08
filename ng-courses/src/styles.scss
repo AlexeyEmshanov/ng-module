@@ -57,17 +57,29 @@ body {
   width: 100%;
 }
 
-// .app-container {
-//   min-height: 100%;
-//   display: flex;
-//   flex-direction: column;
+// app-root {
+//   height: 100%;
 // }
 
-// app-footer,
-// app-header {
-//   flex-shrink: 0;
-// }
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-// app-courses-page {
-//   flex-grow: 1;
-// }
+app-footer {
+  margin-top: auto;
+}
+
+app-footer,
+app-header {
+  flex-shrink: 0;
+}
+
+app-courses-page {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
