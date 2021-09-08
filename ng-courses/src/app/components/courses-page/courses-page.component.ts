@@ -40,5 +40,4 @@ export class CoursesPageComponent implements OnInit {
   //   console.log('course-page ngOnChange!!!', changes)
 
   // }
-
 }
