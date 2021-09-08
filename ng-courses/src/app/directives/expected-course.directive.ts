@@ -15,7 +15,7 @@ export class ExpectedCourseDirective implements OnInit {
   }
 
   ngOnInit() {
-    this.isExpectedCourse = this.compareDates(this.startCourseDate);
+    this.isExpectedCourse = this.isFreshCourse(this.startCourseDate);
     if (this.isExpectedCourse) {
       this.element.nativeElement.style.border = '1px #a0d1a0 solid';
       this.element.nativeElement.style.boxShadow = '0px 0px 4px 0px #a0d1a0';
@@ -25,8 +25,16 @@ export class ExpectedCourseDirective implements OnInit {
     }
   }
 
-  public compareDates(courseDate: Date): boolean {
-    return (courseDate < this.currentDate) ? true : false;
+  public isFreshCourse(courseDate: Date): boolean | undefined {
+    if (
+      (courseDate < this.currentDate) &&
+      (courseDate.valueOf() >= this.currentDate.setDate(this.currentDate.getDate() - 14))
+      ) {
+      return true;
+    } if (courseDate > this.currentDate) {
+      return false;
+    } else {
+      return undefined;
+    }
   }
-
 }
