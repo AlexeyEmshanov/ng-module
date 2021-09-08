@@ -36,9 +36,9 @@ export class CoursesPageComponent implements OnInit {
     console.log('course-page ngOnInit!!!', test);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('course-page ngOnChange!!!', changes)
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('course-page ngOnChange!!!', changes)
 
-  }
+  // }
 
 }

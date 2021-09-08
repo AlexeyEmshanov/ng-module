@@ -1,9 +1,9 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[appExpectedCourse]'
 })
-export class ExpectedCourseDirective {
+export class ExpectedCourseDirective implements OnInit {
   @Input() startCourseDate!: Date;
 
   public currentDate = new Date();
