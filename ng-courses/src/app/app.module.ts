@@ -10,6 +10,7 @@ import { CoursesPageComponent } from './components/courses-page/courses-page.com
 import { FormsModule } from '@angular/forms';
 import { CourseItemComponent } from './components/course-item/course-item.component';
 import { ExpectedCourseDirective } from './directives/expected-course.directive';
+import { DurationCoursePipe } from './pipes/duration-course.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ExpectedCourseDirective } from './directives/expected-course.directive'
     CoursesPageComponent,
     CourseItemComponent,
     ExpectedCourseDirective,
+    DurationCoursePipe,
   ],
   imports: [
     BrowserModule,
