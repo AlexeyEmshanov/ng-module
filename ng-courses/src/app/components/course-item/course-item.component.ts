@@ -11,8 +11,6 @@ export class CourseItemComponent implements OnInit {
 
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
-  public test = false;
-
   constructor() { }
 
   public delete(): void {

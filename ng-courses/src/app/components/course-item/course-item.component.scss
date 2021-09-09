@@ -33,6 +33,15 @@
   margin-bottom: 0.2em;
 }
 
+
+.course-item__title-wrapper {
+  display: flex;
+}
+
+.course-item__title {
+  margin-right: 1em;
+}
+
 .course-item__info {
   width: 25%;
   display: flex;
@@ -52,4 +61,11 @@
 
 .course-item__description {
   text-align: justify;
+}
+
+.top-rated {
+  width: 20px;
+  height: 20px;
+  background-image: url('./../../../assets/star-icon.svg');
+  background-size: cover;
 }

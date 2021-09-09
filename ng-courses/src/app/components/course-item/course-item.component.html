@@ -1,7 +1,10 @@
 <div class="course-item" appExpectedCourse [startCourseDate]="courseItem!.creationDate">
   <div class="course-item__container" >
     <div class="course-item__headline">
-      <div class="course-item__title">{{courseItem?.title}}</div>
+      <div class="course-item__title-wrapper">
+        <div class="course-item__title">{{courseItem?.title}}</div>
+        <div [ngClass]="courseItem?.topRated ? 'top-rated': ''"></div>
+      </div>
       <div class="course-item__info">
         <div class="course-item__duration">{{courseItem?.duration}} min</div>
         <div class="course-item__date">{{courseItem?.creationDate | date:"dd.MM.yyyy"}}</div>
