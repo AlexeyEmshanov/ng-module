@@ -19,6 +19,9 @@ export class CoursesPageComponent implements DoCheck {
 
   onSearchClick() {
     console.log(this.searchField);
+    let x  = this.courses.filter(course => course.title.includes(this.searchField.toLocaleLowerCase()));
+    console.log('!!', x, this.courses.filter(course => course.title === this.searchField));
+    console.log(this.courses[0].title.includes('ourse'));
   }
 
   onAddCourseClick() {
