@@ -17,7 +17,7 @@
 
   <ul class="courses-list" >
     <app-course-item
-      *ngFor="let course of courses"
+      *ngFor="let course of courses | orderBy"
       [courseItem]="course"
       (deleteCourse)="onDeleteCourse(course.id)"
     ></app-course-item>

@@ -5,7 +5,7 @@ export const COURSES: ICourse[] = [
   {
     id: 1,
     title: 'Course 1',
-    creationDate: new Date('09/01/2021'),
+    creationDate: new Date('09/01/2023'),
     duration: 120,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam sed elit ac consequat. Quisque laoreet neque vitae lorem gravida tempor. Pellentesque leo lectus, auctor ac ex molestie, mattis pulvinar orci. Praesent at euismod quam.',
     topRated: false,
@@ -13,7 +13,7 @@ export const COURSES: ICourse[] = [
   {
     id: 2,
     title: 'Course 2',
-    creationDate: new Date('09/02/2021'),
+    creationDate: new Date('09/02/2020'),
     duration: 150,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam sed elit ac consequat. Quisque laoreet neque vitae lorem gravida tempor. Pellentesque leo lectus, auctor ac ex molestie, mattis pulvinar orci. Praesent at euismod quam.',
     topRated: true,

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CourseItemComponent } from './components/course-item/course-item.component';
 import { ExpectedCourseDirective } from './directives/expected-course.directive';
 import { DurationCoursePipe } from './pipes/duration-course.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DurationCoursePipe } from './pipes/duration-course.pipe';
     CourseItemComponent,
     ExpectedCourseDirective,
     DurationCoursePipe,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
