@@ -12,6 +12,7 @@ import { CourseItemComponent } from './components/course-item/course-item.compon
 import { ExpectedCourseDirective } from './directives/expected-course.directive';
 import { DurationCoursePipe } from './pipes/duration-course.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     ExpectedCourseDirective,
     DurationCoursePipe,
     OrderByPipe,
+    FilterCoursesPipe,
   ],
   imports: [
     BrowserModule,

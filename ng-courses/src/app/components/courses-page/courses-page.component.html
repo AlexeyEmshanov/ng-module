@@ -15,6 +15,7 @@
     <button class="btn" (click)="onAddCourseClick()">Add Course</button>
   </div>
 
+  <!-- *ngFor="let course of courses | orderBy | filterCourses: searchField" -->
   <ul class="courses-list" >
     <app-course-item
       *ngFor="let course of courses | orderBy"
