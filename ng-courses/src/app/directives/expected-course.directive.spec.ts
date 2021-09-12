@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { ExpectedCourseDirective } from './expected-course.directive';
 
 describe('ExpectedCourseDirective', () => {
