@@ -1,7 +1,7 @@
 import { COURSES } from '../model/mock-data';
 import { FilterCoursesPipe } from './filter-courses.pipe';
 
-let courses = COURSES;
+const courses = COURSES;
 
 describe('FilterCoursesPipe', () => {
   it('create an instance', () => {
