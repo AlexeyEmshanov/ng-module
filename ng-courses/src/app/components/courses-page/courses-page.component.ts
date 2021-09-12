@@ -20,7 +20,6 @@ export class CoursesPageComponent implements DoCheck {
 
 
   onSearchClick() {
-    console.log('SEARCH clicked');
     if (this.searchField === '') {
       this.courses = COURSES;
     } else {

@@ -52,6 +52,14 @@
 .search-bar_input {
   width: 30vw;
   padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px slategray solid;
+  box-sizing: border-box;
+
+  &:focus {
+    border: 2px slategray solid;
+    outline: none;
+  }
 }
 
 .course-page__empty-message {

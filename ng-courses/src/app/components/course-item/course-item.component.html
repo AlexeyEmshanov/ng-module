@@ -1,4 +1,7 @@
-<div class="course-item" appExpectedCourse [startCourseDate]="courseItem!.creationDate">
+<div class="course-item"
+  appExpectedCourse [startCourseDate]="courseItem!.creationDate"
+  [ngClass]="courseItem?.topRated ? 'course-item_top-rated': ''"
+>
   <div class="course-item__container" >
     <div class="course-item__headline">
       <div class="course-item__title-wrapper">
