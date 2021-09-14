@@ -49,7 +49,8 @@ export class CoursesService {
   }
 
   public removeCourse(id: number): ICourse[] {
-    return courses.filter((course: ICourse) => course.id !== id)
+    courses = courses.filter((course: ICourse) => course.id !== id);
+    return courses;
   }
 
 }

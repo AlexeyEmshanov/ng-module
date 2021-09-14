@@ -20,7 +20,8 @@ export class CoursesPageComponent implements DoCheck, OnInit {
 
   constructor(
     public filterCoursesPipe: FilterCoursesPipe,
-    public coursesService: CoursesService)
+    public coursesService: CoursesService,
+  )
   {
     this.courses = coursesService.getCoursesList();
   }
@@ -43,7 +44,7 @@ export class CoursesPageComponent implements DoCheck, OnInit {
   }
 
   public onDeleteCourse(idToDelete: number): void {
-    this.courses = this.courses.filter((course: ICourse) => course.id !== idToDelete)
+    this.courses = this.coursesService.removeCourse(idToDelete);
   }
 
   ngOnInit(): void {
