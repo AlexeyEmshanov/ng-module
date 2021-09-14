@@ -1,5 +1,7 @@
-import { Component, DoCheck, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { ThrowStmt } from '@angular/compiler';
+import { Component, DoCheck, Inject, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
+import { CoursesService } from 'src/app/services/courses.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { COURSES } from './../../model/mock-data';
 
@@ -9,19 +11,24 @@ import { COURSES } from './../../model/mock-data';
   styleUrls: ['./courses-page.component.scss'],
   providers: [FilterCoursesPipe]
 })
-export class CoursesPageComponent implements DoCheck {
-  public courses: ICourse[] = COURSES;
+export class CoursesPageComponent implements DoCheck, OnInit {
+  public courses: ICourse[];
 
   public searchField: string = '';
 
   public isEmpty?: boolean;
 
-  constructor(public filterCoursesPipe: FilterCoursesPipe) { }
+  constructor(
+    public filterCoursesPipe: FilterCoursesPipe,
+    public coursesService: CoursesService)
+  {
+    this.courses = coursesService.getCoursesList();
+  }
 
 
   onSearchClick() {
     if (this.searchField === '') {
-      this.courses = COURSES;
+      this.courses = this.coursesService.getCoursesList();
     } else {
       this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
     }
@@ -39,17 +46,18 @@ export class CoursesPageComponent implements DoCheck {
     this.courses = this.courses.filter((course: ICourse) => course.id !== idToDelete)
   }
 
-  // ngOnInit(): void {
-  //   // let test = 'test values in ngOnInit at courses page';
-  //   // console.log('course-page ngOnInit!!!', test);
-  // }
+  ngOnInit(): void {
+    // let test = 'test values in ngOnInit at courses page';
+    // console.log('course-page ngOnInit!!!', test);
+    this.courses = this.coursesService.getCoursesList();
+  }
 
   // ngOnChanges(changes: SimpleChanges): void {
-  //   // console.log('course-page ngOnChange!!!', changes);
+  //   console.log('course-page ngOnChange!!!', changes);
   //   // console.log(this.isEmpty);
   //   // this.courseCounter = this.courses.length;
   //   // this.isEmpty = this.courses.length === 0;
-  //   this.courses = COURSES;
+  //   // this.courses = COURSES;
   // }
 
   ngDoCheck() {

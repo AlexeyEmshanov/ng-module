@@ -3,6 +3,7 @@ import { ICourse } from '../model/interfaces/icourse';
 
 @Pipe({
   name: 'filterCourses',
+  pure: false,
 })
 export class FilterCoursesPipe implements PipeTransform {
 
