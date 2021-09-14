@@ -4,7 +4,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
   selector: '[appExpectedCourse]'
 })
 export class ExpectedCourseDirective implements OnInit {
-  @Input() startCourseDate!: Date;
+  @Input() startCourseDate: Date = new Date();
 
   public currentDate = new Date();
 

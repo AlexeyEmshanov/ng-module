@@ -3,7 +3,6 @@ import { Component, DoCheck, Inject, Input, OnChanges, OnInit, SimpleChange, Sim
 import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ICourse } from './../../model/interfaces/icourse';
-import { COURSES } from './../../model/mock-data';
 
 @Component({
   selector: 'app-courses-page',
@@ -11,8 +10,8 @@ import { COURSES } from './../../model/mock-data';
   styleUrls: ['./courses-page.component.scss'],
   providers: [FilterCoursesPipe]
 })
-export class CoursesPageComponent implements DoCheck, OnInit {
-  public courses: ICourse[];
+export class CoursesPageComponent implements OnInit {
+  public courses: ICourse[] = [];
 
   public searchField: string = '';
 
@@ -21,18 +20,12 @@ export class CoursesPageComponent implements DoCheck, OnInit {
   constructor(
     public filterCoursesPipe: FilterCoursesPipe,
     public coursesService: CoursesService,
-  )
-  {
-    this.courses = coursesService.getCoursesList();
-  }
+  ) {  }
 
 
   onSearchClick() {
-    if (this.searchField === '') {
-      this.courses = this.coursesService.getCoursesList();
-    } else {
-      this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
-    }
+    this.courses = this.coursesService.getCoursesList();
+    this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
   }
 
   onAddCourseClick() {
@@ -48,24 +41,12 @@ export class CoursesPageComponent implements DoCheck, OnInit {
   }
 
   ngOnInit(): void {
-    // let test = 'test values in ngOnInit at courses page';
-    // console.log('course-page ngOnInit!!!', test);
     this.courses = this.coursesService.getCoursesList();
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log('course-page ngOnChange!!!', changes);
-  //   // console.log(this.isEmpty);
-  //   // this.courseCounter = this.courses.length;
-  //   // this.isEmpty = this.courses.length === 0;
-  //   // this.courses = COURSES;
-  // }
 
-  ngDoCheck() {
-    if (this.courses.length === 0) {
-      this.isEmpty = true
-    } else {
-      this.isEmpty = false
-    }
+  public getIsEmpty() {
+    return this.courses.length === 0
   }
+
 }

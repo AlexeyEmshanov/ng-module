@@ -15,7 +15,6 @@
     <button class="btn" (click)="onAddCourseClick()">Add Course</button>
   </div>
 
-  <!-- *ngFor="let course of courses | orderBy | filterCourses: searchField" -->
   <ul class="courses-list" >
     <app-course-item
       *ngFor="let course of courses | orderBy"
@@ -24,7 +23,7 @@
     ></app-course-item>
   </ul>
 
-  <div class="course-page__empty-message" *ngIf="isEmpty">no data. feel free to add new course</div>
+  <div class="course-page__empty-message" *ngIf="getIsEmpty()">no data. feel free to add new course</div>
   <button class="btn btn_load-more" *ngIf="!isEmpty">load more</button>
 
 </div>
