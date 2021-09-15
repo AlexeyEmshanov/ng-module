@@ -24,6 +24,6 @@
   </ul>
 
   <div class="course-page__empty-message" *ngIf="getIsEmpty()">no data. feel free to add new course</div>
-  <button class="btn btn_load-more" *ngIf="!isEmpty">load more</button>
+  <button class="btn btn_load-more" *ngIf="!getIsEmpty()">load more</button>
 
 </div>

@@ -1,5 +1,5 @@
 import { ThrowStmt } from '@angular/compiler';
-import { Component, DoCheck, Inject, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ICourse } from './../../model/interfaces/icourse';
@@ -8,7 +8,7 @@ import { ICourse } from './../../model/interfaces/icourse';
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss'],
-  providers: [FilterCoursesPipe]
+  providers: [ FilterCoursesPipe ]
 })
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
@@ -43,7 +43,6 @@ export class CoursesPageComponent implements OnInit {
   ngOnInit(): void {
     this.courses = this.coursesService.getCoursesList();
   }
-
 
   public getIsEmpty() {
     return this.courses.length === 0

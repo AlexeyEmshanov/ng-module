@@ -15,8 +15,6 @@ export class FilterCoursesPipe implements PipeTransform {
           course => course.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
         );
     }
-
-
   }
 
 }
