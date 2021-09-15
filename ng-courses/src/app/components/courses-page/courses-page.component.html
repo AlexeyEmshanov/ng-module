@@ -1,4 +1,4 @@
-<div class="courses-page_container">
+<div class="courses-page_container" >
   <ul class="breadcrumbs-nav">
     <li class="breadcrumb"><a class="breadcrumb-link" href="#">Courses</a></li>
   </ul>
@@ -15,12 +15,20 @@
     <button class="btn" (click)="onAddCourseClick()">Add Course</button>
   </div>
 
+  <app-modal-window
+    *ngIf="modalServise.getIsModalShown()"
+    (declineDelete)="modalServise.hideModalWindow()"
+    (acceptDelete)="onDeleteCourse(idCourseToRemove)"
+  ></app-modal-window>
+
   <ul class="courses-list" >
     <app-course-item
       *ngFor="let course of courses | orderBy"
       [courseItem]="course"
-      (deleteCourse)="onDeleteCourse(course.id)"
-    ></app-course-item>
+      (deleteCourse)='saveId($event)'
+    >
+
+    </app-course-item>
   </ul>
 
   <div class="course-page__empty-message" *ngIf="getIsEmpty()">no data. feel free to add new course</div>

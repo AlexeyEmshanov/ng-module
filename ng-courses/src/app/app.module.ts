@@ -13,6 +13,7 @@ import { ExpectedCourseDirective } from './directives/expected-course.directive'
 import { DurationCoursePipe } from './pipes/duration-course.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
     DurationCoursePipe,
     OrderByPipe,
     FilterCoursesPipe,
+    ModalWindowComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ICourse } from 'src/app/model/interfaces/icourse';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-course-item',
@@ -11,7 +12,7 @@ export class CourseItemComponent implements OnInit {
 
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(public modalService: ModalService) { }
 
   ngOnInit(): void {
     let test1 = 'test values in ngOnInit at course-item';
@@ -19,8 +20,9 @@ export class CourseItemComponent implements OnInit {
   }
 
   public onDelete(): void {
+    this.modalService.showModalWindow();
     console.log(`Course with ID ${this.courseItem?.id} was deleted!`)
-    this.deleteCourse.emit();
+    this.deleteCourse.emit(this.courseItem?.id);
   }
 
 }
