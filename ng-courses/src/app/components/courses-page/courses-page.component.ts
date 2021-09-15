@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
@@ -17,8 +16,6 @@ export class CoursesPageComponent implements OnInit {
   public searchField: string = '';
 
   public idCourseToRemove: number = 0;
-
-  @Output() acceptDelete: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     public filterCoursesPipe: FilterCoursesPipe,
@@ -43,18 +40,17 @@ export class CoursesPageComponent implements OnInit {
     console.log('Load more btn clicked!');
   }
 
-  public onDeleteCourse(idToDelete: number): void {
-    console.log('event happend')
+  onAcceptDelete(idToDelete: number): void {
     this.courses = this.coursesService.removeCourse(idToDelete);
     this.courses = this.coursesService.getCoursesList();
     this.modalServise.hideModalWindow();
   }
 
-  public getIsEmpty() {
+  getIsEmpty() {
     return this.courses.length === 0
   }
 
-  saveId(id: number) {
+  onDeleteCourse(id: number) {
     this.idCourseToRemove = id;
   }
 

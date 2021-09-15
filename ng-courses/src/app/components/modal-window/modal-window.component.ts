@@ -7,6 +7,7 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./modal-window.component.scss']
 })
 export class ModalWindowComponent implements OnChanges {
+
   @Input() public isModalShown = false;
 
   @Output() declineDelete: EventEmitter<boolean> = new EventEmitter<boolean>();

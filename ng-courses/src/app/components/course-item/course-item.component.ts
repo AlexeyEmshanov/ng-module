@@ -21,7 +21,6 @@ export class CourseItemComponent implements OnInit {
 
   public onDelete(): void {
     this.modalService.showModalWindow();
-    console.log(`Course with ID ${this.courseItem?.id} was deleted!`)
     this.deleteCourse.emit(this.courseItem?.id);
   }
 
