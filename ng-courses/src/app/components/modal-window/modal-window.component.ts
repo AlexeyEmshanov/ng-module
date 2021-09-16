@@ -1,11 +1,22 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
-import { ModalService } from 'src/app/services/modal.service';
+import { trigger, transition, animate, style } from '@angular/animations'
+
+export const testAnimation = trigger('fadeInOut', [
+  transition(':enter', [
+    animate('300ms ease-in', style({opacity: 1}))
+  ]),
+  transition(':leave', [
+    animate('300ms ease-in', style({opacity: 0}))
+  ])
+])
 
 @Component({
   selector: 'app-modal-window',
   templateUrl: './modal-window.component.html',
-  styleUrls: ['./modal-window.component.scss']
+  styleUrls: ['./modal-window.component.scss'],
+  animations: [ testAnimation ],
 })
+
 export class ModalWindowComponent implements OnChanges {
 
   @Input() public isModalShown = false;

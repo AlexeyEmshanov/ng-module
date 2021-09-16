@@ -14,6 +14,8 @@ import { DurationCoursePipe } from './pipes/duration-course.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ModalWindowComponent } from './components/modal-window/modal-window.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,12 +3,15 @@ import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { ICourse } from './../../model/interfaces/icourse';
+import { testAnimation } from '../modal-window/modal-window.component';
+
 
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss'],
-  providers: [ FilterCoursesPipe ]
+  providers: [ FilterCoursesPipe ],
+  animations: [ testAnimation ],
 })
 export class CoursesPageComponent implements OnInit {
   public courses: ICourse[] = [];
