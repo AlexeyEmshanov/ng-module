@@ -11,3 +11,9 @@ export class User implements IUser {
   }
 
 }
+
+export const testUser: User = {
+  id: 1,
+  firstName: 'Alexey',
+  lastName: 'Emshanov'
+}

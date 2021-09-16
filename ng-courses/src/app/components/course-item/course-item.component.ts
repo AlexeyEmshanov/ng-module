@@ -16,7 +16,7 @@ export class CourseItemComponent implements OnInit {
 
   ngOnInit(): void {
     let test1 = 'test values in ngOnInit at course-item';
-    console.log('Course-item ngOnInit!!!', test1);
+    // console.log('Course-item ngOnInit!!!', test1);
   }
 
   public onDelete(): void {

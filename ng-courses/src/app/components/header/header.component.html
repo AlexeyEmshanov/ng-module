@@ -1,7 +1,7 @@
 <header>
   <app-logo></app-logo>
   <div class="header-controls">
-    <div>User Login</div>
-    <button class="btn">Log Off</button>
+    <div>{{authService.isAuth('admin') ? authService.getUserInfo('admin').firstName : ''}}</div>
+    <button class="btn" (click)="onLogout('admin')">Log Off</button>
   </div>
 </header>

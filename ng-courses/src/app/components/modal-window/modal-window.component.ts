@@ -3,10 +3,10 @@ import { trigger, transition, animate, style } from '@angular/animations'
 
 export const testAnimation = trigger('fadeInOut', [
   transition(':enter', [
-    animate('300ms ease-in', style({opacity: 1}))
+    animate('200ms ease-in', style({opacity: 1}))
   ]),
   transition(':leave', [
-    animate('300ms ease-in', style({opacity: 0}))
+    animate('200ms ease-in', style({opacity: 0}))
   ])
 ])
 

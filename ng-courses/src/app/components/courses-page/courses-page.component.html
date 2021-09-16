@@ -16,7 +16,7 @@
   </div>
 
   <app-modal-window
-    *ngIf="modalServise.getIsModalShown()" [@fadeInOut]="modalServise.getIsModalShown()"
+    *ngIf="modalServise.getIsModalShown()" @fadeInOut
     (acceptDelete)="onAcceptDelete(idCourseToRemove)"
     (declineDelete)="modalServise.hideModalWindow()"
   ></app-modal-window>
