@@ -12,7 +12,7 @@ export class AuthService {
 
   public login(login: string, user: string) {
     this.usersStorage.setItem(login, user);
-    console.log('login happend!', this.usersStorage.getItem(login));
+    console.log('Login happend!', this.usersStorage.getItem(login));
   }
 
   public logout(loginName: string) {

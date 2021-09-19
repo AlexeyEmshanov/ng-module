@@ -3,9 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LogoComponent } from './components/logo/logo.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { LogoComponent } from './core/components/logo/logo.component';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { FormsModule } from '@angular/forms';
 import { CourseItemComponent } from './components/course-item/course-item.component';
@@ -15,14 +13,13 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './core/core.module';
+import { LoginPageModule } from './login-page/login-page.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LogoComponent,
-    FooterComponent,
     CoursesPageComponent,
     CourseItemComponent,
     ExpectedCourseDirective,
@@ -35,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule,
+    LoginPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

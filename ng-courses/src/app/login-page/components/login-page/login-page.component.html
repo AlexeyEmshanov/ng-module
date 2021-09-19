@@ -1,0 +1,21 @@
+<app-header></app-header>
+  <div class="login-page__container">
+    <div class="login-page__content">
+      <div class="login-page__title-wrapper">
+        <h3 class="login-page__title">Please login</h3>
+      </div>
+      <div class="input-wrapper">
+        <label class="login-page__label" for="login">Login</label>
+        <input class="login-page__input" type="text" id="login" [(ngModel)]="userLogin">
+      </div>
+
+      <div class="input-wrapper">
+        <label class="login-page__label" for="password">Password</label>
+        <input class="login-page__input" type="text" id="password" [(ngModel)]="userPassword">
+      </div>
+
+      <button class="btn" (click)="onLoginClick()">Login</button>
+    </div>
+
+  </div>
+<app-footer></app-footer>
