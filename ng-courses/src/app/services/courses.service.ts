@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { ICourse } from '../model/interfaces/icourse';
 import { COURSES } from '../model/mock-data';
 
@@ -11,6 +11,7 @@ let courses: ICourse[] = COURSES;
   }
 )
 export class CoursesService {
+  // public courses: ICourse[] = COURSES;
 
   constructor() { }
 
@@ -30,21 +31,29 @@ export class CoursesService {
 
   public updateCourse(
     id: number,
-    newTitle?: string,
-    // newCreationDate?: Date,
-    newDuration?: number,
-    // newDescription?: string,
-    // newTopRated?: boolean,
+    updatedData: {
+      newTitle: string,
+      newDuration: number
+    }
   ): void {
 
     console.log('update!');
     const indexToChange = courses.findIndex(course => course.id === id);
 
-    newTitle ? courses[indexToChange].title = newTitle : courses[indexToChange].title;
-    // newCreationDate ? courses[indexToChange].creationDate = newCreationDate : courses[indexToChange].creationDate;
-    newDuration ? courses[indexToChange].duration = newDuration : courses[indexToChange].duration;
-    // newDescription ? courses[indexToChange].description = newDescription : courses[indexToChange].description;
-    // newTopRated ? courses[indexToChange].topRated = newTopRated : courses[indexToChange].topRated;
+    const updatedCourse: ICourse = {
+      id: id,
+      title: updatedData.newTitle,
+      creationDate: courses[indexToChange].creationDate,
+      duration: updatedData.newDuration,
+      description: courses[indexToChange].description,
+      topRated: courses[indexToChange].topRated,
+    }
+
+    const newCoursesArray = [...courses];
+    newCoursesArray[indexToChange] = updatedCourse;
+    console.log('!!!', courses[indexToChange], updatedCourse);
+    courses = newCoursesArray;
+    console.log(courses);
 
   }
 

@@ -10,3 +10,12 @@ footer {
   justify-content: center;
   color: whitesmoke;
 }
+
+.footer-text {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  text-transform: capitalize;
+  letter-spacing: 0.15rem;
+  font-size: 1.1rem;
+}
