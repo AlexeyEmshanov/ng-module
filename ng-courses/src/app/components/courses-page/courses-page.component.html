@@ -1,37 +1,41 @@
-<div class="courses-page_container" >
-  <ul class="breadcrumbs-nav">
-    <li class="breadcrumb"><a class="breadcrumb-link" href="#">Courses</a></li>
-  </ul>
+<app-header></app-header>
 
-  <div class="course-page_nav">
-    <div class="search-bar">
-      <input
-        class="search-bar_input"
-        placeholder="Text to search"
-        [(ngModel)]="searchField"
-      >
-      <button class="btn" (click)="onSearchClick()">Search</button>
+  <div class="courses-page_container" >
+    <ul class="breadcrumbs-nav">
+      <li class="breadcrumb"><a class="breadcrumb-link" href="#">Courses</a></li>
+    </ul>
+
+    <div class="course-page_nav">
+      <div class="search-bar">
+        <input
+          class="search-bar_input"
+          placeholder="Text to search"
+          [(ngModel)]="searchField"
+        >
+        <button class="btn" (click)="onSearchClick()">Search</button>
+      </div>
+      <button class="btn" (click)="onAddCourseClick()">Add Course</button>
     </div>
-    <button class="btn" (click)="onAddCourseClick()">Add Course</button>
+
+    <app-modal-window
+      *ngIf="modalServise.getIsModalShown()" @fadeInOut
+      (acceptDelete)="onAcceptDelete(idCourseToRemove)"
+      (declineDelete)="modalServise.hideModalWindow()"
+    ></app-modal-window>
+
+    <ul class="courses-list" >
+      <app-course-item
+        *ngFor="let course of courses | orderBy"
+        [courseItem]="course"
+        (deleteCourse)='onDeleteCourse($event)'
+      >
+
+      </app-course-item>
+    </ul>
+
+    <div class="course-page__empty-message" *ngIf="getIsEmpty()">no data. feel free to add new course</div>
+    <button class="btn btn_load-more" *ngIf="!getIsEmpty()">load more</button>
+
   </div>
 
-  <app-modal-window
-    *ngIf="modalServise.getIsModalShown()" @fadeInOut
-    (acceptDelete)="onAcceptDelete(idCourseToRemove)"
-    (declineDelete)="modalServise.hideModalWindow()"
-  ></app-modal-window>
-
-  <ul class="courses-list" >
-    <app-course-item
-      *ngFor="let course of courses | orderBy"
-      [courseItem]="course"
-      (deleteCourse)='onDeleteCourse($event)'
-    >
-
-    </app-course-item>
-  </ul>
-
-  <div class="course-page__empty-message" *ngIf="getIsEmpty()">no data. feel free to add new course</div>
-  <button class="btn btn_load-more" *ngIf="!getIsEmpty()">load more</button>
-
-</div>
+<app-footer></app-footer>

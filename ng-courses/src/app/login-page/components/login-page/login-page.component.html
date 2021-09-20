@@ -14,7 +14,11 @@
         <input class="login-page__input" type="text" id="password" [(ngModel)]="userPassword">
       </div>
 
-      <button class="btn btn_login" (click)="onLoginClick()">Login</button>
+      <button
+        class="btn btn_login"
+        (click)="onLoginClick()"
+        routerLink="/courses-page"
+      >Login</button>
     </div>
 
   </div>

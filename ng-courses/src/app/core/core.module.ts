@@ -4,13 +4,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AuthService } from '../services/auth.service';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LogoComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [HeaderComponent, FooterComponent, LogoComponent],
   providers: [AuthService]
