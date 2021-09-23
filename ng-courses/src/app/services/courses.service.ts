@@ -2,7 +2,7 @@ import { Injectable, Input } from '@angular/core';
 import { ICourse } from '../model/interfaces/icourse';
 import { COURSES } from '../model/mock-data';
 
-let courses: ICourse[] = COURSES;
+// let courses: ICourse[] = COURSES;
 
 
 @Injectable(
@@ -11,21 +11,22 @@ let courses: ICourse[] = COURSES;
   }
 )
 export class CoursesService {
-  // public courses: ICourse[] = COURSES;
+  public courses: ICourse[] = COURSES;
 
   constructor() { }
 
   public getCoursesList(): ICourse[] {
-    return courses;
+    return this.courses;
   }
 
-  public createCourse(newCourse: ICourse): void {
-    courses.push(newCourse);
+  public createCourse(newCourse: ICourse): ICourse[] {
+    this.courses.push(newCourse);
+    return this.courses;
   }
 
   public getCourseById(id: number): ICourse[] {
-    courses = courses.filter(course => course.id === id);
-    return courses;
+    this.courses = this.courses.filter(course => course.id === id);
+    return this.courses;
   }
 
   public updateCourse(
@@ -35,30 +36,28 @@ export class CoursesService {
       newDuration: number
     }
   ): void {
-
-    console.log('update!');
-    const indexToChange = courses.findIndex(course => course.id === id);
+    const indexToChange = this.courses.findIndex(course => course.id === id);
 
     const updatedCourse: ICourse = {
       id: id,
       title: updatedData.newTitle,
-      creationDate: courses[indexToChange].creationDate,
+      creationDate: this.courses[indexToChange].creationDate,
       duration: updatedData.newDuration,
-      description: courses[indexToChange].description,
-      topRated: courses[indexToChange].topRated,
+      description: this.courses[indexToChange].description,
+      topRated: this.courses[indexToChange].topRated,
     }
 
-    const newCoursesArray = [...courses];
+    const newCoursesArray = [...this.courses];
     newCoursesArray[indexToChange] = updatedCourse;
-    console.log('!!!', courses[indexToChange], updatedCourse);
-    courses = newCoursesArray;
-    console.log(courses);
+    // console.log('!!!', courses[indexToChange], updatedCourse);
+    this.courses = newCoursesArray;
+    // console.log(courses);
 
   }
 
   public removeCourse(id: number): ICourse[] {
-    courses = courses.filter((course: ICourse) => course.id !== id);
-    return courses;
+    this.courses = this.courses.filter((course: ICourse) => course.id !== id);
+    return this.courses;
   }
 
 }
