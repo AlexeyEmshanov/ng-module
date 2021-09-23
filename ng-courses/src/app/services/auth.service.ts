@@ -11,13 +11,13 @@ export class AuthService {
   constructor() { }
 
   public login(login: string, user: string) {
-    this.usersStorage.setItem(login, user);
-    console.log('Login happend!', this.usersStorage.getItem(login));
+    this.usersStorage.setItem(login, JSON.stringify(user));
+    // console.log('Login happend!', this.usersStorage.getItem(login));
   }
 
   public logout(loginName: string) {
     this.usersStorage.removeItem(loginName);
-    console.log('Logout happend', this.usersStorage);
+    // console.log('Logout happend', this.usersStorage);
   }
 
   public isAuth(currentLogin: string): boolean {
@@ -27,11 +27,12 @@ export class AuthService {
   public getUserInfo(loginName: string) {
     const userInfo = this.usersStorage.getItem(loginName)
 
-    if (userInfo === null) {
-      console.log('Invalid login');
-    } else {
-      console.log('***', JSON.parse(userInfo))
+    if (userInfo) {
+      // console.log('***', JSON.parse(userInfo))
       return JSON.parse(userInfo);
+    } else {
+      console.log('Invalid login');
+      return null
     }
   }
 }
