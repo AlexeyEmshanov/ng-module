@@ -19,9 +19,8 @@ export class CoursesService {
     return courses;
   }
 
-  public createCourse(newCourse: ICourse): ICourse[] {
+  public createCourse(newCourse: ICourse): void {
     courses.push(newCourse);
-    return courses;
   }
 
   public getCourseById(id: number): ICourse[] {

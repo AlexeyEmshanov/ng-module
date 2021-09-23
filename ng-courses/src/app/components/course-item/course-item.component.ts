@@ -8,17 +8,17 @@ import { ModalService } from 'src/app/services/modal.service';
   templateUrl: './course-item.component.html',
   styleUrls: ['./course-item.component.scss']
 })
-export class CourseItemComponent implements OnInit {
+export class CourseItemComponent {
   @Input() courseItem?: ICourse;
 
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(public modalService: ModalService, public coursesService: CoursesService) { }
 
-  ngOnInit(): void {
-    let test1 = 'test values in ngOnInit at course-item';
-    // console.log('Course-item ngOnInit!!!', test1);
-  }
+  // ngOnInit(): void {
+  //   let test1 = 'test values in ngOnInit at course-item';
+  //   // console.log('Course-item ngOnInit!!!', test1);
+  // }
 
   public onDeleteClick(): void {
     this.modalService.showModalWindow();
