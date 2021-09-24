@@ -3,7 +3,6 @@ import { DurationCoursePipe } from './duration-course.pipe';
 describe('DurationCoursePipe', () => {
   const pipe = new DurationCoursePipe();
 
-
   it('create an instance', () => {
     expect(pipe).toBeTruthy();
   });
