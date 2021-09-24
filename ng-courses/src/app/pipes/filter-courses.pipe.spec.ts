@@ -106,4 +106,8 @@ describe('FilterCoursesPipe', () => {
   it('should be 0 courses containing title that includes "zzzzz"', () => {
     expect(pipe.transform(courses, 'like').length).toBe(0);
   });
+
+  it('empty serach text should return courses list', () => {
+    expect(pipe.transform(courses, '')).toEqual(courses);
+  })
 });
