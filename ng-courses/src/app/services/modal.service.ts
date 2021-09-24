@@ -5,20 +5,20 @@ import { Injectable, Input } from '@angular/core';
 })
 export class ModalService {
 
-  public IsModalShown = false;
+  public isModalShown = false;
 
   constructor() { }
 
   showModalWindow() {
-    this.IsModalShown = true;
+    this.isModalShown = true;
   }
 
   hideModalWindow() {
-    this.IsModalShown = false;
+    this.isModalShown = false;
   }
 
   getIsModalShown() {
-    return this.IsModalShown;
+    return this.isModalShown;
   }
 
 }
