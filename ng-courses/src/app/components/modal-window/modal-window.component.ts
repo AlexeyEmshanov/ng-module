@@ -19,8 +19,6 @@ export const testAnimation = trigger('fadeInOut', [
 
 export class ModalWindowComponent implements OnChanges {
 
-  @Input() public isModalShown = false;
-
   @Output() declineDelete: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Output() acceptDelete: EventEmitter<boolean> = new EventEmitter<boolean>();

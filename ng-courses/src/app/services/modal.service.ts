@@ -1,24 +1,24 @@
 import { Injectable, Input } from '@angular/core';
-import { ModalWindowComponent } from '../components/modal-window/modal-window.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
-  private modal = new ModalWindowComponent();
+
+  public IsModalShown = false;
 
   constructor() { }
 
   showModalWindow() {
-    this.modal.isModalShown = true;
+    this.IsModalShown = true;
   }
 
   hideModalWindow() {
-    this.modal.isModalShown = false;
+    this.IsModalShown = false;
   }
 
   getIsModalShown() {
-    return this.modal.isModalShown;
+    return this.IsModalShown;
   }
 
 }
