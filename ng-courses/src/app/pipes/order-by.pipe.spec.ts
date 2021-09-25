@@ -1,7 +1,8 @@
+import * as _ from 'lodash';
 import { COURSES } from '../model/mock-data';
 import { OrderByPipe } from './order-by.pipe';
 
-const courses = COURSES;
+const courses = _.cloneDeep(COURSES);
 
 describe('OrderByPipe', () => {
   it('create an instance', () => {
