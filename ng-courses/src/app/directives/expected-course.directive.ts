@@ -1,3 +1,4 @@
+import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
@@ -8,36 +9,25 @@ export class ExpectedCourseDirective implements OnInit {
 
   public currentDate = new Date();
 
-  public isExpectedCourse?: boolean;
+  private testDay = new Date((new Date()).setDate(this.currentDate.getDate() - 14))
 
   constructor(public element: ElementRef) {
 
   }
 
   ngOnInit() {
-    console.log('333')
-    this.isExpectedCourse = this.isActualCourse(this.startCourseDate);
-    if (this.isExpectedCourse) {
-      console.log('444')
-      this.element.nativeElement.style.border = '1px #a0d1a0 solid';
-      this.element.nativeElement.style.boxShadow = '0px 0px 4px 0px #a0d1a0';
-    } else {
-      console.log('555')
-      this.element.nativeElement.style.border = '1px #689FF6 solid';
-      this.element.nativeElement.style.boxShadow = '0px 0px 4px 0px #689FF6';
-    }
+    this.isActualCourse(this.startCourseDate);
   }
 
-  public isActualCourse(courseDate: Date): boolean | undefined {
+  public isActualCourse(courseDate: Date): void | null {
     if (
       (courseDate < this.currentDate) &&
-      (courseDate.valueOf() >= this.currentDate.setDate(this.currentDate.getDate() - 14))
-      ) {
-      return true;
+      (courseDate.setHours(0, 0, 0, 0) >= this.testDay.setHours(0, 0, 0, 0))
+    ) {
+        this.element.nativeElement.classList.add('fresh');
+        console.log(this.currentDate, this.testDay);
     } if (courseDate > this.currentDate) {
-      return false;
-    } else {
-      return undefined;
+        this.element.nativeElement.classList.add('upcoming');
     }
   }
 }

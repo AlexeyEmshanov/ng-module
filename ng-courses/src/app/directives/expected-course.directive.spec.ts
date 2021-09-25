@@ -1,21 +1,27 @@
 import { createComponent } from '@angular/compiler/src/core';
-import { Component, DebugElement, ElementRef } from '@angular/core';
+import { Component, DebugElement, ElementRef, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { CourseItemComponent } from '../components/course-item/course-item.component';
 import { ExpectedCourseDirective } from './expected-course.directive';
 
 @Component({
   template: `<div
-    class="test-component" appExpectedCourse
+    class="test-component" appExpectedCourse [startCourseDate]="startCourseDate"
     style="border: 1px #FFFFFF solid"
   >TEST</div>`
 })
-class DummyCourseItemComponent { }
+class DummyCourseItemComponent {
+  @Input() startCourseDate?: Date;
+}
 
 
 describe('ExpectedCourseDirective', () => {
+  const today = new Date();
+  const tenDaysBefore = new Date((new Date()).setDate((new Date()).getDate() - 13));
+  const pastDay = new Date((new Date()).setDate((new Date()).getDate() - 30));
+  const futureDay = new Date((new Date()).setDate((new Date()).getDate() + 30));
+
   let component: DummyCourseItemComponent;
   let fixture: ComponentFixture<DummyCourseItemComponent>;
   let divElement: DebugElement;
@@ -28,30 +34,31 @@ describe('ExpectedCourseDirective', () => {
     fixture = TestBed.createComponent(DummyCourseItemComponent);
     component = fixture.componentInstance;
     divElement = fixture.debugElement.query(By.css('.test-component'));
-    // console.log(divElement);
-    fixture.detectChanges();
   })
 
-  const today = new Date();
-  const testCourseDate = new Date(( (new Date()).setDate(today.getDate() - 10)));
-
-
-  it('should create an instance', () => {
-    const directive = new ExpectedCourseDirective(new ElementRef(component));
-    expect(directive).toBeTruthy();
+  it('today should be fresh course and contain "fresh" class', () => {
+    component.startCourseDate = today;
+    fixture.detectChanges();
+    expect(divElement.nativeElement.classList).toContain('fresh');
   });
 
-  it('today should be actual course', () => {
-    const directive = new ExpectedCourseDirective(new ElementRef(component));
-    // console.log('DIRECTIVE', directive);
-    directive.startCourseDate = testCourseDate;
-    // console.log('DIRECTIVE', directive);
-    console.log('111');
-    console.log('DIVELEMENT', divElement);
-    directive.ngOnInit()
-    console.log('222');
+  it('14 days earlier than today should be expected course and contain "fresh" class', () => {
+    component.startCourseDate = tenDaysBefore;
     fixture.detectChanges();
-    console.log('DIVELEMENT', divElement);
-    expect(divElement.nativeElement.style.border).toBe('1px #a0d1a0 solid');
+    console.log('14 days', today, tenDaysBefore)
+    expect(divElement.nativeElement.classList).toContain('fresh');
+  });
+
+  it('future day should be upcoming course and contain "upcoming" class', () => {
+    component.startCourseDate = futureDay;
+    fixture.detectChanges();
+    expect(divElement.nativeElement.classList).toContain('upcoming');
+  });
+
+  it('past day should not contain "upcoming" & "fresh" classes', () => {
+    component.startCourseDate = pastDay;
+    fixture.detectChanges();
+    expect(divElement.nativeElement.classList).not.toContain('upcoming');
+    expect(divElement.nativeElement.classList).not.toContain('fresh');
   });
 });
