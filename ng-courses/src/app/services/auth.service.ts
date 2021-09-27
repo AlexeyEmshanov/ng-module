@@ -27,9 +27,9 @@ export class AuthService {
   public getUserInfo(loginName: string) {
     const userInfo = this.usersStorage.getItem(loginName)
 
+
     if (userInfo) {
-      // console.log('***', JSON.parse(userInfo))
-      return JSON.parse(userInfo);
+      return JSON.parse(JSON.parse(userInfo));
     } else {
       console.log('Invalid login');
       return null

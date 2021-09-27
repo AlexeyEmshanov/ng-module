@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -15,6 +15,7 @@ import { AppRoutingModule } from '../app-routing.module';
     AppRoutingModule
   ],
   exports: [HeaderComponent, FooterComponent, LogoComponent],
-  providers: [AuthService]
+  providers: [AuthService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class CoreModule { }

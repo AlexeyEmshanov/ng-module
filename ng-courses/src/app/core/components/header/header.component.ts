@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { testUser } from 'src/app/model/user';
 
 
 @Component({
@@ -7,17 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-
+export class HeaderComponent implements OnInit {
 
   constructor(public authService: AuthService) {
 
   }
 
-  // ngOnInit() {
-  //   this.user = testUser;
-  //   console.log('ngOnInit:', this.user);
-  // }
+  ngOnInit() {
+    this.authService.login('admin', JSON.stringify(testUser))
+  }
 
   onLogout(loginName: string) {
     this.authService.logout(loginName);

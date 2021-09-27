@@ -52,6 +52,6 @@ describe('AuthService', () => {
 
   it('if user is login should return user name', () => {
     service.login(testlogin, JSON.stringify(testUser));
-    expect(service.getUserInfo(testlogin)).toEqual(JSON.stringify(testUser));
+    expect(service.getUserInfo(testlogin)).toEqual(testUser);
   });
 });

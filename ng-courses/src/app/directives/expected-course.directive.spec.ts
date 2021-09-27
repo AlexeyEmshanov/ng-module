@@ -1,8 +1,6 @@
-import { createComponent } from '@angular/compiler/src/core';
 import { Component, DebugElement, ElementRef, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { CourseItemComponent } from '../components/course-item/course-item.component';
 import { ExpectedCourseDirective } from './expected-course.directive';
 
 @Component({
@@ -18,7 +16,7 @@ class DummyCourseItemComponent {
 
 describe('ExpectedCourseDirective', () => {
   const today = new Date();
-  const tenDaysBefore = new Date((new Date()).setDate((new Date()).getDate() - 13));
+  const fourteenDaysBefore = new Date((new Date()).setDate((new Date()).getDate() - 14));
   const pastDay = new Date((new Date()).setDate((new Date()).getDate() - 30));
   const futureDay = new Date((new Date()).setDate((new Date()).getDate() + 30));
 
@@ -43,9 +41,8 @@ describe('ExpectedCourseDirective', () => {
   });
 
   it('14 days earlier than today should be expected course and contain "fresh" class', () => {
-    component.startCourseDate = tenDaysBefore;
+    component.startCourseDate = fourteenDaysBefore;
     fixture.detectChanges();
-    console.log('14 days', today, tenDaysBefore)
     expect(divElement.nativeElement.classList).toContain('fresh');
   });
 
