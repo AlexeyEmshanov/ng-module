@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges, DoCheck, ChangeDetectorRef } from '@angular/core';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -27,8 +27,10 @@ export class CourseItemComponent {
 
   public onEditClick() {
     if (this.courseItem !== undefined) {
-      this.coursesService.updateCourse(this.courseItem.id, {newTitle: 'NEW COURSE', newDuration: 555})
-      this.coursesService.getCoursesList();
+      // this.coursesService.updateCourse(this.courseItem.id, {newTitle: 'MODIFIED COURSE', newDuration: 555})
+      // this.coursesService.getCoursesList();
+      this.courseItem.title = 'wowowowow';
+      console.log('EDIT', this.coursesService)
     }
   }
 

@@ -20,13 +20,14 @@ export class CoursesService {
   }
 
   public createCourse(newCourse: ICourse): ICourse[] {
+    console.log('create course', this.courses)
     this.courses.push(newCourse);
     return this.courses;
   }
 
   public getCourseById(id: number): ICourse[] {
-    this.courses = this.courses.filter(course => course.id === id);
-    return this.courses;
+    // this.courses = this.courses.filter(course => course.id === id);
+    return this.courses.filter(course => course.id === id);
   }
 
   public updateCourse(
@@ -36,19 +37,19 @@ export class CoursesService {
       newDuration: number
     }
   ): void {
-    const indexToChange = this.courses.findIndex(course => course.id === id);
+    // const indexToChange = this.courses.findIndex(course => course.id === id);
 
     const updatedCourse: ICourse = {
       id: id,
       title: updatedData.newTitle,
-      creationDate: this.courses[indexToChange].creationDate,
+      creationDate: this.courses[id].creationDate,
       duration: updatedData.newDuration,
-      description: this.courses[indexToChange].description,
-      topRated: this.courses[indexToChange].topRated,
+      description: this.courses[id].description,
+      topRated: this.courses[id].topRated,
     }
 
     const newCoursesArray = [...this.courses];
-    newCoursesArray[indexToChange] = updatedCourse;
+    newCoursesArray[id] = updatedCourse;
     // console.log('!!!', courses[indexToChange], updatedCourse);
     this.courses = newCoursesArray;
     // console.log(courses);

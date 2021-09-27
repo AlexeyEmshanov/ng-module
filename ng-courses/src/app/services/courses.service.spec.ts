@@ -23,6 +23,12 @@ describe('CoursesService', () => {
     // courses = COURSES;
   });
 
+  afterEach(() => {
+    console.log('afterEach')
+    service.removeCourse(newMockCourse.id);
+    console.log('afterEach!', service.getCoursesList())
+  })
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
@@ -51,8 +57,9 @@ describe('CoursesService', () => {
 
   it('method updateCourse should update values at course with certain id', () => {
     const testUpdatedData = { newTitle: 'It is a updated title', newDuration: 777 }
-
+    console.log(service.getCoursesList())
     service.createCourse(newMockCourse);
+    console.log(service.getCoursesList())
     service.updateCourse(newMockCourse.id, testUpdatedData);
 
     expect(service.getCourseById(newMockCourse.id)[0].title).toBe(testUpdatedData.newTitle);

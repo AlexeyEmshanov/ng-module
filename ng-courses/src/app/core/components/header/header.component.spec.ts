@@ -36,7 +36,6 @@ describe('HeaderComponent', () => {
   });
 
   it('header after login should contain header control elements', () => {
-    component.ngOnInit();
     fixture.detectChanges();
 
     const searchElement = headerDebugElement.query(By.css('.header-controls'));
@@ -45,7 +44,6 @@ describe('HeaderComponent', () => {
   });
 
   it('header after logout should not contain header control elements', () => {
-    component.ngOnInit();
     component.onLogout(testUser);
     fixture.detectChanges();
 

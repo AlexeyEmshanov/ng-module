@@ -8,15 +8,15 @@ import { testUser } from 'src/app/model/user';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   constructor(public authService: AuthService) {
 
   }
 
-  ngOnInit() {
-    this.authService.login('admin', JSON.stringify(testUser))
-  }
+  // ngOnInit() {
+  //   this.authService.login('admin', JSON.stringify(testUser))
+  // }
 
   onLogout(loginName: string) {
     this.authService.logout(loginName);
