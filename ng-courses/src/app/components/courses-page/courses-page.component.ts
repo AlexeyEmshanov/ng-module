@@ -4,6 +4,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { testAnimation } from '../modal-window/modal-window.component';
+import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
 
 
 @Component({

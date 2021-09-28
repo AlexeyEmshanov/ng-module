@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ExpectedCourseDirective } from 'src/app/directives/expected-course.directive';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { DurationCoursePipe } from 'src/app/pipes/duration-course.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
@@ -31,7 +32,7 @@ describe('CourseItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CourseItemComponent, DurationCoursePipe ],
+      declarations: [ CourseItemComponent, DurationCoursePipe, ExpectedCourseDirective ],
       providers: [ ModalService ]
     })
     .compileComponents();

@@ -6,7 +6,7 @@ import { ModalService } from 'src/app/services/modal.service';
 @Component({
   selector: 'app-course-item',
   templateUrl: './course-item.component.html',
-  styleUrls: ['./course-item.component.scss']
+  styleUrls: ['./course-item.component.scss'],
 })
 export class CourseItemComponent {
   @Input() courseItem?: ICourse;
@@ -14,11 +14,6 @@ export class CourseItemComponent {
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(public modalService: ModalService, public coursesService: CoursesService) { }
-
-  // ngOnInit(): void {
-  //   let test1 = 'test values in ngOnInit at course-item';
-  //   // console.log('Course-item ngOnInit!!!', test1);
-  // }
 
   public onDeleteClick(): void {
     this.modalService.showModalWindow();
@@ -32,8 +27,6 @@ export class CourseItemComponent {
     }
 
     if (this.courseItem !== undefined) {
-      // this.coursesService.updateCourse(this.courseItem.id, {newTitle: 'MODIFIED COURSE', newDuration: 555})
-      // this.coursesService.getCoursesList();
       const updatedCourse: ICourse = {
         id: this.courseItem.id,
         title: updatedData.newTitle,

@@ -9,13 +9,13 @@ import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LogoComponent],
+  declarations: [ HeaderComponent, FooterComponent, LogoComponent ],
   imports: [
     CommonModule,
     AppRoutingModule
   ],
-  exports: [HeaderComponent, FooterComponent, LogoComponent],
-  providers: [AuthService],
+  exports: [ HeaderComponent, FooterComponent, LogoComponent ],
+  providers: [ AuthService ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class CoreModule { }
