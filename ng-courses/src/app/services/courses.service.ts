@@ -1,4 +1,5 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 import { ICourse } from '../model/interfaces/icourse';
 import { COURSES } from '../model/mock-data';
 
@@ -11,16 +12,18 @@ import { COURSES } from '../model/mock-data';
   }
 )
 export class CoursesService {
-  public courses: ICourse[] = COURSES;
+  public courses: ICourse[] = _.cloneDeep(COURSES);
 
-  constructor() { }
+  constructor() {
+    console.log('COURSES', this.courses)
+  }
 
   public getCoursesList(): ICourse[] {
     return this.courses;
   }
 
   public createCourse(newCourse: ICourse): ICourse[] {
-    console.log('create course', this.courses)
+    // console.log('create course', this.courses)
     this.courses.push(newCourse);
     return this.courses;
   }
@@ -37,19 +40,19 @@ export class CoursesService {
       newDuration: number
     }
   ): void {
-    // const indexToChange = this.courses.findIndex(course => course.id === id);
+    const indexToChange = this.courses.findIndex(course => course.id === id);
 
     const updatedCourse: ICourse = {
       id: id,
       title: updatedData.newTitle,
-      creationDate: this.courses[id].creationDate,
+      creationDate: this.courses[indexToChange].creationDate,
       duration: updatedData.newDuration,
-      description: this.courses[id].description,
-      topRated: this.courses[id].topRated,
+      description: this.courses[indexToChange].description,
+      topRated: this.courses[indexToChange].topRated,
     }
 
     const newCoursesArray = [...this.courses];
-    newCoursesArray[id] = updatedCourse;
+    newCoursesArray[indexToChange] = updatedCourse;
     // console.log('!!!', courses[indexToChange], updatedCourse);
     this.courses = newCoursesArray;
     // console.log(courses);

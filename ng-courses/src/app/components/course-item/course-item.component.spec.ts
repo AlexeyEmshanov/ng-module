@@ -14,6 +14,8 @@ describe('CourseItemComponent', () => {
   let courseTitleDebugEl: DebugElement;
   let courseDescriptionDebugEl: DebugElement
   let courseTitleEl: HTMLElement;
+  let courseDurationDebugEl: DebugElement
+  let courseDurationEl: HTMLElement;
   let courseDescriptionEl: HTMLElement;
   let deleteBtnDebugEl: DebugElement;
   let deleteBtnEl: HTMLElement;
@@ -46,6 +48,9 @@ describe('CourseItemComponent', () => {
     courseDescriptionDebugEl = fixture.debugElement.query(By.css('.course-item__description'));
     courseDescriptionEl = courseDescriptionDebugEl.nativeElement;
 
+    courseDurationDebugEl = fixture.debugElement.query(By.css('.course-item__duration'));
+    courseDurationEl = courseDurationDebugEl.nativeElement;
+
     deleteBtnDebugEl = fixture.debugElement.query(By.css('.btn_delete'));
     deleteBtnEl = deleteBtnDebugEl.nativeElement;
 
@@ -64,15 +69,10 @@ describe('CourseItemComponent', () => {
     expect(component.deleteCourse.emit).toHaveBeenCalledWith(testCourseItem.id);
   });
 
-  it('click on edit button should update current course title to "MODIFIED COURSE" and set new duration to "555"', () => {
-    // spyOn(component.deleteCourse, 'emit');
-    // const before = component.courseItem;
-    console.log('1', component.courseItem?.title)
-
+  it('click on edit button should update current course title to "UPDATED TITLE" and set new duration to "9h 15min"', () => {
     component.onEditClick();
     fixture.detectChanges();
-    // const after = component.courseItem;
-    console.log('2', component.courseItem?.title);
-    // expect(courseTitleEl.textContent).toEqual('MODIFIED COURSE');
+    expect(courseTitleEl.textContent).toEqual('updated title'.toUpperCase());
+    expect(courseDurationEl.textContent).toBe('9h 15min');
   });
 });

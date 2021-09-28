@@ -26,11 +26,23 @@ export class CourseItemComponent {
   }
 
   public onEditClick() {
+    const updatedData = {
+      newTitle: 'updated title',
+      newDuration: 555
+    }
+
     if (this.courseItem !== undefined) {
       // this.coursesService.updateCourse(this.courseItem.id, {newTitle: 'MODIFIED COURSE', newDuration: 555})
       // this.coursesService.getCoursesList();
-      this.courseItem.title = 'wowowowow';
-      console.log('EDIT', this.coursesService)
+      const updatedCourse: ICourse = {
+        id: this.courseItem.id,
+        title: updatedData.newTitle,
+        creationDate: this.courseItem.creationDate,
+        duration: updatedData.newDuration,
+        description: this.courseItem.description,
+        topRated: this.courseItem.topRated,
+      }
+      this.courseItem = updatedCourse;
     }
   }
 
