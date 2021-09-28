@@ -20,15 +20,10 @@ describe('CoursesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({ });
     service = TestBed.inject(CoursesService);
-    // let courses = service.getCoursesList();
-    service.removeCourse(newMockCourse.id);
-    console.log('!?!', service.courses)
   });
 
   afterEach(() => {
-    // console.log('afterEach')
-    // service.removeCourse(newMockCourse.id);
-    // console.log('afterEach!', service.getCoursesList())
+    service.removeCourse(newMockCourse.id);
   })
 
   it('should be created', () => {
@@ -59,9 +54,7 @@ describe('CoursesService', () => {
 
   it('method updateCourse should update values at course with certain id', () => {
     const testUpdatedData = { newTitle: 'It is a updated title', newDuration: 777 }
-    console.log('1', service.getCoursesList())
     service.createCourse(newMockCourse);
-    console.log('2', service.getCoursesList())
     service.updateCourse(newMockCourse.id, testUpdatedData);
 
     expect(service.getCourseById(newMockCourse.id)[0].title).toBe(testUpdatedData.newTitle);
