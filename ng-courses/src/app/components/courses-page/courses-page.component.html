@@ -19,7 +19,7 @@
 
     <app-modal-window
       *ngIf="modalServise.getIsModalShown()" @fadeInOut
-      (acceptDelete)="onAcceptDelete(idCourseToRemove)"
+      (acceptDelete)="onAcceptDelete(idToRemove)"
       (declineDelete)="modalServise.hideModalWindow()"
     ></app-modal-window>
 
@@ -27,9 +27,9 @@
       <app-course-item
         *ngFor="let course of courses | orderBy"
         [courseItem]="course"
-        (deleteCourse)='onDeleteCourse($event)'
+        (editCourse)="onEditCourse($event)"
+        (deleteCourse)="onDeleteCourse($event)"
       >
-
       </app-course-item>
     </ul>
 

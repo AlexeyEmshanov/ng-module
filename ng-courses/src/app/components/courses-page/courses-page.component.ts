@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -19,7 +19,7 @@ export class CoursesPageComponent implements OnInit {
 
   public searchField: string = '';
 
-  public idCourseToRemove: number = 0;
+  public idToRemove: number = 0;
 
   constructor(
     public filterCoursesPipe: FilterCoursesPipe,
@@ -44,8 +44,8 @@ export class CoursesPageComponent implements OnInit {
     console.log('Load more btn clicked!');
   }
 
-  onAcceptDelete(idToDelete: number): void {
-    this.courses = this.coursesService.removeCourse(idToDelete);
+  onAcceptDelete(idToRemove: number): void {
+    this.courses = this.coursesService.removeCourse(idToRemove);
     this.courses = this.coursesService.getCoursesList();
     this.modalServise.hideModalWindow();
   }
@@ -54,8 +54,13 @@ export class CoursesPageComponent implements OnInit {
     return this.courses.length === 0
   }
 
-  onDeleteCourse(id: number) {
-    this.idCourseToRemove = id;
+  onDeleteCourse(clickedId: number) {
+    this.modalServise.showModalWindow();
+    this.idToRemove = clickedId;
+  }
+
+  onEditCourse(id: number) {
+    this.courses = this.coursesService.updateCourse(id, {newTitle: 'updated title', newDuration: 555})
   }
 
 }

@@ -25,7 +25,6 @@ export class ExpectedCourseDirective implements OnInit {
       (courseDate.setHours(0, 0, 0, 0) >= this.testDay.setHours(0, 0, 0, 0))
     ) {
         this.element.nativeElement.classList.add('fresh');
-        console.log(this.currentDate, this.testDay);
     } if (courseDate > this.currentDate) {
         this.element.nativeElement.classList.add('upcoming');
     }

@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -20,6 +21,9 @@ describe('CourseItemComponent', () => {
   let courseDescriptionEl: HTMLElement;
   let deleteBtnDebugEl: DebugElement;
   let deleteBtnEl: HTMLElement;
+  let editBtnDebugEl: DebugElement;
+  let editBtnEl: HTMLElement;
+
 
   let testCourseItem: ICourse = {
     id: 555,
@@ -55,6 +59,9 @@ describe('CourseItemComponent', () => {
     deleteBtnDebugEl = fixture.debugElement.query(By.css('.btn_delete'));
     deleteBtnEl = deleteBtnDebugEl.nativeElement;
 
+    editBtnDebugEl = fixture.debugElement.query(By.css('.btn_edit'));
+    editBtnEl = editBtnDebugEl.nativeElement;
+
     fixture.detectChanges();
   });
 
@@ -70,10 +77,10 @@ describe('CourseItemComponent', () => {
     expect(component.deleteCourse.emit).toHaveBeenCalledWith(testCourseItem.id);
   });
 
-  it('click on edit button should update current course title to "UPDATED TITLE" and set new duration to "9h 15min"', () => {
-    component.onEditClick();
-    fixture.detectChanges();
-    expect(courseTitleEl.textContent).toEqual('updated title'.toUpperCase());
-    expect(courseDurationEl.textContent).toBe('9h 15min');
+  it('click on edit button should emit event with course id', () => {
+    spyOn(component.editCourse, 'emit');
+    editBtnEl.click();
+
+    expect(component.editCourse.emit).toHaveBeenCalledOnceWith(testCourseItem.id);
   });
 });

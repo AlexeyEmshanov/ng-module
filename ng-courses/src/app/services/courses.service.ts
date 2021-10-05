@@ -34,7 +34,7 @@ export class CoursesService {
       newTitle: string,
       newDuration: number
     }
-  ): void {
+  ): ICourse[] {
     const indexToChange = this.courses.findIndex(course => course.id === id);
 
     const updatedCourse: ICourse = {
@@ -49,6 +49,7 @@ export class CoursesService {
     const newCoursesArray = [...this.courses];
     newCoursesArray[indexToChange] = updatedCourse;
     this.courses = newCoursesArray;
+    return this.courses;
   }
 
   public removeCourse(id: number): ICourse[] {
