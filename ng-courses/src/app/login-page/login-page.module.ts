@@ -7,6 +7,7 @@ import { HeaderComponent } from '../core/components/header/header.component';
 import { FooterComponent } from '../core/components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,10 +16,9 @@ import { AppRoutingModule } from '../app-routing.module';
     LoginPageComponent,
   ],
   imports: [
-    CommonModule,
     AppRoutingModule,
-    FormsModule,
     CoreModule,
+    SharedModule
   ],
   exports: [ LoginPageComponent, HeaderComponent, FooterComponent ],
   providers: [ AuthService ],

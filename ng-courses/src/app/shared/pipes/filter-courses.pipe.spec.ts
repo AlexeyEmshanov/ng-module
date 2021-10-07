@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
-import { ICourse } from '../model/interfaces/icourse';
+import { ICourse } from '../../model/interfaces/icourse';
 import { FilterCoursesPipe } from './filter-courses.pipe';
-import { COURSES } from '../model/mock-data';
+import { COURSES } from '../../model/mock-data';
 
 const courses = _.cloneDeep(COURSES);
 

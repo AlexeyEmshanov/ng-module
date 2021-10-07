@@ -16,9 +16,18 @@
       <input class="input-section__input" type="date" placeholder="Enter new course start date" id="date">
     </section>
 
-    <section class="add-page__input-section add-page__input-section_short">
+    <section class="add-page__input-section">
       <label class="input-section__label" for="duration">Duration:</label>
-      <input class="input-section__input" type="number" placeholder="Enter new course duration in minutes" id="duration">
+      <div class="input-section__wrapper">
+        <input
+          class="input-section__input input-section__input_duration"
+          type="number"
+          placeholder="Enter new course duration in minutes"
+          id="duration"
+          [(ngModel)]="duration"
+        >
+        <div class="represent__duration">{{(duration === undefined) ? '': duration| durationCourse}}</div>
+      </div>
     </section>
 
     <section class="add-page__input-section">
@@ -28,7 +37,7 @@
 
     <div class="add-page__controls">
       <button class="btn">Save</button>
-      <button class="btn">Cancel</button>
+      <button class="btn" routerLink="/courses-page">Cancel</button>
     </div>
   </div>
 

@@ -10,6 +10,10 @@ export class DurationCoursePipe implements PipeTransform {
       return `invalid course duration format`;
     }
 
+    if (duration === null) {
+      return '';
+    }
+
     const hours = Math.trunc(duration / 60);
     const minutes = (duration % 60).toLocaleString('en-US', {minimumIntegerDigits: 2});
 

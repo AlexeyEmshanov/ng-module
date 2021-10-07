@@ -12,9 +12,9 @@ import { AuthService } from 'src/app/services/auth.service';
 
 })
 export class LoginPageComponent implements OnInit {
-  @Input() public userLogin?: string;
+  public userLogin?: string;
 
-  @Input() public userPassword?: string;
+  public userPassword?: string;
 
   private user?: IUser;
 

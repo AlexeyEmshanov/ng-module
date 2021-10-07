@@ -6,6 +6,7 @@ import { CoreModule } from '../core/core.module';
 import { AddPageComponent } from './components/add-page/add-page.component';
 import { HeaderComponent } from '../core/components/header/header.component';
 import { FooterComponent } from '../core/components/footer/footer.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,7 +18,8 @@ import { FooterComponent } from '../core/components/footer/footer.component';
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   exports: [ AddPageComponent, HeaderComponent, FooterComponent ],
   providers: [],

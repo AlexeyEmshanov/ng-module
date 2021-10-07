@@ -1,10 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
-import { FilterCoursesPipe } from 'src/app/pipes/filter-courses.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { testAnimation } from '../modal-window/modal-window.component';
-import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
+import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
 
 
 @Component({

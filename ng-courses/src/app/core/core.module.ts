@@ -5,13 +5,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AuthService } from '../services/auth.service';
 import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [ HeaderComponent, FooterComponent, LogoComponent ],
   imports: [
-    CommonModule,
+    SharedModule,
     AppRoutingModule
   ],
   exports: [ HeaderComponent, FooterComponent, LogoComponent ],

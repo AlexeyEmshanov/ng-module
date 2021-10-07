@@ -24,6 +24,11 @@
   margin-bottom: 0.5em;
 }
 
+.input-section__wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .input-section__input {
   padding: 0.5em;
   border-radius: 0.5em;
@@ -34,6 +39,16 @@
     outline: none;
   }
 }
+
+.input-section__input_duration {
+  width: 25%;
+}
+
+.represent__duration {
+  width: 25%;
+  margin-left: 3em;
+}
+
 
 .add-page__controls {
   display: flex;

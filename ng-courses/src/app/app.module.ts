@@ -7,14 +7,13 @@ import { CoursesPageComponent } from './components/courses-page/courses-page.com
 import { FormsModule } from '@angular/forms';
 import { CourseItemComponent } from './components/course-item/course-item.component';
 import { ExpectedCourseDirective } from './directives/expected-course.directive';
-import { DurationCoursePipe } from './pipes/duration-course.pipe';
-import { OrderByPipe } from './pipes/order-by.pipe';
-import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { LoginPageModule } from './login-page/login-page.module';
 import { AddPageModule } from './add-page/add-page.module';
+import { SharedModule } from './shared/shared.module';
+import { DurationCoursePipe } from './shared/pipes/duration-course.pipe';
 
 
 @NgModule({
@@ -23,17 +22,16 @@ import { AddPageModule } from './add-page/add-page.module';
     CoursesPageComponent,
     CourseItemComponent,
     ExpectedCourseDirective,
-    DurationCoursePipe,
-    OrderByPipe,
-    FilterCoursesPipe,
+    // OrderByPipe,
+    // FilterCoursesPipe,
     ModalWindowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
     CoreModule,
+    SharedModule,
     LoginPageModule,
     AddPageModule
   ],
