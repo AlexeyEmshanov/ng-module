@@ -14,6 +14,7 @@ import { ModalWindowComponent } from './components/modal-window/modal-window.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { LoginPageModule } from './login-page/login-page.module';
+import { AddCoursePageModule } from './add-course-page/add-course-page.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { LoginPageModule } from './login-page/login-page.module';
     FormsModule,
     BrowserAnimationsModule,
     CoreModule,
-    LoginPageModule
+    LoginPageModule,
+    AddCoursePageModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
