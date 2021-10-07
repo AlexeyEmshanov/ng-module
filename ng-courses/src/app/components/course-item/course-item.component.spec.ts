@@ -4,9 +4,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ExpectedCourseDirective } from 'src/app/directives/expected-course.directive';
 import { ICourse } from 'src/app/model/interfaces/icourse';
-import { DurationCoursePipe } from 'src/app/pipes/duration-course.pipe';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { DurationCoursePipe } from 'src/app/shared/pipes/duration-course.pipe';
 
 import { CourseItemComponent } from './course-item.component';
 
@@ -28,7 +28,7 @@ describe('CourseItemComponent', () => {
   let testCourseItem: ICourse = {
     id: 555,
     title: 'test course',
-    creationDate: new Date('2021, 08, 27'),
+    courseDate: new Date('2021, 08, 27'),
     duration: 154,
     description: 'something usefull',
     topRated: true,

@@ -40,7 +40,7 @@ export class CoursesService {
     const updatedCourse: ICourse = {
       id: id,
       title: updatedData.newTitle,
-      creationDate: this.courses[indexToChange].creationDate,
+      courseDate: this.courses[indexToChange].courseDate,
       duration: updatedData.newDuration,
       description: this.courses[indexToChange].description,
       topRated: this.courses[indexToChange].topRated,

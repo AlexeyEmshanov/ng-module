@@ -3,17 +3,38 @@
   <div class="add-page__container">
     <section class="add-page__input-section">
       <label class="input-section__label" for="title">Title:</label>
-      <input class="input-section__input" type="text" placeholder="Enter new course title" id="title">
+      <input
+        class="input-section__input"
+        type="text"
+        placeholder="Enter new course title"
+        id="title"
+        [(ngModel)]="newCourseTitle"
+      >
     </section>
 
     <section class="add-page__input-section">
       <label class="input-section__label" for="description">Description:</label>
-      <input class="input-section__input" type="text" placeholder="Enter new course description" id="description">
+      <textarea
+        class="input-section__input input-section__input_textarea"
+        type="text"
+        placeholder="Enter new course description"
+        id="description"
+        rows="5"
+        cols="50"
+        maxlength="300"
+        [(ngModel)]="newCourseDescription"
+      ></textarea>
     </section>
 
     <section class="add-page__input-section add-page__input-section_short">
       <label class="input-section__label" for="date">Date:</label>
-      <input class="input-section__input" type="date" placeholder="Enter new course start date" id="date">
+      <input
+        class="input-section__input"
+        type="date"
+        placeholder="Enter new course start date"
+        id="date"
+        [(ngModel)]="newCourseDate"
+      >
     </section>
 
     <section class="add-page__input-section">
@@ -24,22 +45,27 @@
           type="number"
           placeholder="Enter new course duration in minutes"
           id="duration"
-          [(ngModel)]="duration"
+          [(ngModel)]="newCourseDuration"
         >
-        <div class="represent__duration">{{(duration === undefined) ? '': duration| durationCourse}}</div>
+        <div class="represent__duration">{{(newCourseDuration === undefined) ? '': newCourseDuration | durationCourse}}</div>
       </div>
     </section>
 
     <section class="add-page__input-section">
       <label class="input-section__label" for="authors">Authors:</label>
-      <input class="input-section__input" type="text" placeholder="Enter new course authors" id="authors">
+      <input
+        class="input-section__input"
+        type="text"
+        placeholder="Enter new course authors"
+        id="authors"
+        [(ngModel)]="newCourseAuthors"
+      >
     </section>
 
     <div class="add-page__controls">
-      <button class="btn">Save</button>
+      <button class="btn" (click)="createCourse()">Save</button>
       <button class="btn" routerLink="/courses-page">Cancel</button>
     </div>
   </div>
 
 <app-footer></app-footer>
-

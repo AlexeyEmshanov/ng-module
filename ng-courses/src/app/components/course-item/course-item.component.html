@@ -1,5 +1,5 @@
 <div class="course-item"
-  appExpectedCourse [startCourseDate]="courseItem!.creationDate"
+  appExpectedCourse [startCourseDate]="courseItem!.courseDate"
   [ngClass]="courseItem?.topRated ? 'course-item_top-rated': ''"
 >
   <div class="course-item__container" >
@@ -10,7 +10,7 @@
       </div>
       <div class="course-item__info">
         <div class="course-item__duration">{{courseItem?.duration | durationCourse}}</div>
-        <div class="course-item__date">{{courseItem?.creationDate | date:"dd.MM.yyyy"}}</div>
+        <div class="course-item__date">{{courseItem?.courseDate | date:"dd.MM.yyyy"}}</div>
       </div>
     </div>
     <div class="course-item__description">{{courseItem?.description}}</div>

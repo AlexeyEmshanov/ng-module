@@ -7,7 +7,7 @@ import { ICourse } from 'src/app/model/interfaces/icourse';
 export class OrderByPipe implements PipeTransform {
 
   transform(courses: ICourse[]): ICourse[] {
-    courses.sort((a, b) => a.creationDate.getTime() - b.creationDate.getTime());
+    courses.sort((a, b) => a.courseDate.getTime() - b.courseDate.getTime());
     return courses;
   }
 

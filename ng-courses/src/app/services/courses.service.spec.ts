@@ -11,7 +11,7 @@ describe('CoursesService', () => {
   const newMockCourse: ICourse = {
     id: 999,
     title: 'New interesting course',
-    creationDate: new Date(),
+    courseDate: new Date(),
     duration: 55,
     description: 'some new course',
     topRated: true,
