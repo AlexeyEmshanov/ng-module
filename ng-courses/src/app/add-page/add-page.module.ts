@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
-import { AddCoursePageComponent } from './components/add-course-page/add-course-page.component';
+import { AddPageComponent } from './components/add-page/add-page.component';
 import { HeaderComponent } from '../core/components/header/header.component';
 import { FooterComponent } from '../core/components/footer/footer.component';
 
@@ -11,7 +11,7 @@ import { FooterComponent } from '../core/components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AddCoursePageComponent,
+    AddPageComponent,
   ],
   imports: [
     CommonModule,
@@ -19,8 +19,8 @@ import { FooterComponent } from '../core/components/footer/footer.component';
     FormsModule,
     CoreModule
   ],
-  exports: [ AddCoursePageComponent, HeaderComponent, FooterComponent ],
+  exports: [ AddPageComponent, HeaderComponent, FooterComponent ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class AddCoursePageModule { }
+export class AddPageModule { }
