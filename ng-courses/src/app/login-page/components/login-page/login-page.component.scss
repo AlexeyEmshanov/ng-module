@@ -1,5 +1,4 @@
 .login-page__container {
-  background-color: ghostwhite;
   margin-bottom: 70px;
   width: 100%;
   height: calc(100vh - 70px - 82px);
@@ -55,7 +54,6 @@
   box-sizing: border-box;
 
   &:focus {
-    // border: 1px slategray solid;
     outline: none;
   }
 }

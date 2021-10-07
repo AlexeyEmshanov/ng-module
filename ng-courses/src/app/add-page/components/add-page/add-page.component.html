@@ -1,7 +1,36 @@
 <app-header></app-header>
-  <p>add-course-page works!</p>
-  <add-page-container>
-    <
-  </add-page-container>
+
+  <div class="add-page__container">
+    <section class="add-page__input-section">
+      <label class="input-section__label" for="title">Title:</label>
+      <input class="input-section__input" type="text" placeholder="Enter new course title" id="title">
+    </section>
+
+    <section class="add-page__input-section">
+      <label class="input-section__label" for="description">Description:</label>
+      <input class="input-section__input" type="text" placeholder="Enter new course description" id="description">
+    </section>
+
+    <section class="add-page__input-section add-page__input-section_short">
+      <label class="input-section__label" for="date">Date:</label>
+      <input class="input-section__input" type="date" placeholder="Enter new course start date" id="date">
+    </section>
+
+    <section class="add-page__input-section add-page__input-section_short">
+      <label class="input-section__label" for="duration">Duration:</label>
+      <input class="input-section__input" type="number" placeholder="Enter new course duration in minutes" id="duration">
+    </section>
+
+    <section class="add-page__input-section">
+      <label class="input-section__label" for="authors">Authors:</label>
+      <input class="input-section__input" type="text" placeholder="Enter new course authors" id="authors">
+    </section>
+
+    <div class="add-page__controls">
+      <button class="btn">Save</button>
+      <button class="btn">Cancel</button>
+    </div>
+  </div>
+
 <app-footer></app-footer>
 
