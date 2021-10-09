@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ExpectedCourseDirective } from 'src/app/directives/expected-course.directive';
-import { DurationCoursePipe } from 'src/app/pipes/duration-course.pipe';
-import { OrderByPipe } from 'src/app/pipes/order-by.pipe';
+import { DurationCoursePipe } from 'src/app/shared/pipes/duration-course.pipe';
+import { OrderByPipe } from 'src/app/shared/pipes/order-by.pipe';
 import { CourseItemComponent } from '../course-item/course-item.component';
 
 import { CoursesPageComponent } from './courses-page.component';

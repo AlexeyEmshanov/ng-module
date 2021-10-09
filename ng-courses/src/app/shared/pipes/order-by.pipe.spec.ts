@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { COURSES } from '../model/mock-data';
+import { COURSES } from 'src/app/model/mock-data';
 import { OrderByPipe } from './order-by.pipe';
 
 const courses = _.cloneDeep(COURSES);
