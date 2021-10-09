@@ -10,7 +10,7 @@ import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss'],
-  providers: [ FilterCoursesPipe ],
+  // providers: [ FilterCoursesPipe ],
   animations: [ testAnimation ],
 })
 export class CoursesPageComponent implements OnInit {

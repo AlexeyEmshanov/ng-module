@@ -14,6 +14,7 @@ import { LoginPageModule } from './login-page/login-page.module';
 import { AddPageModule } from './add-page/add-page.module';
 import { SharedModule } from './shared/shared.module';
 import { DurationCoursePipe } from './shared/pipes/duration-course.pipe';
+import { FilterCoursesPipe } from './shared/pipes/filter-courses.pipe';
 
 
 @NgModule({
@@ -35,7 +36,6 @@ import { DurationCoursePipe } from './shared/pipes/duration-course.pipe';
     LoginPageModule,
     AddPageModule
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [ AppComponent ],
 })

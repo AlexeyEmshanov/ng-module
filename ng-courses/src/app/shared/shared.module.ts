@@ -23,6 +23,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     DurationCoursePipe,
     FilterCoursesPipe,
     OrderByPipe
-  ]
+  ],
+  providers: [ FilterCoursesPipe ]
 })
 export class SharedModule { }

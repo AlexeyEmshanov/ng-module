@@ -23,6 +23,5 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: [ AddPageComponent, HeaderComponent, FooterComponent ],
   providers: [],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AddPageModule { }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ICourse } from 'src/app/model/interfaces/icourse';
-import { NewCourse } from '../../models/newCourse';
+import { NewCourse } from '../../model/newCourse';
 
 @Component({
   selector: 'app-add-page',

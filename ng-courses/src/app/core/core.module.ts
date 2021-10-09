@@ -17,6 +17,5 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: [ HeaderComponent, FooterComponent, LogoComponent ],
   providers: [ AuthService ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class CoreModule { }
