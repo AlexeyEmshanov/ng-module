@@ -9,10 +9,20 @@ import { CoursesService } from 'src/app/services/courses.service';
   styleUrls: ['./edit-page.component.scss']
 })
 export class EditPageComponent implements OnInit {
-  public selectedCourse?: ICourse;
+  public selectedCourse: ICourse = {
+    id: 0,
+    title: '',
+    description: '',
+    courseDate: new Date(),
+    duration: 0,
+    topRated: false,
+  }
 
+  public courseAuthors = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private coursesService: CoursesService) { }
+  constructor(private activatedRoute: ActivatedRoute, private coursesService: CoursesService) {
+
+  }
 
   ngOnInit(): void {
     const selectedID = Number(this.activatedRoute.snapshot.params.id);
