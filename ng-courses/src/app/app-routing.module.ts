@@ -9,11 +9,11 @@ const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'courses', component: CoursesPageComponent },
   { path: 'courses/new', component: AddPageComponent },
-  { path: 'courses/edit', component: EditPageComponent },
+  { path: 'courses/:id', component: EditPageComponent },
 ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule]
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
