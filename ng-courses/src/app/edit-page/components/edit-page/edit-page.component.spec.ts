@@ -12,7 +12,7 @@ describe('EditPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EditPageComponent ],
-      imports: [ AppRoutingModule, ActivatedRoute, CoursesService ]
+      // imports: [ AppRoutingModule, ActivatedRoute ]
     })
     .compileComponents();
   });

@@ -13,6 +13,8 @@ import { LoginPageModule } from './login-page/login-page.module';
 import { AddPageModule } from './add-page/add-page.module';
 import { SharedModule } from './shared/shared.module';
 import { EditPageModule } from './edit-page/edit-page.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,8 +27,10 @@ import { EditPageModule } from './edit-page/edit-page.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     BrowserAnimationsModule,
+    // CommonModule,
+    // FormsModule,
     CoreModule,
     SharedModule,
     LoginPageModule,

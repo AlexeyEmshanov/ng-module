@@ -23,9 +23,9 @@ export class CoursesService {
     return this.courses;
   }
 
-  public getCourseById(id: number): ICourse {
+  public getCourseById(id: number):  ICourse[] {
     // this.courses = this.courses.filter(course => course.id === id);
-    return this.courses.filter(course => course.id === id)[0];
+    return this.courses.filter(course => course.id === id);
   }
 
   public updateCourse(
