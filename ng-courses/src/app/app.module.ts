@@ -13,8 +13,6 @@ import { CoreModule } from './core/core.module';
 import { LoginPageModule } from './login-page/login-page.module';
 import { AddPageModule } from './add-page/add-page.module';
 import { SharedModule } from './shared/shared.module';
-import { DurationCoursePipe } from './shared/pipes/duration-course.pipe';
-import { FilterCoursesPipe } from './shared/pipes/filter-courses.pipe';
 
 
 @NgModule({
@@ -23,8 +21,6 @@ import { FilterCoursesPipe } from './shared/pipes/filter-courses.pipe';
     CoursesPageComponent,
     CourseItemComponent,
     ExpectedCourseDirective,
-    // OrderByPipe,
-    // FilterCoursesPipe,
     ModalWindowComponent,
   ],
   imports: [
