@@ -2,6 +2,7 @@ import { query } from '@angular/animations';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ExpectedCourseDirective } from 'src/app/directives/expected-course.directive';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
@@ -37,6 +38,7 @@ describe('CourseItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CourseItemComponent, DurationCoursePipe, ExpectedCourseDirective ],
+      imports: [ AppRoutingModule ],
       providers: [ ModalService ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

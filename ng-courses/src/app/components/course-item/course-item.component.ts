@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges, DoCheck, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 
 @Component({
@@ -13,7 +14,7 @@ export class CourseItemComponent {
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
   @Output() editCourse: EventEmitter<number> = new EventEmitter<number>();
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   public onDeleteClick(): void {
     this.deleteCourse.emit(this.courseItem?.id);
@@ -21,6 +22,7 @@ export class CourseItemComponent {
 
   public onEditClick() {
     this.editCourse.emit(this.courseItem?.id);
+    this.router.navigate(['edit'], {relativeTo: this.activatedRoute});
   }
 
 }

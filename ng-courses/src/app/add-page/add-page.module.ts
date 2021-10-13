@@ -15,9 +15,9 @@ import { SharedModule } from '../shared/shared.module';
     AddPageComponent,
   ],
   imports: [
-    CommonModule,
+    // CommonModule,
     AppRoutingModule,
-    FormsModule,
+    // FormsModule,
     CoreModule,
     SharedModule
   ],

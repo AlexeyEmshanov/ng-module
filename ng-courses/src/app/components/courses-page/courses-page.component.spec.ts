@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ExpectedCourseDirective } from 'src/app/directives/expected-course.directive';
 import { DurationCoursePipe } from 'src/app/shared/pipes/duration-course.pipe';
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
@@ -19,7 +20,7 @@ describe('CoursesPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CoursesPageComponent, ExpectedCourseDirective, CourseItemComponent, DurationCoursePipe, OrderByPipe, FilterCoursesPipe ],
-      imports: [ FormsModule, SharedModule ],
+      imports: [ FormsModule, SharedModule, AppRoutingModule ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();

@@ -5,14 +5,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AuthService } from '../services/auth.service';
 import { AppRoutingModule } from '../app-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [ HeaderComponent, FooterComponent, LogoComponent ],
   imports: [
-    SharedModule,
+    CommonModule,
+    FormsModule,
     AppRoutingModule
   ],
   exports: [ HeaderComponent, FooterComponent, LogoComponent ],
