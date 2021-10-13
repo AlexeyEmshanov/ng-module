@@ -21,7 +21,7 @@ export class CourseItemComponent {
   }
 
   public onEditClick() {
-    this.editCourse.emit(this.courseItem?.id);
+    // this.editCourse.emit(this.courseItem?.id);
     this.router.navigate([this.courseItem?.id], {relativeTo: this.activatedRoute});
   }
 

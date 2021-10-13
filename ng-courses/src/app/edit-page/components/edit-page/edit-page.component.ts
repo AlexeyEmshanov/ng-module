@@ -15,11 +15,8 @@ export class EditPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private coursesService: CoursesService) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params.id);
     const selectedID = Number(this.activatedRoute.snapshot.params.id);
-    console.log(typeof selectedID);
     this.selectedCourse = this.coursesService.getCourseById(selectedID);
-    console.log(this.selectedCourse);
   }
 
 }
