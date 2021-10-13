@@ -1,0 +1,63 @@
+<div class="course-details__container">
+  <section class="course-details__input-section">
+    <label class="input-section__label" for="title">Title:</label>
+    <input
+      class="input-section__input"
+      type="text"
+      placeholder="Enter new course title"
+      id="title"
+      [(ngModel)]="course.title"
+    >
+  </section>
+
+  <section class="course-details__input-section">
+    <label class="input-section__label" for="description">Description:</label>
+    <textarea
+      class="input-section__input input-section__input_textarea"
+      type="text"
+      placeholder="Enter new course description"
+      id="description"
+      rows="5"
+      cols="50"
+      maxlength="300"
+      [(ngModel)]="course.description"
+    ></textarea>
+  </section>
+
+  <section class="course-details__input-section course-details__input-section_short">
+    <label class="input-section__label" for="date">Date:</label>
+    <input
+      class="input-section__input"
+      type="date"
+      placeholder="Enter new course start date"
+      id="date"
+      [(ngModel)]="course.courseDate"
+    >
+  </section>
+
+  <section class="course-details__input-section">
+    <label class="input-section__label" for="duration">Duration:</label>
+    <div class="input-section__wrapper">
+      <input
+        class="input-section__input input-section__input_duration"
+        type="number"
+        placeholder="Enter new course duration in minutes"
+        id="duration"
+        [(ngModel)]="course.duration"
+      >
+      <div class="represent__duration">{{(course.duration === undefined) ? '': course.duration | durationCourse}}</div>
+    </div>
+  </section>
+
+  <section class="course-details__input-section">
+    <label class="input-section__label" for="authors">Authors:</label>
+    <input
+      class="input-section__input"
+      type="text"
+      placeholder="Enter new course authors"
+      id="authors"
+      [(ngModel)]="course.authors"
+    >
+  </section>
+
+</div>

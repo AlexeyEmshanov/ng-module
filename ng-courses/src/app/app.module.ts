@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { EditPageModule } from './edit-page/edit-page.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CourseDetailsModule } from './course-details/course-details.module';
 
 
 @NgModule({
@@ -27,15 +28,13 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    // AppRoutingModule,
     BrowserAnimationsModule,
-    // CommonModule,
-    // FormsModule,
     CoreModule,
     SharedModule,
     LoginPageModule,
     AddPageModule,
-    EditPageModule
+    EditPageModule,
+    // CourseDetailsModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ],
