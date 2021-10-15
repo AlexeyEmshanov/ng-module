@@ -53,19 +53,24 @@ describe('CoursesService', () => {
   })
 
   it('method updateCourse should update values at course with certain id', () => {
-    const testUpdatedData = { newTitle: 'It is a updated title', newDuration: 777 }
+    // { newTitle: 'It is a updated title', newDuration: 777 }
+    const testUpdatedData = newMockCourse;
+    testUpdatedData.title = 'It is a updated title';
+    testUpdatedData.duration = 777;
     service.createCourse(newMockCourse);
-    service.updateCourse(newMockCourse.id, testUpdatedData);
+    service.updateCourse(testUpdatedData);
 
-    expect(service.getCourseById(newMockCourse.id)[0].title).toBe(testUpdatedData.newTitle);
-    expect(service.getCourseById(newMockCourse.id)[0].duration).toBe(testUpdatedData.newDuration);
+    expect(service.getCourseById(newMockCourse.id)[0].title).toBe('It is a updated title');
+    expect(service.getCourseById(newMockCourse.id)[0].duration).toBe(777);
   })
 
   it('method updateCourse should staying the courses quantity as before updates', () => {
-    const testUpdatedData = { newTitle: 'It is a updated title 2', newDuration: 111 }
+    const testUpdatedData = newMockCourse;
+    testUpdatedData.title = 'It is a updated title 2';
+    testUpdatedData.duration = 111;
     const coursesQuantityBefore = service.getCoursesList().length;
 
-    service.updateCourse(1, testUpdatedData);
+    service.updateCourse(testUpdatedData);
     expect(service.getCoursesList().length).toBe(coursesQuantityBefore);
   })
 })

@@ -80,10 +80,10 @@ describe('CourseItemComponent', () => {
     expect(component.deleteCourse.emit).toHaveBeenCalledWith(testCourseItem.id);
   });
 
-  it('click on edit button should emit event with course id', () => {
-    spyOn(component.editCourse, 'emit');
-    editBtnEl.click();
+  // it('click on edit button should emit event with course id', () => {
+  //   spyOn(component.editCourse, 'emit');
+  //   editBtnEl.click();
 
-    expect(component.editCourse.emit).toHaveBeenCalledOnceWith(testCourseItem.id);
-  });
+  //   expect(component.editCourse.emit).toHaveBeenCalledOnceWith(testCourseItem.id);
+  // });
 });

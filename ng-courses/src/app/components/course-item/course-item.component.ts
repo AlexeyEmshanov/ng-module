@@ -13,7 +13,7 @@ export class CourseItemComponent {
 
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
-  @Output() editCourse: EventEmitter<number> = new EventEmitter<number>();
+  // @Output() editCourse: EventEmitter<number> = new EventEmitter<number>();
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   public onDeleteClick(): void {
