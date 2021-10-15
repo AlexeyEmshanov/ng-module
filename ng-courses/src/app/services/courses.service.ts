@@ -28,22 +28,16 @@ export class CoursesService {
     return this.courses.filter(course => course.id === id);
   }
 
-  public updateCourse(
-    id: number,
-    updatedData: {
-      newTitle: string,
-      newDuration: number
-    }
-  ): ICourse[] {
-    const indexToChange = this.courses.findIndex(course => course.id === id);
+  public updateCourse(updatedCourseData: ICourse): ICourse[] {
+    const indexToChange = this.courses.findIndex(course => course.id === updatedCourseData.id);
 
     const updatedCourse: ICourse = {
-      id: id,
-      title: updatedData.newTitle,
-      courseDate: this.courses[indexToChange].courseDate,
-      duration: updatedData.newDuration,
-      description: this.courses[indexToChange].description,
-      topRated: this.courses[indexToChange].topRated,
+      id: updatedCourseData.id,
+      title: updatedCourseData.title,
+      description: updatedCourseData.description,
+      courseDate: updatedCourseData.courseDate,
+      duration: updatedCourseData.duration,
+      topRated: updatedCourseData.topRated,
     }
 
     const newCoursesArray = [...this.courses];

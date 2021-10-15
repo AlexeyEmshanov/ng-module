@@ -58,8 +58,8 @@ export class CoursesPageComponent implements OnInit {
     this.idToRemove = clickedId;
   }
 
-  onEditCourse(id: number) {
-    this.courses = this.coursesService.updateCourse(id, {newTitle: 'updated title', newDuration: 555})
-  }
+  // onEditCourse(id: number) {
+  //   // this.courses = this.coursesService.updateCourse(id, {newTitle: 'updated title', newDuration: 555})
+  // }
 
 }

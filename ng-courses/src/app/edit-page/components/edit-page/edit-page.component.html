@@ -35,8 +35,7 @@
         id="date"
         [ngModel]="selectedCourse.courseDate | date: 'yyyy-MM-dd'"
         (ngModelChange)="selectedCourse.courseDate=$event"
-        >
-        <!-- [(ngModel)]="selectedCourse.courseDate" -->
+      >
     </section>
 
     <section class="edit-page__input-section">
@@ -66,7 +65,7 @@
 
     <div class="edit-page__controls">
 
-      <button class="btn" >Save</button>
+      <button class="btn" (click)="onSave()">Save</button>
       <button class="btn" routerLink="/courses">Cancel</button>
     </div>
   </div>
