@@ -5,6 +5,7 @@ import { IUser } from '../model/interfaces/iuser';
   providedIn: 'root'
 })
 export class AuthService {
+  public currentUserLogin = '';
 
   private usersStorage = window.localStorage;
 
