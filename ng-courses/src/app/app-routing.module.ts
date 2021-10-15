@@ -4,12 +4,15 @@ import { AddPageComponent } from './add-page/components/add-page/add-page.compon
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { EditPageComponent } from './edit-page/components/edit-page/edit-page.component';
 import { LoginPageComponent } from './login-page/components/login-page/login-page.component';
+import { NotFoundPageComponent } from './not-found-page/components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'courses', component: CoursesPageComponent },
   { path: 'courses/new', component: AddPageComponent },
   { path: 'courses/:id', component: EditPageComponent },
+
+  { path: '**', component: NotFoundPageComponent}
 ];
 
 @NgModule({

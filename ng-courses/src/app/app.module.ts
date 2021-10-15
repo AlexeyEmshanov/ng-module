@@ -16,6 +16,7 @@ import { EditPageModule } from './edit-page/edit-page.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CourseDetailsModule } from './course-details/course-details.module';
+import { NotFoundPageModule } from './not-found-page/not-found-page.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CourseDetailsModule } from './course-details/course-details.module';
     AddPageModule,
     EditPageModule,
     // CourseDetailsModule,
+    NotFoundPageModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],
