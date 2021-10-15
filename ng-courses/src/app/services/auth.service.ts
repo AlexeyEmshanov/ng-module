@@ -21,8 +21,8 @@ export class AuthService {
     // console.log('Logout happend', this.usersStorage);
   }
 
-  public isAuth(currentLogin: string): boolean {
-    return this.getUserInfo(currentLogin) ? true : false
+  public isAuth(): boolean {
+    return this.getUserInfo(this.currentUserLogin) ? true : false
   }
 
   public getUserInfo(loginName: string) {

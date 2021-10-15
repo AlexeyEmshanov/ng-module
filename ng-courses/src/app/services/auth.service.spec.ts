@@ -35,12 +35,12 @@ describe('AuthService', () => {
 
   it('isAuth() should return false if user is not login', () => {
     service.login(testlogin, JSON.stringify(testUser));
-    expect(service.isAuth('fakeUser')).toBeFalse();
+    expect(service.isAuth()).toBeFalse();
   });
 
   it('isAuth() should return true if user is login', () => {
     service.login(testlogin, JSON.stringify(testUser));
-    expect(service.isAuth(testlogin)).toBeTrue();
+    expect(service.isAuth()).toBeTrue();
   });
 
   it('if user is not login should console "Invalid login"', () => {

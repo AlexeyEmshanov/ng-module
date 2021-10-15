@@ -1,6 +1,6 @@
 <header>
   <app-logo></app-logo>
-  <div class="header-controls" *ngIf="authService.isAuth(authService.currentUserLogin)">
+  <div class="header-controls" *ngIf="authService.isAuth()">
     <div>{{authService.getUserInfo(authService.currentUserLogin).firstName}}</div>
     <button
       class="btn"
