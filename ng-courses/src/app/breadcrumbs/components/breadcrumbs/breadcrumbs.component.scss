@@ -1,7 +1,7 @@
 .breadcrumbs-nav {
   display: flex;
   padding: 0;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 20%;
   font-size: 1.2rem;
 
@@ -9,11 +9,14 @@
 
 .breadcrumb {
   list-style-type: none;
-  margin-right: 1em;
+  text-transform: capitalize;
 
-  &:last-child {
+  &:last-child:not(:only-child):before {
     margin-right: 0;
+    content: '/';
+    padding: 0.2em;
   }
+
 }
 
 .breadcrumb-link {

@@ -1,4 +1,4 @@
 <ul class="breadcrumbs-nav">
-  <li class="breadcrumb"><a class="breadcrumb-link" href="#">Courses</a></li>
-  <li *ngIf="breadcrumb !== ''">/{{breadcrumb}}</li>
+  <li class="breadcrumb"><a class="breadcrumb-link" routerLink="/courses" >Courses</a></li>
+  <li class="breadcrumb" *ngIf="breadcrumb !== ''">{{breadcrumb}}</li>
 </ul>
