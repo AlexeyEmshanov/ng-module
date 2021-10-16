@@ -17,6 +17,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CourseDetailsModule } from './course-details/course-details.module';
 import { NotFoundPageModule } from './not-found-page/not-found-page.module';
+import { BreadcrumbsComponent } from './breadcrumbs/components/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
+import { EditCourseResolver } from './shared/guards/edit-course.resolver';
 
 
 @NgModule({
@@ -35,10 +38,10 @@ import { NotFoundPageModule } from './not-found-page/not-found-page.module';
     LoginPageModule,
     AddPageModule,
     EditPageModule,
-    // CourseDetailsModule,
-    NotFoundPageModule
+    NotFoundPageModule,
+    BreadcrumbsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [ AppComponent ],
 })
 export class AppModule { }

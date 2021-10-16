@@ -23,7 +23,7 @@ export class EditPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private coursesService: CoursesService,
-    private route: Router
+    private router: Router
   ) {  }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class EditPageComponent implements OnInit {
 
   public onSave() {
     this.coursesService.updateCourse(this.selectedCourse);
-    this.route.navigate(['courses']);
+    this.router.navigate(['courses']);
   }
 
 }

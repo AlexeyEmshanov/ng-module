@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { BreadcrumbsModule } from '../breadcrumbs/breadcrumbs.module';
+import { EditCourseResolver } from './guards/edit-course.resolver';
 
 
 
@@ -18,12 +20,12 @@ import { AppRoutingModule } from '../app-routing.module';
     OrderByPipe,
     HeaderComponent,
     FooterComponent,
-    LogoComponent
+    LogoComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   exports: [
     CommonModule,
@@ -36,6 +38,6 @@ import { AppRoutingModule } from '../app-routing.module';
     LogoComponent,
     AppRoutingModule
   ],
-  providers: [ FilterCoursesPipe ]
+  providers: [ FilterCoursesPipe, EditCourseResolver ]
 })
 export class SharedModule { }

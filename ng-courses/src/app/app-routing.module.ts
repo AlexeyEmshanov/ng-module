@@ -6,12 +6,18 @@ import { EditPageComponent } from './edit-page/components/edit-page/edit-page.co
 import { LoginPageComponent } from './login-page/components/login-page/login-page.component';
 import { NotFoundPageComponent } from './not-found-page/components/not-found-page/not-found-page.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { EditCourseResolver } from './shared/guards/edit-course.resolver';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
-  { path: 'courses', component: CoursesPageComponent, canActivate: [ AuthGuard] },
-  { path: 'courses/new', component: AddPageComponent, canActivate: [ AuthGuard]  },
-  { path: 'courses/:id', component: EditPageComponent, canActivate: [ AuthGuard]  },
+  { path: 'courses', component: CoursesPageComponent, /*canActivate: [ AuthGuard] */},
+  { path: 'courses/new', component: AddPageComponent, /*canActivate: [ AuthGuard]  */},
+  { path: 'courses/:id',
+    pathMatch: 'full',
+    component: EditPageComponent,
+    /*canActivate: [ AuthGuard], */
+    resolve: { course: EditCourseResolver }
+  },
 
   { path: '**', component: NotFoundPageComponent}
 ];
