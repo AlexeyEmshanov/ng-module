@@ -19,9 +19,9 @@
     </div>
 
     <app-modal-window
-      *ngIf="modalServise.getIsModalShown()" @fadeInOut
+      *ngIf="isShown" @fadeInOut
       (acceptDelete)="onAcceptDelete(idToRemove)"
-      (declineDelete)="modalServise.hideModalWindow()"
+      (declineDelete)="isShown = false"
     ></app-modal-window>
 
     <ul class="courses-list" >
@@ -30,6 +30,7 @@
         [courseItem]="course"
         (deleteCourse)="onDeleteCourse($event)"
         >
+        <!-- (deleteCourse)="onDeleteCourse($event)" -->
         <!-- (editCourse)="onEditCourse($event)" -->
       </app-course-item>
     </ul>

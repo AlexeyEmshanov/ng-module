@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
 
@@ -23,12 +23,13 @@ export class EditPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private coursesService: CoursesService,
-    private router: Router
+    private router: Router,
   ) {  }
 
   ngOnInit(): void {
-    const selectedID = Number(this.activatedRoute.snapshot.params.id);
-    this.selectedCourse = this.coursesService.getCourseById(selectedID)[0];
+    this.activatedRoute.data.subscribe((data) => {
+      this.selectedCourse = data.course
+    })
   }
 
   public onSave() {

@@ -17,11 +17,17 @@ export const testAnimation = trigger('fadeInOut', [
   animations: [ testAnimation ],
 })
 
-export class ModalWindowComponent implements OnChanges {
+export class ModalWindowComponent {
 
   @Output() declineDelete: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Output() acceptDelete: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public idToDelete: number = 0;
+
+  public isShown = true;
+
+  public acceptDeleteModal = true
 
   constructor() { }
 
@@ -29,10 +35,10 @@ export class ModalWindowComponent implements OnChanges {
   //   console.log('modal window open');
   // }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('CHANGES', changes);
+  // ngOnChanges(changes: SimpleChanges) {
+  //   console.log('CHANGES', changes);
 
-  }
+  // }
 
   onAccept() {
     this.acceptDelete.emit();
@@ -40,6 +46,18 @@ export class ModalWindowComponent implements OnChanges {
 
   onDecline() {
     this.declineDelete.emit();
+  }
+
+  public showModalWindow(): void {
+    this.isShown = true;
+  }
+
+  public hideModalWindow(): void {
+    this.isShown = false;
+  }
+
+  public testMethod() {
+    return "i'm modal window"
   }
 
 }

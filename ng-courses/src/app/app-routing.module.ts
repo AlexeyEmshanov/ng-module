@@ -18,8 +18,9 @@ const routes: Routes = [
     /*canActivate: [ AuthGuard], */
     resolve: { course: EditCourseResolver }
   },
+  { path: '404', component: NotFoundPageComponent},
 
-  { path: '**', component: NotFoundPageComponent}
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({
