@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { IUser } from '../model/interfaces/iuser';
 
@@ -13,12 +14,12 @@ export class AuthService {
 
   public login(login: string, user: string) {
     this.usersStorage.setItem(login, JSON.stringify(user));
-    // console.log('Login happend!', this.usersStorage.getItem(login));
+    this.currentUserLogin = login;
   }
 
   public logout(loginName: string) {
     this.usersStorage.removeItem(loginName);
-    // console.log('Logout happend', this.usersStorage);
+    this.currentUserLogin = '';
   }
 
   public isAuth(): boolean {

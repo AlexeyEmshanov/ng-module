@@ -34,7 +34,7 @@ describe('AuthService', () => {
   });
 
   it('isAuth() should return false if user is not login', () => {
-    service.login(testlogin, JSON.stringify(testUser));
+    // service.login(testlogin, JSON.stringify(testUser));
     expect(service.isAuth()).toBeFalse();
   });
 

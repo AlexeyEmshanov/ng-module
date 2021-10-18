@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { EditCourseResolver } from './edit-course.resolver';
 
@@ -6,7 +7,11 @@ describe('EditCourseResolver', () => {
   let resolver: EditCourseResolver;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ]
+    });
     resolver = TestBed.inject(EditCourseResolver);
   });
 

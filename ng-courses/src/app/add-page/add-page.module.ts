@@ -7,8 +7,6 @@ import { AddPageComponent } from './components/add-page/add-page.component';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
-import { CourseDetailsModule } from '../course-details/course-details.module';
-import { CourseDetailsComponent } from '../course-details/components/course-details/course-details.component';
 
 
 
@@ -18,9 +16,8 @@ import { CourseDetailsComponent } from '../course-details/components/course-deta
   ],
   imports: [
     SharedModule,
-    // CourseDetailsModule
   ],
-  exports: [ AddPageComponent, HeaderComponent, FooterComponent, /*CourseDetailsComponent */],
+  exports: [ AddPageComponent, HeaderComponent, FooterComponent ],
   providers: [],
 })
 export class AddPageModule { }

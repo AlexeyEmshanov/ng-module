@@ -56,9 +56,11 @@
   border: 1px slategray solid;
   box-sizing: border-box;
 
+
   &:focus {
-    border: 2px slategray solid;
+    border: 1px #384459 solid;
     outline: none;
+    // margin-bottom: 2px;
   }
 }
 

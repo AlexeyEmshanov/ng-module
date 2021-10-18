@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
-import { ModalService } from 'src/app/services/modal.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { ModalWindowComponent, testAnimation } from '../modal-window/modal-window.component';
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
@@ -24,7 +23,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   constructor(
     public filterCoursesPipe: FilterCoursesPipe,
     public coursesService: CoursesService,
-    // public modalServise: ModalService,
     public cd: ChangeDetectorRef
   ) {  }
 

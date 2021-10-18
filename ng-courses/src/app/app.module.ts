@@ -13,13 +13,9 @@ import { LoginPageModule } from './login-page/login-page.module';
 import { AddPageModule } from './add-page/add-page.module';
 import { SharedModule } from './shared/shared.module';
 import { EditPageModule } from './edit-page/edit-page.module';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { CourseDetailsModule } from './course-details/course-details.module';
 import { NotFoundPageModule } from './not-found-page/not-found-page.module';
 import { BreadcrumbsComponent } from './breadcrumbs/components/breadcrumbs/breadcrumbs.component';
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
-import { EditCourseResolver } from './shared/guards/edit-course.resolver';
 
 
 @NgModule({

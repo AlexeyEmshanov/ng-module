@@ -6,7 +6,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ExpectedCourseDirective } from 'src/app/directives/expected-course.directive';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
-import { ModalService } from 'src/app/services/modal.service';
 import { DurationCoursePipe } from 'src/app/shared/pipes/duration-course.pipe';
 
 import { CourseItemComponent } from './course-item.component';
@@ -39,7 +38,7 @@ describe('CourseItemComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CourseItemComponent, DurationCoursePipe, ExpectedCourseDirective ],
       imports: [ AppRoutingModule ],
-      providers: [ ModalService ],
+      providers: [  ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
