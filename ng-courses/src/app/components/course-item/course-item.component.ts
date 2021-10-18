@@ -13,7 +13,6 @@ export class CourseItemComponent {
 
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
-  // @Output() editCourse: EventEmitter<number> = new EventEmitter<number>();
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   public onDeleteClick(): void {
@@ -21,7 +20,6 @@ export class CourseItemComponent {
   }
 
   public onEditClick() {
-    // this.editCourse.emit(this.courseItem?.id);
     this.router.navigate([this.courseItem?.id], {relativeTo: this.activatedRoute});
   }
 

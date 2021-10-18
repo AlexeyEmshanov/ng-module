@@ -1,9 +1,7 @@
 <app-header></app-header>
 
   <div class="courses-page__container" >
-    <!-- <ul class="breadcrumbs-nav">
-      <li class="breadcrumb"><a class="breadcrumb-link" href="#">Courses</a></li>
-    </ul> -->
+
     <app-breadcrumbs></app-breadcrumbs>
 
     <div class="course-page_nav">
@@ -19,19 +17,17 @@
     </div>
 
     <app-modal-window
-      *ngIf="isShown" @fadeInOut
       (acceptDelete)="onAcceptDelete(idToRemove)"
-      (declineDelete)="isShown = false"
-    ></app-modal-window>
+      (declineDelete)="modalWindow?.hideModalWindow()"
+    >
+    </app-modal-window>
 
     <ul class="courses-list" >
       <app-course-item
         *ngFor="let course of courses | orderBy"
         [courseItem]="course"
         (deleteCourse)="onDeleteCourse($event)"
-        >
-        <!-- (deleteCourse)="onDeleteCourse($event)" -->
-        <!-- (editCourse)="onEditCourse($event)" -->
+      >
       </app-course-item>
     </ul>
 

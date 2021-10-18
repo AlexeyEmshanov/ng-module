@@ -17,7 +17,7 @@ export const testAnimation = trigger('fadeInOut', [
   animations: [ testAnimation ],
 })
 
-export class ModalWindowComponent {
+export class ModalWindowComponent implements OnInit{
 
   @Output() declineDelete: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -25,23 +25,19 @@ export class ModalWindowComponent {
 
   public idToDelete: number = 0;
 
-  public isShown = true;
+  public isModalShown = false;
 
   public acceptDeleteModal = true
 
   constructor() { }
 
-  // ngOnInit(): void {
-  //   console.log('modal window open');
-  // }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log('CHANGES', changes);
-
-  // }
+  ngOnInit(): void {
+    this.isModalShown = false;
+  }
 
   onAccept() {
     this.acceptDelete.emit();
+    this.hideModalWindow();
   }
 
   onDecline() {
@@ -49,11 +45,11 @@ export class ModalWindowComponent {
   }
 
   public showModalWindow(): void {
-    this.isShown = true;
+    this.isModalShown = true;
   }
 
   public hideModalWindow(): void {
-    this.isShown = false;
+    this.isModalShown = false;
   }
 
   public testMethod() {

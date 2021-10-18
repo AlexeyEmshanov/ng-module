@@ -1,4 +1,4 @@
-<div class="modal-window">
+<div *ngIf="isModalShown" class="modal-window" @fadeInOut>
   <div class="modal-container">
     <h3>Do you really want to delete this course?</h3>
     <div class="modal__controls">

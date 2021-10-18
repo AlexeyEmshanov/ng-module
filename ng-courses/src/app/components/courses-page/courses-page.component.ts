@@ -10,8 +10,6 @@ import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.scss'],
-  // providers: [ FilterCoursesPipe ],
-  animations: [ testAnimation ],
 })
 export class CoursesPageComponent implements OnInit, AfterViewInit {
 
@@ -23,12 +21,10 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   public idToRemove: number = 0;
 
-  public isShown = false;
-
   constructor(
     public filterCoursesPipe: FilterCoursesPipe,
     public coursesService: CoursesService,
-    public modalServise: ModalService,
+    // public modalServise: ModalService,
     public cd: ChangeDetectorRef
   ) {  }
 
@@ -37,9 +33,8 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.cd.detectChanges();
     console.log("modalWindow:", this.modalWindow?.testMethod());
-    // this.idToRemove = this.modalWindow.idToDelete
+    // this.idToRemove = this.modalWindow?.idToDelete
   }
 
   onSearchClick() {
@@ -58,28 +53,15 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   onAcceptDelete(idToRemove: number): void {
     this.courses = this.coursesService.removeCourse(idToRemove);
     this.courses = this.coursesService.getCoursesList();
-    // this.modalServise.hideModalWindow();
-    this.isShown = false;
   }
 
   getIsEmpty() {
     return this.courses.length === 0
   }
 
-  // onDeleteCourse(clickedId: number) {
-  //   // this.modalServise.showModalWindow();
-  //   this.idToRemove = clickedId;
-  // }
-
   onDeleteCourse(clickedId: number) {
-    this.isShown = true;
-    this.cd.detectChanges();
-    console.log(this.modalWindow?.testMethod());
+    this.modalWindow?.showModalWindow();
     this.idToRemove = clickedId;
   }
-
-  // onEditCourse(id: number) {
-  //   // this.courses = this.coursesService.updateCourse(id, {newTitle: 'updated title', newDuration: 555})
-  // }
 
 }
