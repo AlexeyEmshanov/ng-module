@@ -32,7 +32,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     console.log("modalWindow:", this.modalWindow?.testMethod());
-    // this.idToRemove = this.modalWindow?.idToDelete
   }
 
   onSearchClick() {

@@ -34,17 +34,6 @@ export class LoginPageComponent {
       this.authService.login(this.userLogin, this.userPassword);
     }
 
-
-    /* OLD */
-    // if ((this.userLogin === 'admin') && (this.userPassword === '12345')) {
-    //   this.authService.currentUserLogin = this.userLogin;
-    //   this.authService.login(this.userLogin, JSON.stringify(this.user));
-    //   this.router.navigate(['courses']);
-    // } else {
-    //   console.log('Incorret login and password pair. Plaese login!');
-    // }
-
-
   }
 
 

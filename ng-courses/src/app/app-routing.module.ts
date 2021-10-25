@@ -7,13 +7,14 @@ import { LoginPageComponent } from './login-page/components/login-page/login-pag
 import { NotFoundPageComponent } from './not-found-page/components/not-found-page/not-found-page.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { EditCourseResolver } from './shared/guards/edit-course.resolver';
+import { NoUserGuard } from './shared/guards/no-user.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
+  { path: '', component: LoginPageComponent, canActivate: [ NoUserGuard ] },
   { path: 'courses', component: CoursesPageComponent, canActivate: [ AuthGuard ] },
-  { path: 'courses/new', component: AddPageComponent, canActivate: [ AuthGuard ] },
+  { path: 'courses/new', pathMatch: 'full', component: AddPageComponent, canActivate: [ AuthGuard ] },
   { path: 'courses/:id',
-    pathMatch: 'full',
+    // pathMatch: 'full',
     component: EditPageComponent,
     canActivate: [ AuthGuard ],
     resolve: { course: EditCourseResolver }

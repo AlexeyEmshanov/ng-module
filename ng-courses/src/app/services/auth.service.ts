@@ -12,11 +12,9 @@ const BASE_URL = 'http://localhost:3004'
   providedIn: 'root'
 })
 export class AuthService {
-  public currentUserLogin = '';
+  // public currentUserData = new User(0, '', {first: '', last: ''}, '', '');
 
   private usersStorage = window.localStorage;
-
-  public currentUser = new User(0, '', {first: '', last: ''}, '', '')
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -24,17 +22,14 @@ export class AuthService {
     this.getUserFromServer(login, password).subscribe(
       (resp) => {
         if (resp.length !== 0) {
-          console.log('*', this.currentUser.login)
-          this.currentUser = resp[0];
+          // this.currentUserData = resp[0];
           this.usersStorage.setItem(login, JSON.stringify(resp[0]));
-          this.currentUserLogin = resp[0].login;
           this.router.navigate(['courses']);
         } else {
           throw new Error('Invalid login or password')
         }
       },
     )
-
   }
 
   private getUserFromServer(login: string, password: string): Observable<IUser[]> {
@@ -43,21 +38,20 @@ export class AuthService {
 
   public logout() {
     this.usersStorage.clear();
-    // this.currentUserLogin = '';
   }
 
   public isAuth(): boolean {
-    console.log('***', this.getUserInfo(this.currentUser.login))
-    return this.getUserInfo(this.currentUser.login) ? true : false
+    return (this.getUserInfo()) ? true : false
   }
 
-  public getUserInfo(loginName: string) {
-    const userInfo = this.usersStorage.getItem(loginName)
+  public getUserInfo(): string | null {
+    const login = this.usersStorage.key(0)
+    const userInfo = this.usersStorage.getItem(login as string);
 
     if (userInfo) {
-      return JSON.parse(userInfo);
+      return JSON.parse(userInfo).name.first;
     } else {
-      console.log('Invalid login');
+      console.log('User is not login');
       return null
     }
   }
