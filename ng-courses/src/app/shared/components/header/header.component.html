@@ -1,10 +1,10 @@
 <header>
   <app-logo></app-logo>
   <div class="header-controls" *ngIf="authService.isAuth()">
-    <div>{{authService.getUserInfo(authService.currentUserLogin).firstName}}</div>
+    <div>{{ authService.currentUser.name.first }}</div>
     <button
       class="btn"
-      (click)="onLogout(authService.currentUserLogin)"
+      (click)="authService.logout()"
       routerLink="/"
     >Log Off</button>
   </div>

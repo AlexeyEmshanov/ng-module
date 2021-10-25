@@ -16,6 +16,7 @@ import { EditPageModule } from './edit-page/edit-page.module';
 import { NotFoundPageModule } from './not-found-page/not-found-page.module';
 import { BreadcrumbsComponent } from './breadcrumbs/components/breadcrumbs/breadcrumbs.component';
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
     AddPageModule,
     EditPageModule,
     NotFoundPageModule,
-    BreadcrumbsModule
+    BreadcrumbsModule,
+    HttpClientModule
   ],
   providers: [ ],
   bootstrap: [ AppComponent ],

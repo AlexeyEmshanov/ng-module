@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IUser } from 'src/app/model/interfaces/iuser';
 import { testUser } from 'src/app/model/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,34 +14,37 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login-page.component.scss'],
 
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   public userLogin?: string;
 
   public userPassword?: string;
 
-  private user?: IUser;
+  public user?: IUser;
 
   constructor(public authService: AuthService, private router: Router) {
 
   }
 
-  ngOnInit(): void {
-    this.user = testUser
-  }
+  // ngOnInit(): void {
+  //   this.user = testUser
+  // }
 
   public onLoginClick() {
-    if ((this.userLogin === 'admin') && (this.userPassword === '12345')) {
-      this.authService.currentUserLogin = this.userLogin;
-      this.authService.login(this.userLogin, JSON.stringify(this.user));
-      this.router.navigate(['courses']);
-    } else {
-      console.log('Incorret login and password pair. Plaese login!');
+    if ((this.userLogin) && (this.userPassword)) {
+      this.authService.login(this.userLogin, this.userPassword);
     }
 
 
-    // this.authService.login('admin', JSON.stringify(this.user));
-    // console.log('logged in successfully by admim')
-    // console.log('User inputs:', this.userLogin, this.userPassword);
+    /* OLD */
+    // if ((this.userLogin === 'admin') && (this.userPassword === '12345')) {
+    //   this.authService.currentUserLogin = this.userLogin;
+    //   this.authService.login(this.userLogin, JSON.stringify(this.user));
+    //   this.router.navigate(['courses']);
+    // } else {
+    //   console.log('Incorret login and password pair. Plaese login!');
+    // }
+
+
   }
 
 

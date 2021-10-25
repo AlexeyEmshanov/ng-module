@@ -10,17 +10,13 @@ import { testUser } from 'src/app/model/user';
 })
 export class HeaderComponent {
 
-  constructor(public authService: AuthService) {
-
-  }
+  constructor(public authService: AuthService) { }
 
   // ngOnInit() {
   //   this.authService.login('admin', JSON.stringify(testUser))
   // }
 
-  onLogout(loginName: string) {
-    this.authService.logout(loginName);
-  }
-
-
+  // onLogout() {
+  //   this.authService.logout();
+  // }
 }

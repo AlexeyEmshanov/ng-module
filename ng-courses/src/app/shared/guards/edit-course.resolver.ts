@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { EMPTY, empty, Observable, of } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
 

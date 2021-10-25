@@ -10,15 +10,15 @@ import { EditCourseResolver } from './shared/guards/edit-course.resolver';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
-  { path: 'courses', component: CoursesPageComponent, /*canActivate: [ AuthGuard] */},
-  { path: 'courses/new', component: AddPageComponent, /*canActivate: [ AuthGuard]  */},
+  { path: 'courses', component: CoursesPageComponent, canActivate: [ AuthGuard ] },
+  { path: 'courses/new', component: AddPageComponent, canActivate: [ AuthGuard ] },
   { path: 'courses/:id',
     pathMatch: 'full',
     component: EditPageComponent,
-    /*canActivate: [ AuthGuard], */
+    canActivate: [ AuthGuard ],
     resolve: { course: EditCourseResolver }
   },
-  { path: '404', component: NotFoundPageComponent},
+  { path: '404', component: NotFoundPageComponent },
 
   { path: '**', redirectTo: '/404' }
 ];
