@@ -20,8 +20,10 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   public idToRemove: number = 0;
 
+  public loadMoreBtnIsShown = true;
+
   constructor(
-    public filterCoursesPipe: FilterCoursesPipe,
+    // public filterCoursesPipe: FilterCoursesPipe,
     public coursesService: CoursesService,
     public cd: ChangeDetectorRef
   ) {  }
@@ -35,8 +37,20 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   onSearchClick() {
-    this.coursesService.getCoursesList().subscribe(response => this.courses = response);
-    this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
+    if (this.searchField === '') {
+      this.coursesService.resetCounter();
+      this.coursesService.getCoursesList().subscribe(response => this.courses = response);
+      this.showLoadMoreBtn();
+    } else {
+      this.coursesService.searchCourse(this.searchField).subscribe(response => this.courses = response)
+      this.hideLoadMoreBtn();
+    }
+
+
+
+
+    // this.coursesService.getCoursesList().subscribe(response => this.courses = response);
+    // this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
   }
 
   onAddCourseClick() {
@@ -45,7 +59,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   onLoadMoreClick() {
     console.log('Load more btn clicked!');
-    this.coursesService.countUp();
+    this.coursesService.counterUp();
     this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
 
@@ -61,6 +75,14 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   onDeleteCourse(clickedId: number) {
     this.modalWindow?.showModalWindow();
     this.idToRemove = clickedId;
+  }
+
+  hideLoadMoreBtn(): void {
+    this.loadMoreBtnIsShown = false;
+  }
+
+  showLoadMoreBtn(): void {
+    this.loadMoreBtnIsShown = true;
   }
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { ICourse } from '../model/interfaces/icourse';
@@ -14,12 +14,12 @@ import { Observable } from 'rxjs';
 export class CoursesService {
   public courses: ICourse[] = _.cloneDeep(COURSES);
 
-  private count = 1;
+  private counter = 1;
 
   constructor(private http: HttpClient) { }
 
   public getCoursesList(): Observable<ICourse[]> {
-    return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses?start=0&count=${this.count * 5}`)
+    return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses?start=0&count=${this.counter * 5}`)
     // return this.courses;
   }
 
@@ -30,6 +30,14 @@ export class CoursesService {
 
   public getCourseById(id: number): Observable<ICourse> {
     return this.http.get<ICourse>(AppSettings.BASE_URL + `/courses/${id}`)
+  }
+
+  public searchCourse(textFragment: string): Observable<ICourse[]> {
+    textFragment = textFragment.trim();
+
+    const requestOption = { params: new HttpParams().set('textFragment', textFragment)}
+
+    return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses`, requestOption);
   }
 
   public updateCourse(updatedCourseData: ICourse): ICourse[] {
@@ -56,8 +64,12 @@ export class CoursesService {
     return this.courses;
   }
 
-  public countUp(): void {
-    this.count ++;
+  public counterUp(): void {
+    this.counter ++;
+  }
+
+  public resetCounter(): void {
+    this.counter = 1;
   }
 
 }
