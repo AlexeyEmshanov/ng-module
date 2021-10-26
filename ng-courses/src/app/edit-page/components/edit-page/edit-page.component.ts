@@ -11,11 +11,12 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class EditPageComponent implements OnInit {
   public selectedCourse: ICourse = {
     id: 0,
-    title: '',
+    name: '',
     description: '',
-    courseDate: new Date(),
-    duration: 0,
-    topRated: false,
+    date: new Date(),
+    length: 0,
+    isTopRated: false,
+    authors: [],
   }
 
   public courseAuthors = '';
@@ -27,7 +28,9 @@ export class EditPageComponent implements OnInit {
   ) {  }
 
   ngOnInit(): void {
+    console.log('***', this.activatedRoute.data);
     this.activatedRoute.data.subscribe((data) => {
+      console.log('!', data)
       this.selectedCourse = data.course
     })
   }

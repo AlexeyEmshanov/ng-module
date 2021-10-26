@@ -20,6 +20,7 @@ export class CourseItemComponent {
   }
 
   public onEditClick() {
+    console.log('on edit click', this.courseItem?.id);
     this.router.navigate([this.courseItem?.id], {relativeTo: this.activatedRoute});
   }
 

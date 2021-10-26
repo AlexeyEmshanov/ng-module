@@ -1,16 +1,16 @@
 <div class="course-item"
-  appExpectedCourse [startCourseDate]="courseItem!.courseDate"
-  [ngClass]="courseItem?.topRated ? 'course-item_top-rated': ''"
+  appExpectedCourse [startCourseDate]="courseItem!.date"
+  [ngClass]="courseItem?.isTopRated ? 'course-item_top-rated': ''"
 >
   <div class="course-item__container" >
     <div class="course-item__headline">
       <div class="course-item__title-wrapper">
-        <div class="course-item__title">{{courseItem?.title | uppercase}}</div>
-        <div [ngClass]="courseItem?.topRated ? 'top-rated': ''"></div>
+        <div class="course-item__title">{{courseItem?.name | uppercase}}</div>
+        <div [ngClass]="courseItem?.isTopRated ? 'top-rated': ''"></div>
       </div>
       <div class="course-item__info">
-        <div class="course-item__duration">{{courseItem?.duration | durationCourse}}</div>
-        <div class="course-item__date">{{courseItem?.courseDate | date:"dd.MM.yyyy"}}</div>
+        <div class="course-item__duration">{{courseItem?.length | durationCourse}}</div>
+        <div class="course-item__date">{{courseItem?.date | date:"dd.MM.yyyy"}}</div>
       </div>
     </div>
     <div class="course-item__description">{{courseItem?.description}}</div>

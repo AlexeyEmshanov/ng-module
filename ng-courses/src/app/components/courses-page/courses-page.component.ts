@@ -27,7 +27,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   ) {  }
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getCoursesList();
+    this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
 
   ngAfterViewInit() {
@@ -35,7 +35,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   onSearchClick() {
-    this.courses = this.coursesService.getCoursesList();
+    this.coursesService.getCoursesList().subscribe(response => this.courses = response);
     this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
   }
 
@@ -49,7 +49,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   onAcceptDelete(idToRemove: number): void {
     this.courses = this.coursesService.removeCourse(idToRemove);
-    this.courses = this.coursesService.getCoursesList();
+    this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
 
   getIsEmpty() {

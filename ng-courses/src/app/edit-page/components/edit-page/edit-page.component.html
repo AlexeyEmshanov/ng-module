@@ -12,7 +12,7 @@
         type="text"
         placeholder="Enter new course title"
         id="title"
-        [(ngModel)]="selectedCourse.title"
+        [(ngModel)]="selectedCourse.name"
       >
     </section>
 
@@ -37,8 +37,8 @@
         type="date"
         placeholder="Enter new course start date"
         id="date"
-        [ngModel]="selectedCourse.courseDate | date: 'yyyy-MM-dd'"
-        (ngModelChange)="selectedCourse.courseDate=$event"
+        [ngModel]="selectedCourse.date | date: 'yyyy-MM-dd'"
+        (ngModelChange)="selectedCourse.date=$event"
       >
     </section>
 
@@ -50,9 +50,9 @@
           type="number"
           placeholder="Enter new course duration in minutes"
           id="duration"
-          [(ngModel)]="selectedCourse.duration"
+          [(ngModel)]="selectedCourse.length"
         >
-        <div class="represent__duration">{{(selectedCourse.duration === undefined) ? '': selectedCourse.duration | durationCourse}}</div>
+        <div class="represent__duration">{{(selectedCourse.length === undefined) ? '': selectedCourse.length | durationCourse}}</div>
       </div>
     </section>
 

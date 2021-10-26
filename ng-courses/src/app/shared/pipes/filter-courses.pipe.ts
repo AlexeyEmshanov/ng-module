@@ -12,7 +12,7 @@ export class FilterCoursesPipe implements PipeTransform {
       return courses
     } else {
       return courses.filter(
-          course => course.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+          course => course.name.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
         );
     }
   }

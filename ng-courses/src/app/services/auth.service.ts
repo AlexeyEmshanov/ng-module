@@ -5,9 +5,9 @@ import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { IUser } from '../model/interfaces/iuser';
 import { User } from '../model/user';
+import { AppSettings } from '../app.settings';
 
 
-const BASE_URL = 'http://localhost:3004'
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +16,7 @@ export class AuthService {
 
   private usersStorage = window.localStorage;
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public login(login: string, password: string): void {
     this.getUserFromServer(login, password).subscribe(
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   private getUserFromServer(login: string, password: string): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(`${BASE_URL}/users?login=${login}&password=${password}`);
+    return this.http.get<IUser[]>(AppSettings.BASE_URL + `/users?login=${login}&password=${password}`);
   }
 
   public logout() {
