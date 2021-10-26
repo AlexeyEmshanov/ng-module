@@ -13,14 +13,12 @@ export class BreadcrumbsComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private coursesService: CoursesService) { }
 
   ngOnInit(): void {
-    this.coursesService.getCourseById(Number(this.activatedRoute.snapshot.params.id)).subscribe(
-      response => {
-        const selectedCourse = response
-
-        if (selectedCourse) {
-          this.breadcrumb = selectedCourse.name;
-        }
-      }
-    )
+    if (this.activatedRoute.snapshot.params.id) {
+      this.coursesService.getCourseById(Number(this.activatedRoute.snapshot.params.id))
+        .subscribe(
+          response => this.breadcrumb = response.name
+        )
+    }
   }
+
 }
