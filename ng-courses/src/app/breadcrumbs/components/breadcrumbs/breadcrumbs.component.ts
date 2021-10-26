@@ -15,7 +15,7 @@ export class BreadcrumbsComponent implements OnInit {
   ngOnInit(): void {
     this.coursesService.getCourseById(Number(this.activatedRoute.snapshot.params.id)).subscribe(
       response => {
-        const selectedCourse = response[0]
+        const selectedCourse = response
 
         if (selectedCourse) {
           this.breadcrumb = selectedCourse.name;

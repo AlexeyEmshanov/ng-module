@@ -12,27 +12,29 @@ import { CoursesService } from 'src/app/services/courses.service';
   providedIn: 'root'
 })
 export class EditCourseResolver implements Resolve<ICourse> {
-  public selectedCourse?: ICourse[]
+  public selectedCourse?: ICourse
 
   constructor(private coursesService: CoursesService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICourse> {
     console.log('start resolver', Number(route.params.id));
     // let selectedCourse
-    this.coursesService.getCourseById(Number(route.params.id)).subscribe(
-      response => {
-        console.log('inside resolver response', response)
-        this.selectedCourse = response
-        console.log('inside resolver selected course', this.selectedCourse)
+    this.coursesService.getCourseById(Number(route.params.id))
+      .subscribe(
+        (response: ICourse) => {
+          console.log('inside subscribe response', response)
+          this.selectedCourse = response
+          console.log('inside subscribe selected course', this.selectedCourse)
+          // return of(this.selectedCourse);
+        },
 
-      },
     )
 
-      console.log('outside response', this.selectedCourse)
+      console.log('outside subscribe selected course', this.selectedCourse)
       if (this.selectedCourse) {
-        return of(this.selectedCourse[0])
+        return of(this.selectedCourse)
       } else {
-        this.router.navigate(['**']);
+        // this.router.navigate(['**']);
         return EMPTY;
       }
 

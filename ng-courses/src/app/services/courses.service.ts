@@ -14,10 +14,12 @@ import { Observable } from 'rxjs';
 export class CoursesService {
   public courses: ICourse[] = _.cloneDeep(COURSES);
 
+  private count = 1;
+
   constructor(private http: HttpClient) { }
 
   public getCoursesList(): Observable<ICourse[]> {
-    return this.http.get<ICourse[]>(AppSettings.BASE_URL + '/courses')
+    return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses?start=0&count=${this.count * 5}`)
     // return this.courses;
   }
 
@@ -26,10 +28,10 @@ export class CoursesService {
     return this.courses;
   }
 
-  public getCourseById(id: number): Observable<ICourse[]> {
+  public getCourseById(id: number): Observable<ICourse> {
     // this.courses = this.courses.filter(course => course.id === id);
     // return this.courses.filter(course => course.id === id);
-    return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses/${id}`)
+    return this.http.get<ICourse>(AppSettings.BASE_URL + `/courses/${id}`)
   }
 
   public updateCourse(updatedCourseData: ICourse): ICourse[] {
@@ -54,6 +56,10 @@ export class CoursesService {
   public removeCourse(id: number): ICourse[] {
     this.courses = this.courses.filter((course: ICourse) => course.id !== id);
     return this.courses;
+  }
+
+  public countUp(): void {
+    this.count ++;
   }
 
 }

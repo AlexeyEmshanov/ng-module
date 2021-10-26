@@ -45,6 +45,8 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   onLoadMoreClick() {
     console.log('Load more btn clicked!');
+    this.coursesService.countUp();
+    this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
 
   onAcceptDelete(idToRemove: number): void {
