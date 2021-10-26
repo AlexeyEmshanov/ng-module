@@ -29,8 +29,6 @@ export class CoursesService {
   }
 
   public getCourseById(id: number): Observable<ICourse> {
-    // this.courses = this.courses.filter(course => course.id === id);
-    // return this.courses.filter(course => course.id === id);
     return this.http.get<ICourse>(AppSettings.BASE_URL + `/courses/${id}`)
   }
 

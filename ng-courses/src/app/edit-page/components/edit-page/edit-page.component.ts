@@ -28,9 +28,7 @@ export class EditPageComponent implements OnInit {
   ) {  }
 
   ngOnInit(): void {
-    console.log('***', this.activatedRoute.data);
     this.activatedRoute.data.subscribe((data) => {
-      console.log('!', data)
       this.selectedCourse = data.course
     })
   }

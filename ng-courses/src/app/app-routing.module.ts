@@ -17,7 +17,7 @@ const routes: Routes = [
     // pathMatch: 'full',
     component: EditPageComponent,
     canActivate: [ AuthGuard ],
-    resolve: { course: EditCourseResolver }
+    resolve: { course: EditCourseResolver },
   },
   { path: '404', component: NotFoundPageComponent },
 
