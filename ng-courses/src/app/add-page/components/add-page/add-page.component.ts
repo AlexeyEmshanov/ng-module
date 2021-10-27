@@ -12,7 +12,7 @@ import { NewCourse } from '../../model/newCourse';
   styleUrls: ['./add-page.component.scss'],
 })
 export class AddPageComponent {
-  public newCourse = new Course(this.generateID(), '', '', false, new Date(), [{id: 0 , firstName: '', lastName: ''}], 0);
+  public newCourse = new Course(this.generateID(), '', '', false, new Date(), [], 0);
 
   constructor(private coursesService: CoursesService, private router: Router) { }
 

@@ -37,29 +37,12 @@ export class CoursesService {
     return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses`, requestOption);
   }
 
-  public updateCourse(updatedCourseData: ICourse): ICourse[] {
-    const indexToChange = this.courses.findIndex(course => course.id === updatedCourseData.id);
-
-    const updatedCourse: ICourse = {
-      id: updatedCourseData.id,
-      name: updatedCourseData.name,
-      description: updatedCourseData.description,
-      date: updatedCourseData.date,
-      length: updatedCourseData.length,
-      isTopRated: updatedCourseData.isTopRated,
-      authors: updatedCourseData.authors
-    }
-
-    const newCoursesArray = [...this.courses];
-    newCoursesArray[indexToChange] = updatedCourse;
-    this.courses = newCoursesArray;
-    return this.courses;
+  public updateCourse(updatedCourseData: ICourse): Observable<ICourse> {
+    return this.http.put<ICourse>(AppSettings.BASE_URL + `/courses/${updatedCourseData.id}`, updatedCourseData);
   }
 
   public removeCourse(id: number): Observable<void> {
     return this.http.delete<void>(AppSettings.BASE_URL + `/courses/${id}`)
-    // this.courses = this.courses.filter((course: ICourse) => course.id !== id);
-    // return this.courses;
   }
 
   public counterUp(): void {

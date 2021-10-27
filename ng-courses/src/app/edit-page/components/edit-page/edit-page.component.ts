@@ -34,7 +34,7 @@ export class EditPageComponent implements OnInit {
   }
 
   public onSave() {
-    this.coursesService.updateCourse(this.selectedCourse);
+    this.coursesService.updateCourse(this.selectedCourse).subscribe();
     this.router.navigate(['courses']);
   }
 
