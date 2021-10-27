@@ -55,4 +55,16 @@ export class AuthService {
       return null
     }
   }
+
+  public getUserToken(): IUser | null{
+    const login = this.usersStorage.key(0);
+    const userObj = this.usersStorage.getItem(login as string);
+
+    if (userObj) {
+      return JSON.parse(userObj);
+    } else {
+      console.log('Auth token for user is unknown')
+      return null;
+    }
+  }
 }

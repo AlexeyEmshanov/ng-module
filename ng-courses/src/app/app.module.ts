@@ -16,7 +16,8 @@ import { EditPageModule } from './edit-page/edit-page.module';
 import { NotFoundPageModule } from './not-found-page/not-found-page.module';
 import { BreadcrumbsComponent } from './breadcrumbs/components/breadcrumbs/breadcrumbs.component';
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http'
     BreadcrumbsModule,
     HttpClientModule
   ],
-  providers: [ ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [ AppComponent ],
 })
 export class AppModule { }
