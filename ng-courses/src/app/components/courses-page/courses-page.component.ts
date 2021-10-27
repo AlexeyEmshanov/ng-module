@@ -3,6 +3,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { ModalWindowComponent, testAnimation } from '../modal-window/modal-window.component';
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -25,10 +26,11 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   constructor(
     // public filterCoursesPipe: FilterCoursesPipe,
     public coursesService: CoursesService,
-    public cd: ChangeDetectorRef
+    // public cd: ChangeDetectorRef
   ) {  }
 
   ngOnInit(): void {
+    // this.courses = this.coursesService.getCoursesList()
     this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
 
@@ -45,12 +47,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
       this.coursesService.searchCourse(this.searchField).subscribe(response => this.courses = response)
       this.hideLoadMoreBtn();
     }
-
-
-
-
-    // this.coursesService.getCoursesList().subscribe(response => this.courses = response);
-    // this.courses = this.filterCoursesPipe.transform(this.courses, this.searchField);
   }
 
   onAddCourseClick() {
@@ -64,12 +60,16 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   onAcceptDelete(idToRemove: number): void {
-    this.courses = this.coursesService.removeCourse(idToRemove);
-    this.coursesService.getCoursesList().subscribe(response => this.courses = response);
+    this.coursesService.removeCourse(idToRemove).subscribe(
+      () => {
+        this.coursesService.getCoursesList().subscribe(response => this.courses = response);
+      }
+    );
   }
 
   getIsEmpty() {
     return this.courses.length === 0
+    // return false
   }
 
   onDeleteCourse(clickedId: number) {

@@ -59,9 +59,10 @@ export class CoursesService {
     return this.courses;
   }
 
-  public removeCourse(id: number): ICourse[] {
-    this.courses = this.courses.filter((course: ICourse) => course.id !== id);
-    return this.courses;
+  public removeCourse(id: number): Observable<void> {
+    return this.http.delete<void>(AppSettings.BASE_URL + `/courses/${id}`)
+    // this.courses = this.courses.filter((course: ICourse) => course.id !== id);
+    // return this.courses;
   }
 
   public counterUp(): void {
