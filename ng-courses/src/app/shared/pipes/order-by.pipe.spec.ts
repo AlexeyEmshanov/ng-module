@@ -12,16 +12,16 @@ describe('OrderByPipe', () => {
 
   it('1st course title should be Course 2', () => {
     const pipe = new OrderByPipe();
-    expect(pipe.transform(courses)[0].title).toBe('course 2');
+    expect(pipe.transform(courses)[0].name).toBe('course 2');
   });
 
   it('2nd course title should be Course 10', () => {
     const pipe = new OrderByPipe();
-    expect(pipe.transform(courses)[1].title).toBe('course 10');
+    expect(pipe.transform(courses)[1].name).toBe('course 10');
   });
 
   it('last course title should be Course 1', () => {
     const pipe = new OrderByPipe();
-    expect(pipe.transform(courses)[courses.length - 1].title).toBe('course 1');
+    expect(pipe.transform(courses)[courses.length - 1].name).toBe('course 1');
   });
 });

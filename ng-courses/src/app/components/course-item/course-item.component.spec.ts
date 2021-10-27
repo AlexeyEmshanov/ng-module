@@ -27,11 +27,12 @@ describe('CourseItemComponent', () => {
 
   let testCourseItem: ICourse = {
     id: 555,
-    title: 'test course',
-    courseDate: new Date('2021, 08, 27'),
-    duration: 154,
+    name: 'test course',
+    date: new Date('2021, 08, 27'),
+    length: 154,
     description: 'something usefull',
-    topRated: true,
+    isTopRated: true,
+    authors: []
   }
 
   beforeEach(async () => {
@@ -68,7 +69,7 @@ describe('CourseItemComponent', () => {
   });
 
   it('course title and description text should be equal to input item object property', () => {
-    expect(courseTitleEl.textContent).toEqual(testCourseItem.title.toUpperCase());
+    expect(courseTitleEl.textContent).toEqual(testCourseItem.name.toUpperCase());
     expect(courseDescriptionEl.textContent).toEqual(testCourseItem.description);
   });
 

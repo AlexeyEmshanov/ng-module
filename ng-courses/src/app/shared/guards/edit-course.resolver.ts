@@ -19,7 +19,7 @@ export class EditCourseResolver implements Resolve<ICourse> {
       .subscribe({
         error: (error: Error) => {
           this.router.navigate(['**']);
-          console.log('Course with such ID is absent', error);
+          console.log(error);
         }
       })
 

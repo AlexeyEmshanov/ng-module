@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NoUserGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
 
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

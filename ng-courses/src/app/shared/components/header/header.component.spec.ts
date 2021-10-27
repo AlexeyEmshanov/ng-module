@@ -43,11 +43,11 @@ describe('HeaderComponent', () => {
 
   });
 
-  it('header after logout should not contain header control elements', () => {
-    component.onLogout(testUser);
-    fixture.detectChanges();
+  // it('header after logout should not contain header control elements', () => {
+  //   component.onLogout(testUser);
+  //   fixture.detectChanges();
 
-    const searchElement = headerDebugElement.query(By.css('.header-controls'));
-    expect(searchElement).toBeNull();
-  });
+  //   const searchElement = headerDebugElement.query(By.css('.header-controls'));
+  //   expect(searchElement).toBeNull();
+  // });
 });

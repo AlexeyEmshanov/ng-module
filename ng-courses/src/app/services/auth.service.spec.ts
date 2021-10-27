@@ -8,8 +8,13 @@ describe('AuthService', () => {
   const testlogin = 'testLogin';
   const testUser: IUser = {
     id: 19,
-    firstName: 'FakeFirstName',
-    lastName: 'FakeLastName'
+    name: {
+      first: 'FakeFirstName',
+      last: 'FakeLastName'
+    },
+    login: 'admin',
+    password: '12345',
+    fakeToken: 'asdasdasd'
   };
 
   beforeEach(() => {
@@ -29,7 +34,7 @@ describe('AuthService', () => {
 
   it('logout() should remove current user from window.localStorage', () => {
     service.login(testlogin, JSON.stringify(testUser));
-    service.logout(testlogin);
+    service.logout();
     expect(window.localStorage.getItem(testlogin)).toBeFalsy();
   });
 
@@ -46,12 +51,12 @@ describe('AuthService', () => {
   it('if user is not login should console "Invalid login"', () => {
     // spyOn(window.console, 'log');
     service.login('fakeLogin', 'fakeUser');
-    expect(service.getUserInfo(testlogin)).toBe(null);
+    expect(service.getUserInfo()).toBe(null);
     // expect(console.log).toHaveBeenCalledWith('Invalid login');
   });
 
   it('if user is login should return user name', () => {
     service.login(testlogin, JSON.stringify(testUser));
-    expect(service.getUserInfo(testlogin)).toEqual(testUser);
+    expect(service.getUserInfo()).toEqual(testUser.name.first);
   });
 });

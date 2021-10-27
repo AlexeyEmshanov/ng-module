@@ -10,16 +10,17 @@ import { EditCourseResolver } from './shared/guards/edit-course.resolver';
 import { NoUserGuard } from './shared/guards/no-user.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent, canActivate: [ NoUserGuard ] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginPageComponent, canActivate: [ NoUserGuard ] },
   { path: 'courses', component: CoursesPageComponent, canActivate: [ AuthGuard ] },
   { path: 'courses/new', pathMatch: 'full', component: AddPageComponent, canActivate: [ AuthGuard ] },
   { path: 'courses/:id',
-    // pathMatch: 'full',
-    component: EditPageComponent,
-    canActivate: [ AuthGuard ],
-    resolve: { course: EditCourseResolver },
-  },
-  { path: '404', component: NotFoundPageComponent },
+  // pathMatch: 'full',
+  component: EditPageComponent,
+  canActivate: [ AuthGuard ],
+  resolve: { course: EditCourseResolver },
+},
+{ path: '404', component: NotFoundPageComponent },
 
   { path: '**', redirectTo: '/404' }
 ];

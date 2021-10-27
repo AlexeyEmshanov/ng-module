@@ -32,7 +32,7 @@ export class AuthService {
     )
   }
 
-  private getUserFromServer(login: string, password: string): Observable<IUser[]> {
+  public getUserFromServer(login: string, password: string): Observable<IUser[]> {
     return this.http.get<IUser[]>(AppSettings.BASE_URL + `/users?login=${login}&password=${password}`);
   }
 
