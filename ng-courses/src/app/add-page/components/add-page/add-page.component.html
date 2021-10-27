@@ -8,7 +8,7 @@
         type="text"
         placeholder="Enter new course title"
         id="title"
-        [(ngModel)]="newCourseTitle"
+        [(ngModel)]="newCourse.name"
       >
     </section>
 
@@ -22,7 +22,7 @@
         rows="5"
         cols="50"
         maxlength="300"
-        [(ngModel)]="newCourseDescription"
+        [(ngModel)]="newCourse.description"
       ></textarea>
     </section>
 
@@ -33,7 +33,7 @@
         type="date"
         placeholder="Enter new course start date"
         id="date"
-        [(ngModel)]="newCourseDate"
+        [(ngModel)]="newCourse.date"
       >
     </section>
 
@@ -45,9 +45,9 @@
           type="number"
           placeholder="Enter new course duration in minutes"
           id="duration"
-          [(ngModel)]="newCourseDuration"
+          [(ngModel)]="newCourse.length"
         >
-        <div class="represent__duration">{{(newCourseDuration === undefined) ? '': newCourseDuration | durationCourse}}</div>
+        <div class="represent__duration">{{(newCourse.length === undefined) ? '': newCourse.length | durationCourse}}</div>
       </div>
     </section>
 
@@ -58,12 +58,12 @@
         type="text"
         placeholder="Enter new course authors"
         id="authors"
-        [(ngModel)]="newCourseAuthors"
+        [(ngModel)]="newCourse.authors"
       >
     </section>
 
     <div class="add-page__controls">
-      <button class="btn" (click)="createCourse()">Save</button>
+      <button class="btn" (click)="onSaveClick()">Save</button>
       <button class="btn" routerLink="/courses">Cancel</button>
     </div>
   </div>

@@ -20,12 +20,10 @@ export class CoursesService {
 
   public getCoursesList(): Observable<ICourse[]> {
     return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses?start=0&count=${this.counter * 5}`)
-    // return this.courses;
   }
 
-  public createCourse(newCourse: ICourse): ICourse[] {
-    this.courses.push(newCourse);
-    return this.courses;
+  public createCourse(newCourse: ICourse): Observable<ICourse> {
+    return this.http.post<ICourse>(AppSettings.BASE_URL + '/courses', newCourse);
   }
 
   public getCourseById(id: number): Observable<ICourse> {
@@ -36,7 +34,6 @@ export class CoursesService {
     textFragment = textFragment.trim();
 
     const requestOption = { params: new HttpParams().set('textFragment', textFragment)}
-
     return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses`, requestOption);
   }
 

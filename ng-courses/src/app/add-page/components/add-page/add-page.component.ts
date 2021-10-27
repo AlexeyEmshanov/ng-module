@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Course } from 'src/app/model/course';
 import { ICourse } from 'src/app/model/interfaces/icourse';
+import { CoursesService } from 'src/app/services/courses.service';
 import { NewCourse } from '../../model/newCourse';
 
 @Component({
@@ -8,27 +12,19 @@ import { NewCourse } from '../../model/newCourse';
   styleUrls: ['./add-page.component.scss'],
 })
 export class AddPageComponent {
-  public newCourseTitle?: string;
-  public newCourseDescription?: string;
-  public newCourseDate = new Date();
-  public newCourseDuration?: number;
-  public newCourseAuthors?: string;
+  public newCourse = new Course(this.generateID(), '', '', false, new Date(), [{id: 0 , firstName: '', lastName: ''}], 0);
 
-  constructor() { }
+  constructor(private coursesService: CoursesService, private router: Router) { }
 
   // ngOnInit(): void {
   // }
 
-  public createCourse() {
-    if ((this.newCourseTitle) && (this.newCourseDescription) && (this.newCourseDuration)) {
-      const newCourse = new NewCourse(
-        this.newCourseTitle,
-        this.newCourseDescription,
-        this.newCourseDate,
-        this.newCourseDuration
-      );
+  public onSaveClick() {
+    this.coursesService.createCourse(this.newCourse).subscribe();
+    this.router.navigate(['courses']);
+  }
 
-      console.log(newCourse);
-    }
+  public generateID() {
+    return Math.floor(Math.random() * 100) + 1
   }
 }
