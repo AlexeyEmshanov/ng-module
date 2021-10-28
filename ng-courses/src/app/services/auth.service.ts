@@ -12,15 +12,12 @@ import { AppSettings } from '../app.settings';
   providedIn: 'root'
 })
 export class AuthService {
-  // private usersStorage = window.localStorage;
-
   constructor(private http: HttpClient, private router: Router) { }
 
   public login(login: string, password: string): void {
     this.getUserFromServer(login, password).subscribe(
       (resp : IUser[]) => {
         if (resp.length !== 0) {
-          console.log('1', resp[0])
           window.localStorage.setItem(login, JSON.stringify(resp[0]));
           this.router.navigate(['courses']);
         }
@@ -40,13 +37,11 @@ export class AuthService {
 
 
   public isAuth(): boolean {
-    console.log('start', this.getUserInfo())
     return (this.getUserInfo()) ? true : false
   }
 
 
   public getUserInfo(): string | null {
-    console.log('start')
     const login = localStorage.key(0)
     const userInfo = localStorage.getItem(login as string);
 

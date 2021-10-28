@@ -49,12 +49,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onAddCourseClick() {
-    console.log('Add Course btn clicked!');
-  }
-
   onLoadMoreClick() {
-    console.log('Load more btn clicked!');
     this.coursesService.counterUp();
     this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
@@ -69,7 +64,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   getIsEmpty() {
     return this.courses.length === 0
-    // return false
   }
 
   onDeleteCourse(clickedId: number) {
