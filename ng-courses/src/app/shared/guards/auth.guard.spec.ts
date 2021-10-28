@@ -35,5 +35,6 @@ describe('AuthGuard', () => {
   it('guard should return true if authenticated user tries open courses page, edit page, and create new course page', () => {
     spyOn(authService, 'isAuth').and.returnValue(true);
     expect(guard.canActivate()).toEqual(true);
+    expect(routerMock.navigate).not.toHaveBeenCalledWith(['login']);
   })
 });
