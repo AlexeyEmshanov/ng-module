@@ -12,7 +12,7 @@ describe('NoUserGuard', () => {
   let authService: AuthService;
 
   let routeMock: any = { snapshot: {} };
-  let routeStateMock: any = { snapshot: {}, url: '/courses' };
+  // let routeStateMock: any = { snapshot: {}, url: '/courses' };
   let routerMock = { navigate: jasmine.createSpy('navigate') };
 
   beforeEach(() => {
@@ -31,12 +31,12 @@ describe('NoUserGuard', () => {
 
   it('should not redirect an unauthenticated user to the courses page', () => {
     spyOn(authService, 'isAuth').and.returnValue(true);
-    expect(guard.canActivate(routeMock, routeStateMock)).toEqual(false);
+    expect(guard.canActivate()).toEqual(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(['courses']);
   })
 
   it('should redirect an authenticated user to the courses page', () => {
     spyOn(authService, 'isAuth').and.returnValue(false);
-    expect(guard.canActivate(routeMock, routeStateMock)).toEqual(true);
+    expect(guard.canActivate()).toEqual(true);
   })
 });

@@ -17,11 +17,6 @@ describe('EditCourseResolver', () => {
   let routeMock: any = { snapshot: {}, params: {id: 1} };
   let routeStateMock: any = { snapshot: {}, url: '/courses/:id' };
   let routerMock = { navigate: jasmine.createSpy('navigate') };
-  // let coursesServiceMock = { getCourseById: jasmine.createSpy('getCourseById') };
-  // let coursesServiceMock = {
-    // getCourseById: () => { console.log('test'); return throwError('123')}
-    // getCourseById: jasmine.createSpy('getCourseById')
-  // };
 
   const mockCourse: ICourse = {
     id: 111,
@@ -38,7 +33,6 @@ describe('EditCourseResolver', () => {
       imports: [ HttpClientTestingModule, RouterTestingModule ],
       providers: [
         {provide: Router, useValue: routerMock },
-        // {provide: CoursesService, useValue: coursesServiceMock }
       ]
     });
     resolver = TestBed.inject(EditCourseResolver);
@@ -52,13 +46,13 @@ describe('EditCourseResolver', () => {
 
   it('should redirect to 404 page if course with such ID does not exist', () => {
     spyOn(coursesService, 'getCourseById').and.returnValue(throwError('course with such ID does not exist'));
-    resolver.resolve(routeMock, routeStateMock);
+    resolver.resolve(routeMock);
     expect(routerMock.navigate).toHaveBeenCalledWith(['**']);
   })
 
   it('should return oservable with course data if course with such ID is exist', () => {
     spyOn(coursesService, 'getCourseById').and.returnValue(of(mockCourse));
-    resolver.resolve(routeMock, routeStateMock).subscribe(data => {
+    resolver.resolve(routeMock).subscribe(data => {
       console.log(data, mockCourse)
       expect(data).toEqual(mockCourse);
     });

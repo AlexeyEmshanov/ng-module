@@ -14,7 +14,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class EditCourseResolver implements Resolve<ICourse> {
   constructor(private coursesService: CoursesService, private router: Router) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICourse> {
+  resolve(route: ActivatedRouteSnapshot): Observable<ICourse> {
     this.coursesService.getCourseById(Number(route.params.id))
       .subscribe({
         error: (error: Error) => {
