@@ -1,11 +1,20 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Observable, Subscription, of, throwError } from 'rxjs';
+import { AppSettings } from '../app.settings';
 import { IUser } from '../model/interfaces/iuser';
 
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
-  let service: AuthService;
-  const testlogin = 'testLogin';
+  let authService: AuthService;
+  let httpTestingController: HttpTestingController;
+  let routerMock = {navigate: jasmine.createSpy('navigate')};
+  let usersStorage = window.localStorage;
+
   const testUser: IUser = {
     id: 19,
     name: {
@@ -18,45 +27,102 @@ describe('AuthService', () => {
   };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(AuthService);
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule, RouterTestingModule ],
+      providers: [ AuthService, { provide: Router, useValue: routerMock } ]
+    });
+    authService = TestBed.inject(AuthService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+
     window.localStorage.clear();
+
   });
+
+  // afterEach(() => {
+  //   // After every test, assert that there are no more pending requests.
+  //   httpTestingController.verify();
+  // });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(authService).toBeTruthy();
+    // expect(httpClient).toBeTruthy();
+    expect(httpTestingController).toBeTruthy();
   });
 
-  it('login() should add new user to window.localStorage', () => {
-    service.login(testlogin, JSON.stringify(testUser));
-    expect(window.localStorage.getItem(testlogin)).toBeTruthy();
+  it('getUserFromServer should make GET request to the server, and get back testUser', () => {
+    const testUrl = AppSettings.BASE_URL + `/users?login=${testUser.login}&password=${testUser.password}`;
+
+    authService.getUserFromServer(testUser.login, testUser.password)
+      .subscribe((data) => {
+        expect(data).toEqual([testUser]);
+      });
+
+    const req = httpTestingController.expectOne(testUrl);
+    expect(req.request.method).toEqual('GET');
+
+    req.flush([testUser]);
   });
 
-  it('logout() should remove current user from window.localStorage', () => {
-    service.login(testlogin, JSON.stringify(testUser));
-    service.logout();
-    expect(window.localStorage.getItem(testlogin)).toBeFalsy();
+  it('login method should return IUser type on success, and route to courses page', () => {
+    const testUrl = AppSettings.BASE_URL + `/users?login=${testUser.login}&password=${testUser.password}`;
+
+    authService.login(testUser.login, testUser.password);
+    const req = httpTestingController.expectOne(testUrl);
+    req.flush({});
+
+    expect(routerMock.navigate).toHaveBeenCalledWith(['courses']);
+  })
+
+
+  it('logout() should call clear method from window.localstorage', () => {
+    const testUrl = AppSettings.BASE_URL + `/users?login=${testUser.login}&password=${testUser.password}`;
+    spyOn(window.localStorage, 'clear')
+
+    authService.login(testUser.login, testUser.password);
+    const req = httpTestingController.expectOne(testUrl);
+    req.flush({});
+
+    authService.logout();
+
+    expect(window.localStorage.clear).toHaveBeenCalled();
+
+    // expect(localStorage.getItem(testUser.login)).toBeFalse(); /* чушь, факт запроса не происходит */
   });
 
   it('isAuth() should return false if user is not login', () => {
     // service.login(testlogin, JSON.stringify(testUser));
-    expect(service.isAuth()).toBeFalse();
+    expect(authService.isAuth()).toBeFalse();
   });
 
   it('isAuth() should return true if user is login', () => {
-    service.login(testlogin, JSON.stringify(testUser));
-    expect(service.isAuth()).toBeTrue();
+    spyOn(authService, 'getUserInfo').and.returnValue(JSON.stringify(testUser));
+
+    authService.isAuth();
+
+    expect(authService.isAuth()).toBeTrue();
   });
 
-  it('if user is not login should console "Invalid login"', () => {
-    // spyOn(window.console, 'log');
-    service.login('fakeLogin', 'fakeUser');
-    expect(service.getUserInfo()).toBe(null);
-    // expect(console.log).toHaveBeenCalledWith('Invalid login');
+  it('getUserInfo should return null, if user is not login', () => {
+    spyOn(window.localStorage, 'getItem').and.callFake(() => null)
+
+    expect(authService.getUserToken()).toEqual(null);
   });
 
-  it('if user is login should return user name', () => {
-    service.login(testlogin, JSON.stringify(testUser));
-    expect(service.getUserInfo()).toEqual(testUser.name.first);
+
+  it('getUserInfo should return user first name, if user is login', () => {
+    spyOn(window.localStorage, 'getItem').and.callFake(() => JSON.stringify(testUser))
+    expect(authService.getUserInfo()).toEqual(testUser.name.first);
   });
+
+  it('getUserToken should return null, if user is not login', () => {
+    spyOn(window.localStorage, 'getItem').and.callFake(() => null)
+    expect(authService.getUserToken()).toEqual(null);
+  });
+
+
+  it('getUserToken should return user Obj, if user is login', () => {
+    spyOn(window.localStorage, 'getItem').and.callFake(() => JSON.stringify(testUser))
+    expect(authService.getUserToken()).toEqual(testUser.fakeToken);
+  });
+
 });

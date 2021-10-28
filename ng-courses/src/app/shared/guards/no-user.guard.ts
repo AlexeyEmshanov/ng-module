@@ -15,9 +15,9 @@ export class NoUserGuard implements CanActivate {
   ): boolean {
     if (this.authService.isAuth()) {
       this.router.navigate(['courses']);
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   }
 

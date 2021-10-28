@@ -12,41 +12,43 @@ import { AppSettings } from '../app.settings';
   providedIn: 'root'
 })
 export class AuthService {
-  // public currentUserData = new User(0, '', {first: '', last: ''}, '', '');
-
-  private usersStorage = window.localStorage;
+  // private usersStorage = window.localStorage;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   public login(login: string, password: string): void {
     this.getUserFromServer(login, password).subscribe(
-      (resp) => {
+      (resp : IUser[]) => {
         if (resp.length !== 0) {
-          // this.currentUserData = resp[0];
-          this.usersStorage.setItem(login, JSON.stringify(resp[0]));
+          console.log('1', resp[0])
+          window.localStorage.setItem(login, JSON.stringify(resp[0]));
           this.router.navigate(['courses']);
-        } else {
-          throw new Error('Invalid login or password')
         }
       },
     )
   }
 
+
   public getUserFromServer(login: string, password: string): Observable<IUser[]> {
     return this.http.get<IUser[]>(AppSettings.BASE_URL + `/users?login=${login}&password=${password}`);
   }
 
+
   public logout() {
-    this.usersStorage.clear();
+    window.localStorage.clear();
   }
 
+
   public isAuth(): boolean {
+    console.log('start', this.getUserInfo())
     return (this.getUserInfo()) ? true : false
   }
 
+
   public getUserInfo(): string | null {
-    const login = this.usersStorage.key(0)
-    const userInfo = this.usersStorage.getItem(login as string);
+    console.log('start')
+    const login = localStorage.key(0)
+    const userInfo = localStorage.getItem(login as string);
 
     if (userInfo) {
       return JSON.parse(userInfo).name.first;
@@ -56,12 +58,13 @@ export class AuthService {
     }
   }
 
-  public getUserToken(): IUser | null{
-    const login = this.usersStorage.key(0);
-    const userObj = this.usersStorage.getItem(login as string);
+
+  public getUserToken(): string | null{
+    const login = localStorage.key(0);
+    const userObj = window.localStorage.getItem(login as string);
 
     if (userObj) {
-      return JSON.parse(userObj);
+      return JSON.parse(userObj).fakeToken;
     } else {
       console.log('Auth token for user is unknown')
       return null;
