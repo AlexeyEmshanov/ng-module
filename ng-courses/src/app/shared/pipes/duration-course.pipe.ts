@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DurationCoursePipe implements PipeTransform {
 
-  transform(duration?: number): string {
+  transform(duration: number | undefined | null): string {
     if (duration === undefined) {
       return `invalid course duration format`;
     }

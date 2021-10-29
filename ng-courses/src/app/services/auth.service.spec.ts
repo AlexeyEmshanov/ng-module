@@ -13,7 +13,6 @@ describe('AuthService', () => {
   let authService: AuthService;
   let httpTestingController: HttpTestingController;
   let routerMock = {navigate: jasmine.createSpy('navigate')};
-  let usersStorage = window.localStorage;
 
   const testUser: IUser = {
     id: 19,

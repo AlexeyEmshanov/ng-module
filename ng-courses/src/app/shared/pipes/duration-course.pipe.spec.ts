@@ -24,4 +24,8 @@ describe('DurationCoursePipe', () => {
     expect(pipe.transform(undefined)).toBe(warning);
   });
 
+  it('if duration is null should return epmty string', () => {
+    const warning = ''
+    expect(pipe.transform(null)).toBe(warning);
+  });
 });
