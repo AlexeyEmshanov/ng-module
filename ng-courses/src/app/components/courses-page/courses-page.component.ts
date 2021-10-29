@@ -67,6 +67,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   onDeleteCourse(clickedId: number) {
+    console.log('delete');
     this.modalWindow?.showModalWindow();
     this.idToRemove = clickedId;
   }

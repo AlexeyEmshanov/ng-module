@@ -30,10 +30,11 @@ export class LoginPageComponent {
   // }
 
   public onLoginClick() {
+    console.log('1', this.userLogin, this.userPassword);
     if ((this.userLogin) && (this.userPassword)) {
+      console.log('2');
       this.authService.login(this.userLogin, this.userPassword);
     }
-
   }
 
 

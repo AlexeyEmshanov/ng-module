@@ -49,6 +49,7 @@ export class ModalWindowComponent implements OnInit{
   }
 
   public hideModalWindow(): void {
+    console.log('modal')
     this.isModalShown = false;
   }
 

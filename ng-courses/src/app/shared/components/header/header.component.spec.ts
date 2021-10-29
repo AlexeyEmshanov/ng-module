@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { HeaderComponent } from './header.component';
 import { testUser } from 'src/app/model/user';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
   const testUser = 'admin'
@@ -18,6 +20,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       providers: [ AuthService ],
+      imports: [ HttpClientTestingModule, RouterTestingModule ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
