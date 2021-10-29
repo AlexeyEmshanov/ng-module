@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
   }
 )
 export class CoursesService {
-  public courses: ICourse[] = _.cloneDeep(COURSES);
+  // public courses: ICourse[] = _.cloneDeep(COURSES);
 
-  private counter = 1;
+  public counter = 1;
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +41,7 @@ export class CoursesService {
     return this.http.put<ICourse>(AppSettings.BASE_URL + `/courses/${updatedCourseData.id}`, updatedCourseData);
   }
 
-  public removeCourse(id: number): Observable<void> {
+  public removeCourse(id: number): Observable<any> {
     return this.http.delete<void>(AppSettings.BASE_URL + `/courses/${id}`)
   }
 

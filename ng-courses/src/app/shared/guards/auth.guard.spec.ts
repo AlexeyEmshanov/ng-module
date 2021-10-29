@@ -26,15 +26,16 @@ describe('AuthGuard', () => {
     expect(authService).toBeTruthy();
   });
 
+  it('guard should return true if authenticated user tries open courses page, edit page, and create new course page', () => {
+    spyOn(authService, 'isAuth').and.returnValue(true);
+    expect(guard.canActivate()).toEqual(true);
+    expect(routerMock.navigate).not.toHaveBeenCalledWith(['login']);
+  })
+
   it('guard should return false and redirect to login page if an unauthenticated user tries open course page, edit page, and create new course page', () => {
     spyOn(authService, 'isAuth').and.returnValue(false);
     expect(guard.canActivate()).toEqual(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(['login']);
   })
 
-  it('guard should return true if authenticated user tries open courses page, edit page, and create new course page', () => {
-    spyOn(authService, 'isAuth').and.returnValue(true);
-    expect(guard.canActivate()).toEqual(true);
-    expect(routerMock.navigate).not.toHaveBeenCalledWith(['login']);
-  })
 });

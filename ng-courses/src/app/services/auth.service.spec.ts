@@ -38,10 +38,10 @@ describe('AuthService', () => {
 
   });
 
-  // afterEach(() => {
-  //   // After every test, assert that there are no more pending requests.
-  //   httpTestingController.verify();
-  // });
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpTestingController.verify();
+  });
 
   it('should be created', () => {
     expect(authService).toBeTruthy();
