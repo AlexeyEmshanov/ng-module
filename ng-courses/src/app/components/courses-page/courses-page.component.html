@@ -10,6 +10,7 @@
           class="search-bar_input"
           placeholder="Text to search"
           [(ngModel)]="searchField"
+          (ngModelChange)="onChangeSearchField($event)"
         >
         <button class="btn" (click)="onSearchClick()">Search</button>
       </div>

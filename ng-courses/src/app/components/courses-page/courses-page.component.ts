@@ -1,10 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges, AfterViewInit, ViewChild, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { ModalWindowComponent, testAnimation } from '../modal-window/modal-window.component';
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
-import { Observable } from 'rxjs';
-
+import { Observable, of, Subscribable } from 'rxjs';
+import { debounce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-page',
@@ -78,6 +78,18 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   showLoadMoreBtn(): void {
     this.loadMoreBtnIsShown = true;
+  }
+
+  public searchObservable = new Observable((subscriber) => {
+    subscriber.next(subscriber);
+  })
+
+
+  public onChangeSearchField(searchFragment: string) {
+    this.searchObservable.subscribe(() => {
+      console.log(searchFragment);
+      this.coursesService.searchCourse(searchFragment).subscribe(response => this.courses = response);
+    })
   }
 
 }
