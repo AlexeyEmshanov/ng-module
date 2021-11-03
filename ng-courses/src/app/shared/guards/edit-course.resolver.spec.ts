@@ -53,7 +53,6 @@ describe('EditCourseResolver', () => {
   it('should return oservable with course data if course with such ID is exist', () => {
     spyOn(coursesService, 'getCourseById').and.returnValue(of(mockCourse));
     resolver.resolve(routeMock).subscribe(data => {
-      console.log(data, mockCourse)
       expect(data).toEqual(mockCourse);
     });
   })

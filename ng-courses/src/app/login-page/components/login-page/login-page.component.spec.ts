@@ -4,10 +4,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AuthService } from 'src/app/services/auth.service';
+import { TEST_USER } from 'src/app/model/user';
 
 import { LoginPageComponent } from './login-page.component';
 
 describe('LoginPageComponent', () => {
+  let testUser = TEST_USER;
+
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
   let authService: AuthService
@@ -29,6 +32,8 @@ describe('LoginPageComponent', () => {
 
     authService = TestBed.inject(AuthService);
 
+    window.localStorage.setItem(testUser.login, JSON.stringify(testUser));
+
     fixture.detectChanges();
   });
 
@@ -43,7 +48,9 @@ describe('LoginPageComponent', () => {
     component.onLoginClick();
 
     fixture.detectChanges();
-    spyOn(authService, 'login')
+    spyOn(authService, 'login');
+    authService.login(component.userLogin, component.userPassword);
+    // authService.login('admin', '12345')
     expect(authService.login).toHaveBeenCalled();
   })
 });

@@ -15,13 +15,13 @@ export class User implements IUser {
 
 }
 
-export const testUser: User = {
-  id: 1,
-  fakeToken: 'asdkghbasdkgbaskg',
+export const TEST_USER: IUser = {
+  id: 19,
   name: {
-    first: 'Alexey',
-    last: 'Emshanov'
+    first: 'FakeFirstName',
+    last: 'FakeLastName'
   },
   login: 'admin',
-  password: '12345'
-}
+  password: '12345',
+  fakeToken: 'asdasdasd'
+};

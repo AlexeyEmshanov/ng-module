@@ -4,17 +4,17 @@ import { By } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { HeaderComponent } from './header.component';
-import { testUser } from 'src/app/model/user';
+import { TEST_USER } from 'src/app/model/user';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
-  const testUser = 'admin'
 
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let headerElement: HTMLElement;
   let headerDebugElement: DebugElement;
+  let authService: AuthService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,14 +31,18 @@ describe('HeaderComponent', () => {
     component = fixture.componentInstance;
     headerDebugElement = fixture.debugElement;
     headerElement = headerDebugElement.nativeElement;
+    authService = TestBed.inject(AuthService);
     fixture.detectChanges();
   });
 
   it('should be defined', () => {
+    expect(authService).toBeDefined();
     expect(component).toBeDefined();
   });
 
   it('header after login should contain header control elements', () => {
+    spyOn(authService, 'isAuth').and.returnValue(true);
+
     fixture.detectChanges();
 
     const searchElement = headerDebugElement.query(By.css('.header-controls'));

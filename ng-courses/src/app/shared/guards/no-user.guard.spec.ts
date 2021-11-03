@@ -31,13 +31,13 @@ describe('NoUserGuard', () => {
 
   it('should not redirect an authenticated user to the courses page', () => {
     spyOn(authService, 'isAuth').and.returnValue(false);
-    expect(guard.canActivate()).toEqual(false);
+    expect(guard.canActivate()).toEqual(true);
     expect(routerMock.navigate).not.toHaveBeenCalledWith(['courses']);
   })
 
   it('should redirect an authenticated user to the courses page', () => {
     spyOn(authService, 'isAuth').and.returnValue(true);
-    expect(guard.canActivate()).toEqual(true);
+    expect(guard.canActivate()).toEqual(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(['courses']);
 
   })

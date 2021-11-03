@@ -25,21 +25,17 @@ export class AuthService {
     )
   }
 
-
   public getUserFromServer(login: string, password: string): Observable<IUser[]> {
     return this.http.get<IUser[]>(AppSettings.BASE_URL + `/users?login=${login}&password=${password}`);
   }
-
 
   public logout() {
     window.localStorage.clear();
   }
 
-
   public isAuth(): boolean {
     return (this.getUserInfo()) ? true : false
   }
-
 
   public getUserInfo(): string | null {
     const login = localStorage.key(0)
@@ -52,7 +48,6 @@ export class AuthService {
       return null
     }
   }
-
 
   public getUserToken(): string | null{
     const login = localStorage.key(0);

@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, Subscription, of, throwError } from 'rxjs';
 import { AppSettings } from '../app.settings';
 import { IUser } from '../model/interfaces/iuser';
+import { TEST_USER } from '../model/user';
 
 import { AuthService } from './auth.service';
 
@@ -14,16 +15,7 @@ describe('AuthService', () => {
   let httpTestingController: HttpTestingController;
   let routerMock = {navigate: jasmine.createSpy('navigate')};
 
-  const testUser: IUser = {
-    id: 19,
-    name: {
-      first: 'FakeFirstName',
-      last: 'FakeLastName'
-    },
-    login: 'admin',
-    password: '12345',
-    fakeToken: 'asdasdasd'
-  };
+  const testUser = TEST_USER;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -33,13 +25,14 @@ describe('AuthService', () => {
     authService = TestBed.inject(AuthService);
     httpTestingController = TestBed.inject(HttpTestingController);
 
-    window.localStorage.clear();
 
+    window.localStorage.setItem(testUser.login, JSON.stringify(testUser));
   });
 
   afterEach(() => {
     // After every test, assert that there are no more pending requests.
     httpTestingController.verify();
+    window.localStorage.clear();
   });
 
   it('should be created', () => {
@@ -90,6 +83,7 @@ describe('AuthService', () => {
 
   it('isAuth() should return false if user is not login', () => {
     // service.login(testlogin, JSON.stringify(testUser));
+    window.localStorage.clear();
     expect(authService.isAuth()).toBeFalse();
   });
 

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUser } from 'src/app/model/interfaces/iuser';
-import { testUser } from 'src/app/model/user';
 import { AuthService } from 'src/app/services/auth.service';
 
 
