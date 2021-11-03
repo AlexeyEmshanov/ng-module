@@ -4,7 +4,7 @@ import { ICourse } from './../../model/interfaces/icourse';
 import { ModalWindowComponent, testAnimation } from '../modal-window/modal-window.component';
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
 import { Observable, of, Subscribable } from 'rxjs';
-import { debounce } from 'rxjs/operators';
+import { debounce, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-page',
@@ -80,16 +80,31 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
     this.loadMoreBtnIsShown = true;
   }
 
-  public searchObservable = new Observable((subscriber) => {
-    subscriber.next(subscriber);
-  })
+  // public searchObservable = new Observable<string>((subscriber) => {
+  //   subscriber.next();
+  // })
 
 
   public onChangeSearchField(searchFragment: string) {
-    this.searchObservable.subscribe(() => {
-      console.log(searchFragment);
-      this.coursesService.searchCourse(searchFragment).subscribe(response => this.courses = response);
+    const searchObservable = of(searchFragment)
+
+
+    searchObservable.pipe(
+      filter(search => search.length >= 3)
+    ).subscribe((search) => {
+
+
+      console.log(search);
+      this.coursesService.searchCourse(searchFragment)
+
+      .subscribe(response => this.courses = response);
     })
+
+
+    // this.searchObservable.subscribe(() => {
+    //   console.log(searchFragment);
+    //   this.coursesService.searchCourse(searchFragment).subscribe(response => this.courses = response);
+    // })
   }
 
 }

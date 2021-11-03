@@ -11,15 +11,17 @@ export class ExpectedCourseDirective implements OnInit {
 
   private testDay = new Date((new Date()).setDate(this.currentDate.getDate() - 14))
 
-  constructor(public element: ElementRef) {
-
-  }
+  constructor(public element: ElementRef) {  }
 
   ngOnInit() {
+    console.log('directive 0')
+    console.log(this.startCourseDate);
     this.isActualCourse(this.startCourseDate);
   }
 
   public isActualCourse(courseDate: Date): void | null {
+    courseDate = new Date(courseDate);
+
     if (
       (courseDate < this.currentDate) &&
       (courseDate.setHours(0, 0, 0, 0) >= this.testDay.setHours(0, 0, 0, 0))
