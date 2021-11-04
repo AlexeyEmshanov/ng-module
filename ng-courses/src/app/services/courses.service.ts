@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { ICourse } from '../model/interfaces/icourse';
-import { COURSES } from '../model/mock-data';
 import { AppSettings } from '../app.settings';
 import { Observable } from 'rxjs';
 
@@ -12,8 +11,6 @@ import { Observable } from 'rxjs';
   }
 )
 export class CoursesService {
-  // public courses: ICourse[] = _.cloneDeep(COURSES);
-
   public counter = 1;
 
   constructor(private http: HttpClient) { }

@@ -3,8 +3,8 @@ import { CoursesService } from 'src/app/services/courses.service';
 import { ICourse } from './../../model/interfaces/icourse';
 import { ModalWindowComponent, testAnimation } from '../modal-window/modal-window.component';
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
-import { Observable, of, Subscribable } from 'rxjs';
-import { debounce, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
+import { Observable, of, Subject, Subscribable } from 'rxjs';
+import { debounce, debounceTime, distinctUntilChanged, distinctUntilKeyChanged, filter, map, merge, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-page',
@@ -23,14 +23,13 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   public loadMoreBtnIsShown = true;
 
+  public searchTermSubj = new Subject<string>();
+
   constructor(
-    // public filterCoursesPipe: FilterCoursesPipe,
     public coursesService: CoursesService,
-    // public cd: ChangeDetectorRef
   ) {  }
 
   ngOnInit(): void {
-    // this.courses = this.coursesService.getCoursesList()
     this.coursesService.getCoursesList().subscribe(response => this.courses = response);
   }
 
@@ -38,16 +37,16 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
     console.log("modalWindow:", this.modalWindow?.testMethod());
   }
 
-  onSearchClick() {
-    if (this.searchField === '') {
-      this.coursesService.resetCounter();
-      this.coursesService.getCoursesList().subscribe(response => this.courses = response);
-      this.showLoadMoreBtn();
-    } else {
-      this.coursesService.searchCourse(this.searchField).subscribe(response => this.courses = response)
-      this.hideLoadMoreBtn();
-    }
-  }
+  // onSearchClick() {
+  //   if (this.searchField === '') {
+  //     this.coursesService.resetCounter();
+  //     this.coursesService.getCoursesList().subscribe(response => this.courses = response);
+  //     this.showLoadMoreBtn();
+  //   } else {
+  //     this.coursesService.searchCourse(this.searchField).subscribe(response => this.courses = response)
+  //     this.hideLoadMoreBtn();
+  //   }
+  // }
 
   onLoadMoreClick() {
     this.coursesService.counterUp();
@@ -77,34 +76,50 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   showLoadMoreBtn(): void {
+    console.log('show load more started')
     this.loadMoreBtnIsShown = true;
   }
 
-  // public searchObservable = new Observable<string>((subscriber) => {
-  //   subscriber.next();
-  // })
+  public onChangeSearchField() {
+
+    // console.log({searchFragment})
+    // if (searchFragment === '') {
+    //   this.coursesService.resetCounter();
+    //   console.log('123')
+    //   this.coursesService.getCoursesList().subscribe(response => {console.log(response); this.courses = response});
+    //   this.showLoadMoreBtn();
+    // } else {
+    //   console.log('456')
+    //   this.searchTerm.next(searchFragment);
+    //   this.searchTerm.pipe(
+    //     debounceTime(1000),
+    //     distinctUntilChanged(),
+    //     switchMap((searchResult) => {
+    //       return this.coursesService.searchCourse(searchResult)
+    //     }),
+    //   ).subscribe((data) => this.courses = data)
+    //   this.hideLoadMoreBtn();
+    // }
 
 
-  public onChangeSearchField(searchFragment: string) {
-    const searchObservable = of(searchFragment)
-
-
-    searchObservable.pipe(
-      filter(search => search.length >= 3)
-    ).subscribe((search) => {
-
-
-      console.log(search);
-      this.coursesService.searchCourse(searchFragment)
-
-      .subscribe(response => this.courses = response);
-    })
-
-
-    // this.searchObservable.subscribe(() => {
-    //   console.log(searchFragment);
-    //   this.coursesService.searchCourse(searchFragment).subscribe(response => this.courses = response);
-    // })
+    this.searchTermSubj.next(this.searchField);
+      this.searchTermSubj.pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+        filter((search: string) => (search.length >= 3) || (search === '')),
+        switchMap((searchResult: string): Observable<ICourse[]> => {
+          if (this.searchField === '') {
+            console.log('1');
+            this.coursesService.resetCounter();
+            this.showLoadMoreBtn();
+            return this.coursesService.getCoursesList();
+          } else {
+            console.log('2');
+            this.hideLoadMoreBtn();
+            return this.coursesService.searchCourse(searchResult)
+          }
+        }),
+      ).subscribe((data) => this.courses = data)
   }
 
 }

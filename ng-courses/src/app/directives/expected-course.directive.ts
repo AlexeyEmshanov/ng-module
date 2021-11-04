@@ -14,8 +14,6 @@ export class ExpectedCourseDirective implements OnInit {
   constructor(public element: ElementRef) {  }
 
   ngOnInit() {
-    console.log('directive 0')
-    console.log(this.startCourseDate);
     this.isActualCourse(this.startCourseDate);
   }
 
