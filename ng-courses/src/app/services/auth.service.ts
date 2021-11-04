@@ -6,6 +6,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../model/interfaces/iuser';
 import { User } from '../model/user';
 import { AppSettings } from '../app.settings';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -34,19 +35,21 @@ export class AuthService {
     window.localStorage.clear();
   }
 
-  public isAuth(): boolean {
-    return (this.getUserInfo()) ? true : false
+  public isAuth(): Observable<boolean> {
+    return this.getUserInfo().pipe(
+      map((result) => (result !== null) ? true : false
+    ))
   }
 
-  public getUserInfo(): string | null {
+  public getUserInfo(): Observable<string | null> {
     const login = localStorage.key(0)
     const userInfo = localStorage.getItem(login as string);
 
     if (userInfo) {
-      return JSON.parse(userInfo).name.first;
+      return of(JSON.parse(userInfo).name.first);
     } else {
       console.log('User is not login');
-      return null
+      return of(null)
     }
   }
 
