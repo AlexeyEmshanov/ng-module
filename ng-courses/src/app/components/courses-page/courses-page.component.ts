@@ -81,27 +81,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   public onChangeSearchField() {
-
-    // console.log({searchFragment})
-    // if (searchFragment === '') {
-    //   this.coursesService.resetCounter();
-    //   console.log('123')
-    //   this.coursesService.getCoursesList().subscribe(response => {console.log(response); this.courses = response});
-    //   this.showLoadMoreBtn();
-    // } else {
-    //   console.log('456')
-    //   this.searchTerm.next(searchFragment);
-    //   this.searchTerm.pipe(
-    //     debounceTime(1000),
-    //     distinctUntilChanged(),
-    //     switchMap((searchResult) => {
-    //       return this.coursesService.searchCourse(searchResult)
-    //     }),
-    //   ).subscribe((data) => this.courses = data)
-    //   this.hideLoadMoreBtn();
-    // }
-
-
     this.searchTermSubj.next(this.searchField);
       this.searchTermSubj.pipe(
         debounceTime(1000),
