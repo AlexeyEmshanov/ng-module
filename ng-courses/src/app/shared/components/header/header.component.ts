@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -7,15 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+
+  public userName$: Observable<string | null> = of('');
 
   constructor(public authService: AuthService) { }
 
-  // ngOnInit() {
-  //   this.authService.login('admin', JSON.stringify(testUser))
-  // }
+  ngOnInit() {
+    this.userName$ = of(this.authService.getUserInfo());
+  }
 
-  // onLogout() {
-  //   this.authService.logout();
-  // }
 }

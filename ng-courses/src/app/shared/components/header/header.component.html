@@ -1,7 +1,8 @@
 <header>
   <app-logo></app-logo>
   <div class="header-controls" *ngIf="authService.isAuth()">
-    <div>{{ authService.getUserInfo() }}</div>
+    <!-- <div>{{ authService.getUserInfo() }}</div> -->
+    <div>{{ userName$ | async }}</div>
     <button
       class="btn"
       (click)="authService.logout()"

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../model/interfaces/iuser';
 import { User } from '../model/user';
 import { AppSettings } from '../app.settings';
@@ -22,6 +22,7 @@ export class AuthService {
           this.router.navigate(['courses']);
         }
       },
+      (err: Error) => console.log('Invalid login / password pair', err),
     )
   }
 
@@ -60,4 +61,5 @@ export class AuthService {
       return null;
     }
   }
+
 }
