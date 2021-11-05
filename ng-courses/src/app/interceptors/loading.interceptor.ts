@@ -18,7 +18,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     this.loadingService.showloadingWindow();
 
     return next.handle(request).pipe(
-      finalize(() => { setTimeout(() => {this.loadingService.hideLoadingWindow()}, 500)})
+      finalize(() => { setTimeout(() => {this.loadingService.hideLoadingWindow()}, 1000)})
     );
   }
 }

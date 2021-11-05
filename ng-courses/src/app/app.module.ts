@@ -20,7 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoadingWindowComponent } from './components/loading-window/loading-window.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     EditPageModule,
     NotFoundPageModule,
     BreadcrumbsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

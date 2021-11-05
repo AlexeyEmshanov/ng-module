@@ -1,3 +1,5 @@
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
 /* You can add global styles to this file, and also import other style files */
 
 /* roboto-regular - latin_cyrillic */
@@ -62,23 +64,6 @@ input {
   width: 100%;
 }
 
-// .app-container {
-//   width: 100%;
-//   min-height: 1000px;
-//   display: flex;
-//   flex-direction: column;
-// }
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-// app-footer,
-// app-header {
-//   flex-shrink: 0;
-// }
-
-// app-courses-page {
-//   height: 100%;
-//   // display: flex;
-//   // flex-direction: column;
-//   flex-grow: 1;
-//   overflow: auto;
-
-// }
