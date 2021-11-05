@@ -18,6 +18,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/components/breadcrumbs/bread
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LoadingWindowComponent } from './components/loading-window/loading-window.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CourseItemComponent,
     ExpectedCourseDirective,
     ModalWindowComponent,
+    LoadingWindowComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [ AppComponent ],
 })

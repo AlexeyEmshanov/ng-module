@@ -5,6 +5,7 @@ import { ModalWindowComponent, testAnimation } from '../modal-window/modal-windo
 import { FilterCoursesPipe } from 'src/app/shared/pipes/filter-courses.pipe';
 import { Observable, of, Subject, Subscribable } from 'rxjs';
 import { debounce, debounceTime, distinctUntilChanged, distinctUntilKeyChanged, filter, map, merge, switchMap, tap } from 'rxjs/operators';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-courses-page',
@@ -27,6 +28,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     public coursesService: CoursesService,
+    private loadingService: LoadingService
   ) {  }
 
   ngOnInit(): void {
@@ -82,23 +84,23 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   public onChangeSearchField() {
     this.searchTermSubj.next(this.searchField);
-      this.searchTermSubj.pipe(
-        debounceTime(1000),
-        distinctUntilChanged(),
-        filter((search: string) => (search.length >= 3) || (search === '')),
-        switchMap((searchResult: string): Observable<ICourse[]> => {
-          if (this.searchField === '') {
-            console.log('1');
-            this.coursesService.resetCounter();
-            this.showLoadMoreBtn();
-            return this.coursesService.getCoursesList();
-          } else {
-            console.log('2');
-            this.hideLoadMoreBtn();
-            return this.coursesService.searchCourse(searchResult)
-          }
-        }),
-      ).subscribe((data) => this.courses = data)
+    this.searchTermSubj.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+      filter((search: string) => (search.length >= 3) || (search === '')),
+      switchMap((searchResult: string): Observable<ICourse[]> => {
+        if (this.searchField === '') {
+          console.log('1');
+          this.coursesService.resetCounter();
+          this.showLoadMoreBtn();
+          return this.coursesService.getCoursesList();
+        } else {
+          console.log('2');
+          this.hideLoadMoreBtn();
+          return this.coursesService.searchCourse(searchResult)
+        }
+      }),
+    ).subscribe((data) => this.courses = data)
   }
 
 }
