@@ -13,7 +13,7 @@ export class LoadingService {
 
   constructor() {}
 
-  public showloadingWindow() {
+  public showLoadingWindow() {
     this.loadingSubject.next(true);
   }
 

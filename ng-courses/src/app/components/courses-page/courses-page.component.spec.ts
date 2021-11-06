@@ -96,20 +96,27 @@ describe('CoursesPageComponent', () => {
     expect(courseItemsArr.length).toBe(mockCourses.length);
   });
 
-  it('should return all courses (2 at test) if searchField is empty', () => {
+  it('should return all courses (2 at test) if searchField is empty', fakeAsync( () => {
     spyOn(coursesService, 'resetCounter');
     spyOn(component, 'showLoadMoreBtn');
     spyOn(coursesService, 'getCoursesList').and.returnValue(of(mockCourses));
     component.searchField = '';
+    component.onChangeSearchField();
     // component.onSearchClick();
 
-    fixture.detectChanges();
+    component.searchTermSubj.subscribe((data) => console.log('111'));
+    fixture.detectChanges()
 
+    // tick(1500);
+    fixture.detectChanges()
+
+    console.log('field in test: ', component.searchField);
     debugElements = fixture.debugElement.queryAll(By.css('app-course-item'));
+    // tick(1500);
     expect(coursesService.resetCounter).toHaveBeenCalled();
     expect(component.showLoadMoreBtn).toHaveBeenCalled();
     expect(debugElements.length).toBe(2);
-  })
+  }))
 
   it('should return only 1 course containig testing search phrase "Very"', () => {
     spyOn(component, 'hideLoadMoreBtn');

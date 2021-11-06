@@ -7,6 +7,7 @@ import { HeaderComponent } from './header.component';
 import { TEST_USER } from 'src/app/model/user';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 describe('HeaderComponent', () => {
 
@@ -41,7 +42,7 @@ describe('HeaderComponent', () => {
   });
 
   it('header after login should contain header control elements', () => {
-    spyOn(authService, 'isAuth').and.returnValue(true);
+    spyOn(authService, 'isAuth').and.returnValue(of(true));
 
     fixture.detectChanges();
 

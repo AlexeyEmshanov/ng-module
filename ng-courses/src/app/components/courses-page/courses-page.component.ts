@@ -83,12 +83,15 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   public onChangeSearchField() {
+    console.log('start')
     this.searchTermSubj.next(this.searchField);
     this.searchTermSubj.pipe(
+      tap(() => console.log('start 1-1')),
       debounceTime(1000),
       distinctUntilChanged(),
       filter((search: string) => (search.length >= 3) || (search === '')),
       switchMap((searchResult: string): Observable<ICourse[]> => {
+        console.log('start 2')
         if (this.searchField === '') {
           console.log('1');
           this.coursesService.resetCounter();

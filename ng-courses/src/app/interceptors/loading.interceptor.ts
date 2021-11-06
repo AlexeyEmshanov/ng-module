@@ -15,10 +15,11 @@ export class LoadingInterceptor implements HttpInterceptor {
   constructor(private loadingService: LoadingService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.loadingService.showloadingWindow();
+    console.log('interception')
+    this.loadingService.showLoadingWindow();
 
     return next.handle(request).pipe(
-      finalize(() => { setTimeout(() => {this.loadingService.hideLoadingWindow()}, 1000)})
+      finalize(() => { setTimeout(() => {this.loadingService.hideLoadingWindow(); console.log('finilize 2')}, 1000)})
     );
   }
 }

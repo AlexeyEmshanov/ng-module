@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, Subscription, of, throwError } from 'rxjs';
@@ -84,15 +84,20 @@ describe('AuthService', () => {
   it('isAuth() should return false if user is not login', () => {
     // service.login(testlogin, JSON.stringify(testUser));
     window.localStorage.clear();
-    expect(authService.isAuth()).toBeFalse();
+
+    authService.isAuth().subscribe(data => {
+      expect(data).toBeFalse()
+    })
   });
 
   it('isAuth() should return true if user is login', () => {
-    spyOn(authService, 'getUserInfo').and.returnValue(JSON.stringify(testUser));
+    spyOn(authService, 'getUserInfo').and.returnValue(of(JSON.stringify(testUser)));
 
     authService.isAuth();
 
-    expect(authService.isAuth()).toBeTrue();
+    authService.isAuth().subscribe(data => {
+      expect(data).toBeTrue()
+    })
   });
 
   it('getUserInfo should return null, if user is not login', () => {
@@ -102,14 +107,19 @@ describe('AuthService', () => {
   });
 
 
-  it('getUserInfo should return user first name, if user is login', () => {
+  it('getUserInfo should return user first name, if user is login', fakeAsync(() => {
     spyOn(window.localStorage, 'getItem').and.callFake(() => JSON.stringify(testUser))
-    expect(authService.getUserInfo()).toEqual(testUser.name.first);
-  });
+    authService.getUserInfo().subscribe(data => {
+      expect(data).toEqual(testUser.name.first)
+    })
+  }));
 
   it('getUserToken should return null, if user is not login', () => {
     spyOn(window.localStorage, 'getItem').and.callFake(() => null)
-    expect(authService.getUserToken()).toEqual(null);
+
+    authService.getUserInfo().subscribe(data => {
+      expect(data).toEqual(null)
+    })
   });
 
 

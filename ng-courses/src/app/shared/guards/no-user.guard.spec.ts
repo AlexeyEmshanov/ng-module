@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoUserGuard } from './no-user.guard';
 import { Router, RouterState, RouterStateSnapshot } from '@angular/router';
+import { of } from 'rxjs';
 
 
 describe('NoUserGuard', () => {
@@ -30,14 +31,18 @@ describe('NoUserGuard', () => {
   });
 
   it('should not redirect an authenticated user to the courses page', () => {
-    spyOn(authService, 'isAuth').and.returnValue(false);
-    expect(guard.canActivate()).toEqual(true);
+    spyOn(authService, 'isAuth').and.returnValue(of(false));
+    guard.canActivate().subscribe(data => {
+      expect(data).toEqual(true);
+    })
     expect(routerMock.navigate).not.toHaveBeenCalledWith(['courses']);
   })
 
   it('should redirect an authenticated user to the courses page', () => {
-    spyOn(authService, 'isAuth').and.returnValue(true);
-    expect(guard.canActivate()).toEqual(false);
+    spyOn(authService, 'isAuth').and.returnValue(of(true));
+    guard.canActivate().subscribe(data => {
+      expect(data).toEqual(false);
+    })
     expect(routerMock.navigate).toHaveBeenCalledWith(['courses']);
 
   })
