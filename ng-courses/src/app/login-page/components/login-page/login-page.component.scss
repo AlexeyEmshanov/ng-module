@@ -61,3 +61,8 @@
 .btn_login{
   margin-top: 2.5em;
 }
+
+.btn_login:disabled {
+  background-color: #99a5b1;
+  pointer-events: none;
+}

@@ -2,8 +2,10 @@
 
 <form [formGroup]="addCourseForm" class="add-page__container" (ngSubmit)="onSubmit()">
   <section class="add-page__input-section">
-    <label class="input-section__label" for="title">Title:</label>
-    <div class="invalid-input__message" *ngIf="addCourseForm.controls['title'].invalid && (addCourseForm.controls['title'].touched || addCourseForm.controls['title'].dirty) ">This field is required, and shoul be up to 50 letters</div>
+    <div class="input-section__message-box">
+      <label class="input-section__label" for="title">Title:</label>
+      <div class="invalid-input__message" *ngIf="addCourseForm.controls['title'].invalid && (addCourseForm.controls['title'].touched || addCourseForm.controls['title'].dirty) ">This field is required, and shoul be up to 50 letters</div>
+    </div>
     <input
       class="input-section__input"
       [ngClass]="(addCourseForm.controls['title'].invalid && (addCourseForm.controls['title'].touched || addCourseForm.controls['title'].dirty)) ? 'invalid-input': '' "
@@ -15,8 +17,10 @@
   </section>
 
   <section class="add-page__input-section">
-    <label class="input-section__label" for="description">Description:</label>
-    <div class="invalid-input__message" *ngIf="addCourseForm.controls['description'].invalid && (addCourseForm.controls['description'].touched || addCourseForm.controls['description'].dirty) ">This field is required, and shoul be up to 500 letters</div>
+    <div class="input-section__message-box">
+      <label class="input-section__label" for="description">Description:</label>
+      <div class="invalid-input__message" *ngIf="addCourseForm.controls['description'].invalid && (addCourseForm.controls['description'].touched || addCourseForm.controls['description'].dirty) ">This field is required, and shoul be up to 500 letters</div>
+    </div>
     <textarea
       class="input-section__input input-section__input_textarea"
       [ngClass]="(addCourseForm.controls['description'].invalid && (addCourseForm.controls['description'].touched || addCourseForm.controls['description'].dirty)) ? 'invalid-input': '' "
@@ -30,6 +34,7 @@
   </section>
 
   <section class="add-page__input-section add-page__input-section_short">
+
     <label class="input-section__label" for="date">Date:</label>
     <input
       class="input-section__input"
@@ -42,7 +47,7 @@
 
   <div class="add-page__controls">
     <button class="btn" type="submit" >Save</button>
-    <button class="btn" routerLink="/courses">Cancel</button>
+    <button class="btn" type="button" routerLink="/courses">Cancel</button>
   </div>
 </form>
 

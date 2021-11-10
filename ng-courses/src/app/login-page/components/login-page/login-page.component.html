@@ -1,24 +1,26 @@
 <app-header></app-header>
-  <div class="login-page__container">
+  <form class="login-page__container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="login-page__content">
       <div class="login-page__title-wrapper">
         <h3 class="login-page__title">Please login</h3>
       </div>
       <div class="input-wrapper">
         <label class="login-page__label" for="login">Login</label>
-        <input class="login-page__input" type="text" id="login" [(ngModel)]="userLogin">
+        <input class="login-page__input" type="text" id="login" formControlName="login">
       </div>
 
       <div class="input-wrapper">
         <label class="login-page__label" for="password">Password</label>
-        <input class="login-page__input" type="text" id="password" [(ngModel)]="userPassword">
+        <input class="login-page__input" type="text" id="password" formControlName="password">
       </div>
 
       <button
         class="btn btn_login"
-        (click)="onLoginClick()"
+        type="submit"
+        [disabled]="!loginForm.valid"
       >Login</button>
-    </div>
+      </div>
+      <!-- (click)="onLoginClick()" -->
 
-  </div>
+  </form>
 <app-footer></app-footer>

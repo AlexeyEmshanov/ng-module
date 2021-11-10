@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,11 +15,16 @@ import { AuthService } from 'src/app/services/auth.service';
 
 })
 export class LoginPageComponent {
-  public userLogin?: string;
+  // public userLogin?: string;
 
-  public userPassword?: string;
+  // public userPassword?: string;
 
   public user?: IUser;
+
+  loginForm = new FormGroup({
+    login: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  })
 
   constructor(public authService: AuthService, private router: Router) {
 
@@ -28,14 +34,16 @@ export class LoginPageComponent {
   //   this.user = testUser
   // }
 
-  public onLoginClick() {
-    console.log('1', this.userLogin, this.userPassword);
-    if ((this.userLogin) && (this.userPassword)) {
-      console.log('2');
-      this.authService.login(this.userLogin, this.userPassword);
-    }
+  // public onLoginClick() {
+  //   console.log('1', this.userLogin, this.userPassword);
+  //   if ((this.userLogin) && (this.userPassword)) {
+  //     console.log('2');
+  //     this.authService.login(this.userLogin, this.userPassword);
+  //   }
+  // }
+
+  public onSubmit() {
+    this.authService.login(this.loginForm.get('login')?.value, this.loginForm.get('password')?.value);
   }
-
-
 
 }
