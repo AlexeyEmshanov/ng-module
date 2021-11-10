@@ -1,6 +1,54 @@
 <app-header></app-header>
 
-  <div class="add-page__container">
+<form [formGroup]="addCourseForm" class="add-page__container" (ngSubmit)="onSubmit()">
+  <section class="add-page__input-section">
+    <label class="input-section__label" for="title">Title:</label>
+    <div class="invalid-input__message" *ngIf="addCourseForm.controls['title'].invalid && (addCourseForm.controls['title'].touched || addCourseForm.controls['title'].dirty) ">This field is required, and shoul be up to 50 letters</div>
+    <input
+      class="input-section__input"
+      [ngClass]="(addCourseForm.controls['title'].invalid && (addCourseForm.controls['title'].touched || addCourseForm.controls['title'].dirty)) ? 'invalid-input': '' "
+      type="text"
+      placeholder="Enter new course title"
+      id="title"
+      formControlName="title"
+    >
+  </section>
+
+  <section class="add-page__input-section">
+    <label class="input-section__label" for="description">Description:</label>
+    <div class="invalid-input__message" *ngIf="addCourseForm.controls['description'].invalid && (addCourseForm.controls['description'].touched || addCourseForm.controls['description'].dirty) ">This field is required, and shoul be up to 500 letters</div>
+    <textarea
+      class="input-section__input input-section__input_textarea"
+      [ngClass]="(addCourseForm.controls['description'].invalid && (addCourseForm.controls['description'].touched || addCourseForm.controls['description'].dirty)) ? 'invalid-input': '' "
+      type="text"
+      placeholder="Enter new course description"
+      id="description"
+      rows="5"
+      cols="50"
+      formControlName="description"
+    ></textarea>
+  </section>
+
+  <section class="add-page__input-section add-page__input-section_short">
+    <label class="input-section__label" for="date">Date:</label>
+    <input
+      class="input-section__input"
+      type="date"
+      placeholder="Enter new course start date"
+      id="date"
+      formControlName="date"
+    >
+  </section>
+
+  <div class="add-page__controls">
+    <button class="btn" type="submit" >Save</button>
+    <button class="btn" routerLink="/courses">Cancel</button>
+  </div>
+</form>
+
+
+
+  <!-- <div class="add-page__container">
     <section class="add-page__input-section">
       <label class="input-section__label" for="title">Title:</label>
       <input
@@ -66,7 +114,7 @@
       <button class="btn" (click)="onSaveClick()">Save</button>
       <button class="btn" routerLink="/courses">Cancel</button>
     </div>
-  </div>
+  </div> -->
 
   <!-- <app-course-details></app-course-details> -->
 

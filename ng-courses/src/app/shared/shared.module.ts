@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DurationCoursePipe } from './pipes/duration-course.pipe';
 import { FilterCoursesPipe } from './pipes/filter-courses.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
@@ -25,6 +25,7 @@ import { EditCourseResolver } from './guards/edit-course.resolver';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
   ],
   exports: [
@@ -36,7 +37,8 @@ import { EditCourseResolver } from './guards/edit-course.resolver';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [ FilterCoursesPipe, EditCourseResolver ]
 })

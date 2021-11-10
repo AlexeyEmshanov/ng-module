@@ -61,3 +61,31 @@
   margin-top: 5em;
 }
 
+// .ng-invalid:not(form) {
+//   color: red;
+// }
+
+.invalid-input__message {
+  // position: relative;
+  // top: 11.3%;
+  // right: 5%;
+  color: rgb(161, 22, 22);
+}
+
+.invalid-input {
+  border-color: rgb(161, 22, 22);
+  color: rgb(161, 22, 22);
+}
+
+.valid-input {
+  border-color: rgb(8, 131, 8);
+  color: rgb(8, 131, 8);
+}
+
+.ng-valid {
+  color: rgb(8, 131, 8);
+}
+
+// .ng-invalid {
+//   color: red;
+// }

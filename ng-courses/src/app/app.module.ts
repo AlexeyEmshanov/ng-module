@@ -21,6 +21,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoadingWindowComponent } from './components/loading-window/loading-window.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     NotFoundPageModule,
     BreadcrumbsModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    // ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
