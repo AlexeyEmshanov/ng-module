@@ -1,8 +1,17 @@
 <section class="add-page__input-section add-page__input-section_short">
-
-  <label class="input-section__label" for="date">Date:</label>
+  <div class="input-section__message-box"
+    [ngClass]="{
+      'invalid-input' : (childControl.get('dateCtrl')?.errors?.['validateDate'].dataInvalid !== null) && (childControl.get('dateCtrl')?.touched || childControl.get('dateCtrl')?.dirty),
+      'valid-input' : (childControl.get('dateCtrl')?.errors?.['validateDate'].dataInvalid === null)
+    }"
+  >
+    <label class="input-section__label" for="date">Date:</label>
+    <div *ngIf="childControl.get('dateCtrl')?.errors?.['validateDate'].dataInvalid !== null" class="invalid-input__message">{{childControl.get('dateCtrl')?.errors?.['validateDate'].dataInvalid}}</div>
+  </div>
   <input
     class="input-section__input"
+
+
     type="date"
     placeholder="Enter new course start date"
     id="date"
@@ -10,3 +19,4 @@
     (ngModelChange)="onChangeValue($event)"
     >
   </section>
+

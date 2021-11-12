@@ -2,13 +2,17 @@
 
 <form [formGroup]="addCourseForm" class="add-page__container" (ngSubmit)="onSubmit()">
   <section class="add-page__input-section">
-    <div class="input-section__message-box">
-      <label class="input-section__label" for="title">Title:</label>
+    <div class="input-section__message-box"
+      [ngClass]="{
+        'invalid-input': (addCourseForm.controls['titleCtrl'].invalid && (addCourseForm.controls['titleCtrl'].touched || addCourseForm.controls['titleCtrl'].dirty)),
+        'valid-input': addCourseForm.controls['titleCtrl'].valid
+      }"
+    >
+      <label class="input-section__label" for="title" >Title:</label>
       <div class="invalid-input__message" *ngIf="addCourseForm.controls['titleCtrl'].invalid && (addCourseForm.controls['titleCtrl'].touched || addCourseForm.controls['titleCtrl'].dirty) ">This field is required, and shoul be up to 50 letters</div>
     </div>
     <input
       class="input-section__input"
-      [ngClass]="(addCourseForm.controls['titleCtrl'].invalid && (addCourseForm.controls['titleCtrl'].touched || addCourseForm.controls['titleCtrl'].dirty)) ? 'invalid-input': '' "
       type="text"
       placeholder="Enter new course title"
       id="title"
@@ -17,13 +21,18 @@
   </section>
 
   <section class="add-page__input-section">
-    <div class="input-section__message-box">
+    <div class="input-section__message-box"
+      [ngClass]="{
+        'invalid-input': (addCourseForm.controls['descriptionCtrl'].invalid && (addCourseForm.controls['descriptionCtrl'].touched || addCourseForm.controls['descriptionCtrl'].dirty)),
+        'valid-input': addCourseForm.controls['descriptionCtrl'].valid
+      }"
+    >
       <label class="input-section__label" for="description">Description:</label>
       <div class="invalid-input__message" *ngIf="addCourseForm.controls['descriptionCtrl'].invalid && (addCourseForm.controls['descriptionCtrl'].touched || addCourseForm.controls['descriptionCtrl'].dirty) ">This field is required, and shoul be up to 500 letters</div>
     </div>
     <textarea
       class="input-section__input input-section__input_textarea"
-      [ngClass]="(addCourseForm.controls['descriptionCtrl'].invalid && (addCourseForm.controls['descriptionCtrl'].touched || addCourseForm.controls['descriptionCtrl'].dirty)) ? 'invalid-input': '' "
+
       type="text"
       placeholder="Enter new course description"
       id="description"
@@ -33,22 +42,11 @@
     ></textarea>
   </section>
 
-  <app-date-field formControlName="dateCtrl"></app-date-field>
-  <div>{{addCourseForm.get('dateCtrl')?.value}}</div>
-  <!-- <section class="add-page__input-section add-page__input-section_short">
-
-    <label class="input-section__label" for="date">Date:</label>
-    <input
-      class="input-section__input"
-      type="date"
-      placeholder="Enter new course start date"
-      id="date"
-      formControlName="date"
-    >
-  </section> -->
+  <app-date-field formControlName="dateCtrl" [childControl]="fromAbsToControl(addCourseForm)">
+  </app-date-field>
 
   <div class="add-page__controls">
-    <button class="btn" type="submit" >Save</button>
+    <button class="btn btn_submit" type="submit" [disabled]="!addCourseForm.valid">Save</button>
     <button class="btn" type="button" routerLink="/courses">Cancel</button>
   </div>
 </form>

@@ -10,6 +10,16 @@
   width: 25%;
 }
 
+.input-section__message-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.invalid-input__message {
+  color: rgb(161, 22, 22);
+}
+
 .input-section__label {
   margin-bottom: 0.5em;
 }
@@ -24,3 +34,18 @@
     outline: none;
   }
 }
+
+.invalid-input,
+.invalid-input + .input-section__input {
+  border-color: rgb(161, 22, 22);
+  color: rgb(161, 22, 22);
+}
+
+.valid-input,
+.valid-input + .input-section__input
+ {
+  border-color: rgb(8, 131, 8);
+  color: rgb(8, 131, 8);
+}
+
+
