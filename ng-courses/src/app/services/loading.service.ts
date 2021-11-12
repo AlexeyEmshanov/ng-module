@@ -20,6 +20,4 @@ export class LoadingService {
   public hideLoadingWindow() {
     this.loadingSubject.next(false);
   }
-
-
 }

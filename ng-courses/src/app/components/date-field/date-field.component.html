@@ -1,0 +1,12 @@
+<section class="add-page__input-section add-page__input-section_short">
+
+  <label class="input-section__label" for="date">Date:</label>
+  <input
+    class="input-section__input"
+    type="date"
+    placeholder="Enter new course start date"
+    id="date"
+    [ngModel]="dateValue | date: 'yyyy-MM-dd'"
+    (ngModelChange)="onChangeValue($event)"
+    >
+  </section>

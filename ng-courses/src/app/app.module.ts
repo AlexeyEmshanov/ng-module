@@ -22,6 +22,7 @@ import { LoadingWindowComponent } from './components/loading-window/loading-wind
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DateFieldComponent } from './components/date-field/date-field.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     BreadcrumbsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    // ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

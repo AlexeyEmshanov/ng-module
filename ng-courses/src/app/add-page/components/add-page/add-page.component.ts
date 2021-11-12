@@ -16,32 +16,44 @@ import { NewCourse } from '../../model/newCourse';
 export class AddPageComponent {
   addCourseForm: FormGroup = new FormGroup(
     {
-      title: new FormControl('', [ Validators.required, Validators.maxLength(10) ],),
-      description: new FormControl('', [ Validators.required, Validators.maxLength(20) ]),
-      date: new FormControl(''),
+      titleCtrl: new FormControl('', [ Validators.required, Validators.maxLength(10) ],),
+      descriptionCtrl: new FormControl('', [ Validators.required, Validators.maxLength(20) ]),
+      dateCtrl: new FormControl(new Date(), [Validators.required]),
     },
     { updateOn: 'blur' }
   )
 
 
-  public newCourse = new Course(this.generateID(), '', '', false, new Date(), [], 0);
+  // public newCourse = new Course(this.generateID(), '', '', false, new Date(), [], 0);
 
   constructor(private coursesService: CoursesService, private router: Router, private formBuilder: FormBuilder) { }
 
   // ngOnInit(): void {
   // }
 
-  public onSaveClick() {
-    this.coursesService.createCourse(this.newCourse).subscribe();
-    this.router.navigate(['courses']);
-  }
-
   public generateID() {
     return Math.floor(Math.random() * 100) + 1
+  }
+
+  public generateCourse () {
+    console.log('test 2', this.addCourseForm.get('date')?.value)
+    const newCourse = new Course(
+      this.generateID(),
+      this.addCourseForm.get('title')?.value,
+      this.addCourseForm.get('description')?.value,
+      false,
+      this.addCourseForm.get('date')?.value,
+      [],
+      50
+      )
+
+    return newCourse;
   }
 
   public onSubmit() {
     console.log('Submitting', this.addCourseForm.get('title')?.value, this.addCourseForm.get('description')?.value)
     console.log(this.addCourseForm.status, this.addCourseForm.dirty, this.addCourseForm.touched);
+    this.coursesService.createCourse(this.generateCourse()).subscribe();
+    this.router.navigate(['courses']);
   }
 }

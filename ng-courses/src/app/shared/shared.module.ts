@@ -10,6 +10,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { BreadcrumbsModule } from '../breadcrumbs/breadcrumbs.module';
 import { EditCourseResolver } from './guards/edit-course.resolver';
+import { DateFieldComponent } from '../components/date-field/date-field.component';
 
 
 
@@ -21,6 +22,7 @@ import { EditCourseResolver } from './guards/edit-course.resolver';
     HeaderComponent,
     FooterComponent,
     LogoComponent,
+    DateFieldComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { EditCourseResolver } from './guards/edit-course.resolver';
     FooterComponent,
     LogoComponent,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateFieldComponent
   ],
   providers: [ FilterCoursesPipe, EditCourseResolver ]
 })

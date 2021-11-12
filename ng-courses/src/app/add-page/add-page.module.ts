@@ -7,6 +7,7 @@ import { AddPageComponent } from './components/add-page/add-page.component';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
+import { DateFieldComponent } from '../components/date-field/date-field.component';
 
 
 
@@ -17,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     SharedModule,
   ],
-  exports: [ AddPageComponent, HeaderComponent, FooterComponent ],
+  exports: [ AddPageComponent, HeaderComponent, FooterComponent, DateFieldComponent ],
   providers: [],
 })
 export class AddPageModule { }

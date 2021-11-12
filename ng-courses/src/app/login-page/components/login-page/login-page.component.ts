@@ -15,10 +15,6 @@ import { AuthService } from 'src/app/services/auth.service';
 
 })
 export class LoginPageComponent {
-  // public userLogin?: string;
-
-  // public userPassword?: string;
-
   public user?: IUser;
 
   loginForm = new FormGroup({
@@ -32,14 +28,6 @@ export class LoginPageComponent {
 
   // ngOnInit(): void {
   //   this.user = testUser
-  // }
-
-  // public onLoginClick() {
-  //   console.log('1', this.userLogin, this.userPassword);
-  //   if ((this.userLogin) && (this.userPassword)) {
-  //     console.log('2');
-  //     this.authService.login(this.userLogin, this.userPassword);
-  //   }
   // }
 
   public onSubmit() {

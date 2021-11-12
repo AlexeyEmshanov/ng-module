@@ -1,0 +1,26 @@
+.add-page__input-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 1em 0;
+  align-self: flex-start;
+}
+
+.add-page__input-section_short {
+  width: 25%;
+}
+
+.input-section__label {
+  margin-bottom: 0.5em;
+}
+
+.input-section__input {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px slategray solid;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+}

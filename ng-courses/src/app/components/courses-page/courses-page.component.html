@@ -23,17 +23,20 @@
     >
     </app-modal-window>
 
-    <ul class="courses-list" >
-      <app-course-item
-        *ngFor="let course of courses | orderBy"
-        [courseItem]="course"
-        (deleteCourse)="onDeleteCourse($event)"
-      >
-      </app-course-item>
-    </ul>
+    <div *ngIf="courses$ | async as courses">
+      <ul class="courses-list">
+        <app-course-item
+          *ngFor="let course of courses | orderBy"
+          [courseItem]="course"
+          (deleteCourse)="onDeleteCourse($event)"
+        >
+        </app-course-item>
+      </ul>
 
-    <div class="course-page__empty-message" *ngIf="getIsEmpty()">no data. feel free to add new course</div>
-    <button class="btn_load-more btn" *ngIf="!getIsEmpty() && loadMoreBtnIsShown" (click)="onLoadMoreClick()">load more</button>
+      <div class="course-page__empty-message" *ngIf="courses.length === 0">no data. feel free to add new course</div>
+      <button class="btn_load-more btn" *ngIf="courses.length !== 0 && loadMoreBtnIsShown" (click)="onLoadMoreClick()">load more</button>
+
+    </div>
 
   </div>
 
