@@ -12,6 +12,8 @@ import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_V
 })
 export class DurationFieldComponent implements ControlValueAccessor, Validator {
 
+  errorMessage = 'should be a number greater than 0';
+
   @Input() durationValue?: number
 
   @Input() childControl!: FormControl;
@@ -46,9 +48,9 @@ export class DurationFieldComponent implements ControlValueAccessor, Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     console.log('validation', (typeof control.value) === 'number')
 
-    return ((typeof control.value) === 'number') ? null :  {
+    return ((typeof control.value) === 'number' && control.value !== 0 ) ? null :  {
       validateDuration: {
-        dataInvalid: 'Duration should be a number'
+        dataInvalid: this.errorMessage
       }
     }
   }

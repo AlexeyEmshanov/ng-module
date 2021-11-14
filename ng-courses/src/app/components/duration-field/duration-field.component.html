@@ -1,8 +1,8 @@
 <section class="add-page__input-section add-page__input-section_short">
   <div class="input-section__message-box"
     [ngClass]="{
-      'invalid-input' : (childControl.get('durationCtrl')?.errors?.['validateDuration'].dataInvalid !== null) && (childControl.get('durationCtrl')?.touched || childControl.get('durationCtrl')?.dirty),
-      'valid-input' : (childControl.get('durationCtrl')?.errors?.['validateDuration'].dataInvalid === null)
+      'invalid-input' : (childControl.get('durationCtrl')?.invalid) && (childControl.get('durationCtrl')?.touched || childControl.get('durationCtrl')?.dirty),
+      'valid-input' : (childControl.get('durationCtrl')?.valid)
     }"
   >
     <label class="input-section__label" for="duration">Duration:</label>

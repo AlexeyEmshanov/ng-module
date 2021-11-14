@@ -20,7 +20,7 @@ export class AddPageComponent  {
       titleCtrl: new FormControl('', [ Validators.required, Validators.maxLength(10) ],),
       descriptionCtrl: new FormControl('', [ Validators.required, Validators.maxLength(20) ]),
       dateCtrl: new FormControl(new Date(), [] ),
-      durationCtrl: new FormControl(null, [ Validators.required ] )
+      durationCtrl: new FormControl(null, [ Validators.required,  ] )
     },
     { updateOn: 'change' }
   )
@@ -36,7 +36,6 @@ export class AddPageComponent  {
   }
 
   public generateCourse () {
-    console.log('test 2', this.addCourseForm.get('dateCtrl')?.value)
     const newCourse = new Course(
       this.generateID(),
       this.addCourseForm.get('titleCtrl')?.value,
@@ -44,7 +43,7 @@ export class AddPageComponent  {
       false,
       this.addCourseForm.get('dateCtrl')?.value,
       [],
-      50
+      this.addCourseForm.get('durationCtrl')?.value
     )
 
     return newCourse;
@@ -60,5 +59,5 @@ export class AddPageComponent  {
   public fromAbsToControl(absCtrl: AbstractControl): FormControl {
     const ctrl = absCtrl as FormControl;
     return ctrl as FormControl;
-}
+  }
 }

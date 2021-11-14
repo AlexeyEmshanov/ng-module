@@ -1,23 +1,40 @@
 <app-header></app-header>
 
-
-<div class="edit-page__container">
+<form [formGroup]="editCourseForm" class="edit-page__container" (ngSubmit)="onSubmit()">
 
   <app-breadcrumbs></app-breadcrumbs>
 
     <section class="edit-page__input-section">
-      <label class="input-section__label" for="title">Title:</label>
+      <div class="input-section__message-box"
+        [ngClass]="{
+          'invalid-input': (editCourseForm.controls['titleCtrl'].invalid),
+          'valid-input': editCourseForm.controls['titleCtrl'].valid
+        }"
+      >
+      <label class="input-section__label" for="title" >Title:</label>
+      <div class="invalid-input__message" *ngIf="editCourseForm.controls['titleCtrl'].invalid && (editCourseForm.controls['titleCtrl'].touched || editCourseForm.controls['titleCtrl'].dirty) ">This field is required, and shoul be up to 50 letters</div>
+    </div>
       <input
         class="input-section__input"
         type="text"
         placeholder="Enter new course title"
         id="title"
         [(ngModel)]="selectedCourse.name"
+        formControlName="titleCtrl"
       >
     </section>
 
     <section class="edit-page__input-section">
-      <label class="input-section__label" for="description">Description:</label>
+      <div class="input-section__message-box"
+        [ngClass]="{
+          'invalid-input': editCourseForm.controls['descriptionCtrl'].invalid,
+          'valid-input': editCourseForm.controls['descriptionCtrl'].valid
+        }"
+      >
+        <label class="input-section__label" for="description">Description:</label>
+        <div class="invalid-input__message" *ngIf="editCourseForm.controls['descriptionCtrl'].invalid && (editCourseForm.controls['descriptionCtrl'].touched || editCourseForm.controls['descriptionCtrl'].dirty) ">This field is required, and shoul be up to 500 letters</div>
+      </div>
+
       <textarea
         class="input-section__input input-section__input_textarea"
         type="text"
@@ -25,36 +42,16 @@
         id="description"
         rows="5"
         cols="50"
-        maxlength="300"
         [(ngModel)]="selectedCourse.description"
+        formControlName="descriptionCtrl"
       ></textarea>
     </section>
 
-    <section class="edit-page__input-section edit-page__input-section_short">
-      <label class="input-section__label" for="date">Date:</label>
-      <input
-        class="input-section__input"
-        type="date"
-        placeholder="Enter new course start date"
-        id="date"
-        [ngModel]="selectedCourse.date | date: 'yyyy-MM-dd'"
-        (ngModelChange)="selectedCourse.date=$event"
-      >
-    </section>
+    <app-date-field formControlName="dateCtrl" [childControl]="fromAbsToControl(editCourseForm)">
+    </app-date-field>
 
-    <section class="edit-page__input-section">
-      <label class="input-section__label" for="duration">Duration:</label>
-      <div class="input-section__wrapper">
-        <input
-          class="input-section__input input-section__input_duration"
-          type="number"
-          placeholder="Enter new course duration in minutes"
-          id="duration"
-          [(ngModel)]="selectedCourse.length"
-        >
-        <div class="represent__duration">{{(selectedCourse.length === undefined) ? '': selectedCourse.length | durationCourse}}</div>
-      </div>
-    </section>
+    <app-duration-field formControlName="durationCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-duration-field>
+    <!--
 
     <section class="edit-page__input-section">
       <label class="input-section__label" for="authors">Authors:</label>
@@ -66,12 +63,12 @@
         [(ngModel)]="courseAuthors"
       >
     </section>
+  -->
 
     <div class="edit-page__controls">
 
-      <button class="btn" (click)="onSave()">Save</button>
+      <button class="btn btn_submit" type="submit" [disabled]="editCourseForm.invalid">Save</button>
       <button class="btn" routerLink="/courses">Cancel</button>
     </div>
-  </div>
-
+  </form>
 <app-footer></app-footer>
