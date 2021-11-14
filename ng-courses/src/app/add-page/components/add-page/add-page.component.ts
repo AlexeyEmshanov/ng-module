@@ -14,21 +14,22 @@ import * as moment from 'moment'
   templateUrl: './add-page.component.html',
   styleUrls: ['./add-page.component.scss'],
 })
-export class AddPageComponent implements OnInit {
+export class AddPageComponent  {
   addCourseForm: FormGroup = new FormGroup(
     {
       titleCtrl: new FormControl('', [ Validators.required, Validators.maxLength(10) ],),
       descriptionCtrl: new FormControl('', [ Validators.required, Validators.maxLength(20) ]),
       dateCtrl: new FormControl(new Date(), [] ),
+      durationCtrl: new FormControl(null, [ Validators.required ] )
     },
     { updateOn: 'change' }
   )
 
   constructor(private coursesService: CoursesService, private router: Router, private formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
-    this.addCourseForm.controls.dateCtrl.valueChanges.subscribe(data => {console.log('STATUS: ', this.addCourseForm.pristine)})
-  }
+  // ngOnInit(): void {
+  //   // this.addCourseForm.controls.dateCtrl.valueChanges.subscribe(data => {console.log('STATUS: ', this.addCourseForm.pristine)})
+  // }
 
   public generateID() {
     return Math.floor(Math.random() * 100) + 1
@@ -44,7 +45,7 @@ export class AddPageComponent implements OnInit {
       this.addCourseForm.get('dateCtrl')?.value,
       [],
       50
-      )
+    )
 
     return newCourse;
   }

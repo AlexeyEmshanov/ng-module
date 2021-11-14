@@ -23,6 +23,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFieldComponent } from './components/date-field/date-field.component';
+import { DurationFieldComponent } from './components/duration-field/duration-field.component';
 
 @NgModule({
   declarations: [

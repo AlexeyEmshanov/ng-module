@@ -45,6 +45,8 @@
   <app-date-field formControlName="dateCtrl" [childControl]="fromAbsToControl(addCourseForm)">
   </app-date-field>
 
+  <app-duration-field formControlName="durationCtrl" [childControl]="fromAbsToControl(addCourseForm)"></app-duration-field>
+
   <div class="add-page__controls">
     <button class="btn btn_submit" type="submit" [disabled]="!addCourseForm.valid">Save</button>
     <button class="btn" type="button" routerLink="/courses">Cancel</button>

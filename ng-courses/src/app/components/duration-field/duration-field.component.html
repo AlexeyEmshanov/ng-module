@@ -1,0 +1,27 @@
+<section class="add-page__input-section add-page__input-section_short">
+  <div class="input-section__message-box"
+    [ngClass]="{
+      'invalid-input' : (childControl.get('durationCtrl')?.errors?.['validateDuration'].dataInvalid !== null) && (childControl.get('durationCtrl')?.touched || childControl.get('durationCtrl')?.dirty),
+      'valid-input' : (childControl.get('durationCtrl')?.errors?.['validateDuration'].dataInvalid === null)
+    }"
+  >
+    <label class="input-section__label" for="duration">Duration:</label>
+    <div *ngIf="childControl.get('durationCtrl')?.touched && childControl.get('durationCtrl')?.errors !== null" class="invalid-input__message">{{childControl.get('durationCtrl')?.errors?.['validateDuration'].dataInvalid}}</div>
+  </div>
+
+  <div class="input-section__wrapper">
+    <input
+      class="input-section__input input-section__input_duration"
+      type="number"
+      placeholder="Course duration in minutes"
+      id="duration"
+      [ngModel]="durationValue"
+      (ngModelChange)="onChangeValue($event)"
+      autocomplete="off"
+      (blur)="onTouch($event)"
+    >
+    <div class="represent__duration">{{(durationValue === undefined) ? '': durationValue | durationCourse}}</div>
+
+  </div>
+</section>
+

@@ -11,6 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BreadcrumbsModule } from '../breadcrumbs/breadcrumbs.module';
 import { EditCourseResolver } from './guards/edit-course.resolver';
 import { DateFieldComponent } from '../components/date-field/date-field.component';
+import { DurationFieldComponent } from '../components/duration-field/duration-field.component';
 
 
 
@@ -22,7 +23,8 @@ import { DateFieldComponent } from '../components/date-field/date-field.componen
     HeaderComponent,
     FooterComponent,
     LogoComponent,
-    DateFieldComponent
+    DateFieldComponent,
+    DurationFieldComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { DateFieldComponent } from '../components/date-field/date-field.componen
     LogoComponent,
     AppRoutingModule,
     ReactiveFormsModule,
-    DateFieldComponent
+    DateFieldComponent,
+    DurationFieldComponent
   ],
   providers: [ FilterCoursesPipe, EditCourseResolver ]
 })

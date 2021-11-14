@@ -1,0 +1,68 @@
+.input-section__input_duration::-webkit-inner-spin-button,
+.input-section__input_duration::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.add-page__input-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 1em 0;
+  align-self: flex-start;
+}
+
+.add-page__input-section_short {
+  width: 25%;
+}
+
+.input-section__message-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.invalid-input__message {
+  color: rgb(161, 22, 22);
+}
+.input-section__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input-section__label {
+  margin-bottom: 0.5em;
+}
+
+.input-section__input {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px slategray solid;
+  box-sizing: border-box;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.invalid-input,
+.invalid-input + .input-section__wrapper .input-section__input {
+  border-color: rgb(161, 22, 22);
+  color: rgb(161, 22, 22);
+}
+
+.valid-input,
+.valid-input + .input-section__wrapper .input-section__input
+ {
+  border-color: rgb(8, 131, 8);
+  color: rgb(8, 131, 8);
+}
+
+.represent__duration {
+  width: 25%;
+  margin-left: 3em;
+  position: absolute;
+  left: 25%;
+}

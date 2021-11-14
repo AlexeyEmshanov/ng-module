@@ -36,12 +36,12 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor, Validat
     this.onTouch = fn;
   }
 
-  onChangeValue(value: any) {
+  onChangeValue(value: Date) {
     this.onChange(value);
     this.onTouch();
   }
 
-  public validate(control: AbstractControl): ValidationErrors | null {
+  validate(control: AbstractControl): ValidationErrors | null {
     return (control.value) ? null :  {
       validateDate: {
         dataInvalid: 'Date format is wrong'
