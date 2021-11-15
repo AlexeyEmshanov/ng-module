@@ -16,8 +16,6 @@ export class DateFieldComponent implements  ControlValueAccessor, Validator {
 
   @Input() childControl!: FormControl;
 
-  // @Input() existingDate?: Date
-
   constructor() { }
 
   // ngOnInit(): void {
