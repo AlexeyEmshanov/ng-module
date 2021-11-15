@@ -24,6 +24,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFieldComponent } from './components/date-field/date-field.component';
 import { DurationFieldComponent } from './components/duration-field/duration-field.component';
+import { AuthorsInputFieldComponent } from './components/authors-input-field/authors-input-field.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -46,6 +51,7 @@ import { DurationFieldComponent } from './components/duration-field/duration-fie
     BreadcrumbsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -12,6 +12,11 @@ import { BreadcrumbsModule } from '../breadcrumbs/breadcrumbs.module';
 import { EditCourseResolver } from './guards/edit-course.resolver';
 import { DateFieldComponent } from '../components/date-field/date-field.component';
 import { DurationFieldComponent } from '../components/duration-field/duration-field.component';
+import { AuthorsInputFieldComponent } from '../components/authors-input-field/authors-input-field.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -24,13 +29,18 @@ import { DurationFieldComponent } from '../components/duration-field/duration-fi
     FooterComponent,
     LogoComponent,
     DateFieldComponent,
-    DurationFieldComponent
+    DurationFieldComponent,
+    AuthorsInputFieldComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatIconModule
   ],
   exports: [
     CommonModule,
@@ -44,7 +54,8 @@ import { DurationFieldComponent } from '../components/duration-field/duration-fi
     AppRoutingModule,
     ReactiveFormsModule,
     DateFieldComponent,
-    DurationFieldComponent
+    DurationFieldComponent,
+    AuthorsInputFieldComponent,
   ],
   providers: [ FilterCoursesPipe, EditCourseResolver ]
 })

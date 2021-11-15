@@ -7,6 +7,7 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
 import { BreadcrumbsModule } from '../breadcrumbs/breadcrumbs.module';
 import { BreadcrumbsComponent } from '../breadcrumbs/components/breadcrumbs/breadcrumbs.component';
+import { AuthorsInputFieldComponent } from '../components/authors-input-field/authors-input-field.component';
 
 
 
@@ -18,7 +19,7 @@ import { BreadcrumbsComponent } from '../breadcrumbs/components/breadcrumbs/brea
     SharedModule,
     BreadcrumbsModule
   ],
-  exports: [ EditPageComponent, HeaderComponent, FooterComponent, BreadcrumbsComponent],
+  exports: [ EditPageComponent, HeaderComponent, FooterComponent, BreadcrumbsComponent ],
   providers: [ ],
 })
 export class EditPageModule { }
