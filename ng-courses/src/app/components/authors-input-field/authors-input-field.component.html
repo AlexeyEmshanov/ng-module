@@ -18,11 +18,18 @@
       [matAutocomplete]="auto"
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)">
+      >
+      <!-- (matChipInputTokenEnd)="add($event)" -->
   </mat-chip-list>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-    <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+    <mat-option *ngFor="let fruit of filteredFruits$ | async" [value]="fruit">
       {{fruit}}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+
+<div>status: {{ childControl.status}}</div>
+<div>value: {{ childControl.get('authorsCtrl')}}</div>
+<div>errors: {{ childControl.get('authorsCtrl')?.errors?.['validateAuthors'].dataInvalid}}</div>
+<div>FruitControl: {{childControl.get('authorsCtrl')?.status}}</div>
+<div>{{fruits}}</div>

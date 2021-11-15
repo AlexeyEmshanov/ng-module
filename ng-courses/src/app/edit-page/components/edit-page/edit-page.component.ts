@@ -26,7 +26,8 @@ export class EditPageComponent implements OnInit {
       titleCtrl: new FormControl(this.selectedCourse.name, [ Validators.required, Validators.maxLength(50) ],),
       descriptionCtrl: new FormControl(this.selectedCourse.description, [ Validators.required, Validators.maxLength(500) ]),
       dateCtrl: new FormControl(this.selectedCourse.date, [] ),
-      durationCtrl: new FormControl(this.selectedCourse.length, [ Validators.required ] )
+      durationCtrl: new FormControl(this.selectedCourse.length, [ Validators.required ] ),
+      authorsCtrl: new FormControl([''], [ Validators.required ] )
     },
     { updateOn: 'change' }
   )
@@ -47,7 +48,8 @@ export class EditPageComponent implements OnInit {
         titleCtrl: this.selectedCourse.name,
         descriptionCtrl: this.selectedCourse.description,
         dateCtrl: this.selectedCourse.date,
-        durationCtrl: this.selectedCourse.length
+        durationCtrl: this.selectedCourse.length,
+        authorsCtrl: [],
       })
     })
   }

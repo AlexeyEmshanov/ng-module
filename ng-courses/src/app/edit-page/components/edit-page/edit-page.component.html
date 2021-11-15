@@ -52,9 +52,9 @@
 
     <app-duration-field formControlName="durationCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-duration-field>
 
-    <app-authors-input-field></app-authors-input-field>
+    <app-authors-input-field formControlName="authorsCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field>
+    All form status: {{editCourseForm.status}}
     <!--
-
     <section class="edit-page__input-section">
       <label class="input-section__label" for="authors">Authors:</label>
       <input
