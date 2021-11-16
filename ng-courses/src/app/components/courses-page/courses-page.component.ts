@@ -19,8 +19,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   public courses$: Observable<ICourse[]> = of([]);
 
-  // public searchField: string = '';
-
   public searchForm = new FormControl('')
 
   public idToRemove: number = 0;
@@ -39,7 +37,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
       distinctUntilChanged(),
       filter((search: string) => (search.length >= 3) || (search === '')),
       switchMap((searchResult: string): Observable<ICourse[]> => {
-        // if (this.searchField === '') {
         if (this.searchForm.value === '') {
           this.coursesService.resetCounter();
           this.showLoadMoreBtn();
