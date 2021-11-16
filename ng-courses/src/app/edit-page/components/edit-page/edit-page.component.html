@@ -52,8 +52,9 @@
 
     <app-duration-field formControlName="durationCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-duration-field>
 
-    <app-authors-input-field formControlName="authorsCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field>
-    All form status: {{editCourseForm.status}}
+    <app-authors-input-field formControlName="authorsCtrl" [authorsFromCourse]="getAuthors()" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field>
+    <div>All form status: {{editCourseForm.status}}</div>
+    <div>Author control value: {{editCourseForm.get('authorsCtrl')?.value | json}}</div>
     <!--
     <section class="edit-page__input-section">
       <label class="input-section__label" for="authors">Authors:</label>

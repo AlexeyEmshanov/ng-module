@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { ICourse } from '../model/interfaces/icourse';
 import { AppSettings } from '../app.settings';
 import { Observable } from 'rxjs';
+import { IAuthorList } from '../model/interfaces/iAuthorList';
 
 @Injectable(
   {
@@ -49,6 +50,10 @@ export class CoursesService {
 
   public resetCounter(): void {
     this.counter = 1;
+  }
+
+  public getAuthors(): Observable<IAuthorList[]> {
+    return this.http.get<IAuthorList[]>(AppSettings.BASE_URL + '/authors')
   }
 
 }

@@ -27,7 +27,7 @@ export class EditPageComponent implements OnInit {
       descriptionCtrl: new FormControl(this.selectedCourse.description, [ Validators.required, Validators.maxLength(500) ]),
       dateCtrl: new FormControl(this.selectedCourse.date, [] ),
       durationCtrl: new FormControl(this.selectedCourse.length, [ Validators.required ] ),
-      authorsCtrl: new FormControl([''], [ Validators.required ] )
+      authorsCtrl: new FormControl()
     },
     { updateOn: 'change' }
   )
@@ -49,7 +49,7 @@ export class EditPageComponent implements OnInit {
         descriptionCtrl: this.selectedCourse.description,
         dateCtrl: this.selectedCourse.date,
         durationCtrl: this.selectedCourse.length,
-        authorsCtrl: [],
+        authorsCtrl: this.getAuthors(),
       })
     })
   }
@@ -68,5 +68,11 @@ export class EditPageComponent implements OnInit {
   public fromAbsToControl(absCtrl: AbstractControl): FormControl {
     const ctrl = absCtrl as FormControl;
     return ctrl as FormControl;
+  }
+
+  public getAuthors(): string[] {
+    const authorsArr: string[] = []
+    this.selectedCourse.authors.forEach(author => authorsArr.push(author.firstName + ' ' + author.lastName))
+    return authorsArr;
   }
 }

@@ -1,35 +1,35 @@
 <mat-form-field class="example-chip-list" appearance="fill">
-  <mat-label>Favorite Fruits</mat-label>
+  <mat-label>Authors</mat-label>
   <mat-chip-list #chipList aria-label="Fruit selection">
     <mat-chip
-      *ngFor="let fruit of fruits"
+      *ngFor="let author of selectedAuthors"
       [selectable]="selectable"
       [removable]="removable"
-      (removed)="remove(fruit)">
-      {{fruit}}
+      (removed)="remove(author)"
+    >
+      {{author}}
       <button matChipRemove *ngIf="removable">
         <mat-icon>cancel</mat-icon>
       </button>
     </mat-chip>
     <input
-      placeholder="New fruit..."
-      #fruitInput
-      [formControl]="fruitCtrl"
+      placeholder="Select author..."
+      #authorInput
+      [formControl]="authorCtrl"
       [matAutocomplete]="auto"
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      >
-      <!-- (matChipInputTokenEnd)="add($event)" -->
+      (matChipInputTokenEnd)="add($event)"
+    >
   </mat-chip-list>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-    <mat-option *ngFor="let fruit of filteredFruits$ | async" [value]="fruit">
-      {{fruit}}
+    <mat-option *ngFor="let author of filteredAuthors$ | async" [value]="author">
+      {{author}}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
 
-<div>status: {{ childControl.status}}</div>
-<div>value: {{ childControl.get('authorsCtrl')}}</div>
-<div>errors: {{ childControl.get('authorsCtrl')?.errors?.['validateAuthors'].dataInvalid}}</div>
-<div>FruitControl: {{childControl.get('authorsCtrl')?.status}}</div>
-<div>{{fruits}}</div>
+<div>status: {{ childControl.status | json }}</div>
+<div>errors: {{ childControl.get('authorsCtrl')?.errors?.['validateAuthors'].dataInvalid | json}}</div>
+<div>{{selectedAuthors | json}}</div>
+<div>Filtered: {{filteredAuthors$ | async | json}}</div>
