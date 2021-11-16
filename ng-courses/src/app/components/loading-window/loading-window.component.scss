@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  z-index: 100;
 }
 
 .loading-cover {
@@ -16,7 +16,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
   background-color: rgb(104, 107, 106);
   opacity: 0.3;
 }

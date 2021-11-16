@@ -46,7 +46,6 @@ export class DurationFieldComponent implements ControlValueAccessor, Validator {
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    console.log('validation', (typeof control.value) === 'number')
 
     return ((typeof control.value) === 'number' && control.value !== 0 ) ? null :  {
       validateDuration: {

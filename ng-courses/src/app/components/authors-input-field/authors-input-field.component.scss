@@ -1,3 +1,82 @@
 .example-chip-list {
   width: 100%;
 }
+
+.input-section__message-box_authors {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-section_authors {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 1em 0;
+  align-self: flex-start;
+}
+
+.input-section__label_authors {
+  margin-bottom: 0.5em;
+}
+
+.invalid-input,
+.invalid-input + .mat-form-field .mat-form-field-wrapper  {
+  border-color: rgb(161, 22, 22);
+  color: rgb(161, 22, 22);
+}
+
+.valid-input,
+.valid-input + .mat-form-field .mat-form-field-wrapper
+ {
+  border-color: rgb(8, 131, 8);
+  color: rgb(8, 131, 8);
+}
+
+.mat-chip.mat-standard-chip {
+  border-radius: 0.5em;
+  background-color: #7ccd7c94;
+}
+
+/* MATERIAL CUSTOMIZATION */
+
+.mat-form-field-subscript-wrapper,
+.mat-form-field-ripple,
+.mat-form-field-underline {
+    display: none;
+}
+
+.mat-form-field-appearance-standard
+.mat-form-field-flex {
+  padding: 0.75em 0.5em;
+}
+
+.mat-form-field-infix {
+  border: none;
+  padding: 0;
+}
+
+.mat-form-field-wrapper {
+  background-color: #ffffff;
+  padding: 0;
+  border: slategray 1px solid;
+  border-radius: 0.5em;
+}
+
+input.mat-chip-input {
+  padding: 1em 0;
+}
+
+.mat-autocomplete-panel {
+  border-radius: 0.5em;
+}
+
+.mat-autocomplete-panel .mat-option {
+  height: 2rem;
+  font-size: 0.9rem;
+}
+
+.mat-chip.mat-standard-chip {
+  border-radius: 0.5em;
+  background-color: #7ccd7c94;
+}

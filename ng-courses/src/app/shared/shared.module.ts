@@ -14,7 +14,7 @@ import { DateFieldComponent } from '../components/date-field/date-field.componen
 import { DurationFieldComponent } from '../components/duration-field/duration-field.component';
 import { AuthorsInputFieldComponent } from '../components/authors-input-field/authors-input-field.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -57,6 +57,8 @@ import { MatIconModule } from '@angular/material/icon';
     DurationFieldComponent,
     AuthorsInputFieldComponent,
   ],
-  providers: [ FilterCoursesPipe, EditCourseResolver ]
+  providers: [
+    FilterCoursesPipe, EditCourseResolver,
+  ]
 })
 export class SharedModule { }

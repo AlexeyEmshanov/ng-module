@@ -1,33 +1,42 @@
-<mat-form-field class="example-chip-list" appearance="fill">
-  <mat-label>Authors</mat-label>
-  <mat-chip-list #chipList aria-label="Fruit selection">
-    <mat-chip
-      *ngFor="let author of selectedAuthors"
-      [selectable]="selectable"
-      [removable]="removable"
-      (removed)="remove(author)"
-    >
-      {{author.firstName + ' ' + author.lastName}}
-      <button matChipRemove *ngIf="removable">
-        <mat-icon>cancel</mat-icon>
-      </button>
-    </mat-chip>
-    <input
-      placeholder="Select author..."
-      #authorInput
-      [formControl]="authorCtrl"
-      [matAutocomplete]="auto"
-      [matChipInputFor]="chipList"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"
-      >
-  </mat-chip-list>
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-    <mat-option *ngFor="let author of filteredAuthors$ | async" [value]="author">
-      {{author.firstName + ' ' + author.lastName}}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+<section class="input-section_authors">
+  <div class="input-section__message-box_authors"
+    [ngClass]="{
+      'invalid-input' : (childControl.get('authorsCtrl')?.invalid) && (childControl.get('authorsCtrl')?.touched || childControl.get('authorsCtrl')?.dirty),
+      'valid-input' : (childControl.get('authorsCtrl')?.valid)
+    }"
+  >
+    <label class="input-section__label_authors">Authors:</label>
+    <div *ngIf="childControl.get('authorsCtrl')?.touched && childControl.get('authorsCtrl')?.errors !== null" class="invalid-input__message_authors">{{childControl.get('authorsCtrl')?.errors?.['validateAuthors'].dataInvalid}}</div>
+  </div>
 
-<div>status: {{ childControl.status | json }}</div>
-<div>errors: {{ childControl.get('authorsCtrl')?.errors?.['validateAuthors'].dataInvalid | json}}</div>
+  <mat-form-field class="example-chip-list" appearance="standard">
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let author of selectedAuthors"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(author)"
+      >
+        {{author.firstName + ' ' + author.lastName}}
+        <button matChipRemove *ngIf="removable">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Select author..."
+        #authorInput
+        [formControl]="authorCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+        >
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let author of filteredAuthors$ | async" [value]="author">
+        {{author.firstName + ' ' + author.lastName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</section>

@@ -1,8 +1,9 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import {Observable, of} from 'rxjs';
 import {map, startWith, tap} from 'rxjs/operators';
 import { IAuthor } from 'src/app/model/interfaces/iauthor';
@@ -14,8 +15,9 @@ import { CoursesService } from 'src/app/services/courses.service';
   styleUrls: ['./authors-input-field.component.scss'],
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: AuthorsInputFieldComponent, multi: true },
-    { provide: NG_VALIDATORS, useExisting: AuthorsInputFieldComponent, multi: true }
-  ]
+    { provide: NG_VALIDATORS, useExisting: AuthorsInputFieldComponent, multi: true },
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor, Validator {
   @Input() childControl!: FormControl;
@@ -91,7 +93,7 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
 
   /* MATERIAL END */
 
-  errorMessage = 'FRUITS NEEDED'
+  errorMessage = 'At least one author is required'
 
   onChange: any = () => { }
   onTouch: any = () => { }
@@ -115,7 +117,6 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    console.log('Control', control.value.length)
     return ( control.value.length !== 0 ) ? null :  {
       validateAuthors: {
         dataInvalid: this.errorMessage

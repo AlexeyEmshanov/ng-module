@@ -53,20 +53,6 @@
     <app-duration-field formControlName="durationCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-duration-field>
 
     <app-authors-input-field formControlName="authorsCtrl" [authorsFromCourse]="getAuthors()" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field>
-    <div>All form status: {{editCourseForm.status}}</div>
-    <div>Author control value: {{editCourseForm.get('authorsCtrl')?.value | json}}</div>
-    <!--
-    <section class="edit-page__input-section">
-      <label class="input-section__label" for="authors">Authors:</label>
-      <input
-        class="input-section__input"
-        type="text"
-        placeholder="Enter new course authors"
-        id="authors"
-        [(ngModel)]="courseAuthors"
-      >
-    </section>
-  -->
 
     <div class="edit-page__controls">
 
