@@ -1,5 +1,5 @@
 <app-header></app-header>
-
+{{searchForm.value }}
   <div class="courses-page__container" >
 
     <app-breadcrumbs></app-breadcrumbs>
@@ -9,10 +9,10 @@
         <input
           class="search-bar_input"
           placeholder="Text to search"
-          [(ngModel)]="searchField"
           (keyup)="onChangeSearchField()"
+          [formControl]="searchForm"
           >
-        <!-- <button class="btn" (click)="onSearchClick()">Search</button> -->
+          <!-- [(ngModel)]="searchField" -->
       </div>
       <button class="btn" routerLink="./new">Add Course</button>
     </div>

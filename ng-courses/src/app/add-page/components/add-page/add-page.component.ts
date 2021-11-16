@@ -2,12 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { update } from 'lodash';
 import { Course } from 'src/app/model/course';
-import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
-import { NewCourse } from '../../model/newCourse';
-import * as moment from 'moment'
 
 @Component({
   selector: 'app-add-page',
@@ -20,7 +16,8 @@ export class AddPageComponent  {
       titleCtrl: new FormControl('', [ Validators.required, Validators.maxLength(10) ],),
       descriptionCtrl: new FormControl('', [ Validators.required, Validators.maxLength(20) ]),
       dateCtrl: new FormControl(new Date(), [] ),
-      durationCtrl: new FormControl(null, [ Validators.required,  ] )
+      durationCtrl: new FormControl(null, [ Validators.required] ),
+      authorsCtrl: new FormControl([], [Validators.required])
     },
     { updateOn: 'change' }
   )
@@ -36,13 +33,14 @@ export class AddPageComponent  {
   }
 
   public generateCourse () {
+
     const newCourse = new Course(
       this.generateID(),
       this.addCourseForm.get('titleCtrl')?.value,
       this.addCourseForm.get('descriptionCtrl')?.value,
       false,
       this.addCourseForm.get('dateCtrl')?.value,
-      [],
+      this.addCourseForm.get('authorsCtrl')?.value,
       this.addCourseForm.get('durationCtrl')?.value
     )
 

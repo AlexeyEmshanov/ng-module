@@ -28,7 +28,7 @@ export class EditPageComponent implements OnInit {
       descriptionCtrl: new FormControl(this.selectedCourse.description, [ Validators.required, Validators.maxLength(500) ]),
       dateCtrl: new FormControl(this.selectedCourse.date, [] ),
       durationCtrl: new FormControl(this.selectedCourse.length, [ Validators.required ] ),
-      authorsCtrl: new FormControl()
+      authorsCtrl: new FormControl([], [Validators.required])
     },
     { updateOn: 'change' }
   )
@@ -73,8 +73,6 @@ export class EditPageComponent implements OnInit {
   }
 
   public getAuthors(): IAuthor[] {
-    // const authorsArr: IAuthor[] = []
-    // this.selectedCourse.authors.forEach(author => authorsArr.push(author.firstName + ' ' + author.lastName))
     return this.selectedCourse.authors;
   }
 }
