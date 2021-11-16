@@ -2,6 +2,7 @@ import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Course } from 'src/app/model/course';
+import { IAuthor } from 'src/app/model/interfaces/iauthor';
 import { ICourse } from 'src/app/model/interfaces/icourse';
 import { CoursesService } from 'src/app/services/courses.service';
 
@@ -58,7 +59,8 @@ export class EditPageComponent implements OnInit {
     const updatedCourse = {
       ...this.selectedCourse,
       date: this.editCourseForm.controls['dateCtrl'].value,
-      length: this.editCourseForm.controls['durationCtrl'].value
+      length: this.editCourseForm.controls['durationCtrl'].value,
+      authors: this.editCourseForm.controls['authorsCtrl'].value
     }
 
     this.coursesService.updateCourse(updatedCourse).subscribe();
@@ -70,9 +72,9 @@ export class EditPageComponent implements OnInit {
     return ctrl as FormControl;
   }
 
-  public getAuthors(): string[] {
-    const authorsArr: string[] = []
-    this.selectedCourse.authors.forEach(author => authorsArr.push(author.firstName + ' ' + author.lastName))
-    return authorsArr;
+  public getAuthors(): IAuthor[] {
+    // const authorsArr: IAuthor[] = []
+    // this.selectedCourse.authors.forEach(author => authorsArr.push(author.firstName + ' ' + author.lastName))
+    return this.selectedCourse.authors;
   }
 }

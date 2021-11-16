@@ -5,7 +5,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable, of} from 'rxjs';
 import {map, startWith, tap} from 'rxjs/operators';
-import { IAuthorList } from 'src/app/model/interfaces/iAuthorList';
+import { IAuthor } from 'src/app/model/interfaces/iauthor';
 import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
@@ -20,7 +20,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor, Validator {
   @Input() childControl!: FormControl;
 
-  @Input() authorsFromCourse?: string[]
+  @Input() authorsFromCourse?: IAuthor[]
 
   /* MATERIAL START */
 
@@ -28,9 +28,9 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
   removable = true;
   separatorKeysCodes: number[] = [ ENTER, COMMA ];
   authorCtrl = new FormControl();
-  filteredAuthors$?: Observable<string[]>;
-  selectedAuthors: string[] = ['Alex'];
-  allAuthors: string[] = [];
+  filteredAuthors$?: Observable<IAuthor[]>;
+  selectedAuthors: IAuthor[] = [];
+  allAuthors: IAuthor[] = [];
 
   additionCtrl = new FormControl(this.selectedAuthors)
 
@@ -47,16 +47,17 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
     console.log('AUTHORS INSIDE: ', this.selectedAuthors)
 
     this.coursesService.getAuthors().subscribe((authorsList) => {
-      const modificatedArr: string[] = []
+      // const modificatedArr: IAuthor[] = []
 
-      authorsList.forEach((author) => modificatedArr.push(author.name))
-      this.allAuthors = modificatedArr;
-      console.log({modificatedArr}, this.allAuthors)
+      // authorsList.forEach((author) => modificatedArr.push(author))
+      // this.allAuthors = modificatedArr;
+      this.allAuthors = authorsList
+      console.log({authorsList}, this.allAuthors)
 
       this.filteredAuthors$ = this.authorCtrl.valueChanges.pipe(
         startWith(null),
         tap(() => console.log('ACTION START', this.allAuthors)),
-        map((author: string | null) => {
+        map((author: IAuthor | null) => {
           console.log('test 1', author);
           return (author ? this._filter(author) : this.allAuthors.slice())
         }),
@@ -70,10 +71,10 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
 
   add(event: MatChipInputEvent): void { /* adding from keyboard*/
     const value = (event.value || '').trim();
-    console.log('add function', event)
+    console.log('add function', {event}, {value})
     // Add our fruit
     if (value) {
-      this.selectedAuthors.push(value);
+      // this.selectedAuthors.push(value);
     }
 
     // Clear the input value
@@ -82,9 +83,9 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
     this.authorCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    console.log('remove function', fruit)
-    const index = this.selectedAuthors.indexOf(fruit);
+  remove(author: IAuthor): void {
+    console.log('remove function', author)
+    const index = this.selectedAuthors.indexOf(author);
 
     if (index >= 0) {
       this.selectedAuthors.splice(index, 1);
@@ -94,18 +95,18 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
 
   selected(event: MatAutocompleteSelectedEvent): void {
     console.log('selected function', event.option.value)
-    this.selectedAuthors.push(event.option.viewValue);
+    this.selectedAuthors.push(event.option.value);
     this.authorInput.nativeElement.value = '';
     this.authorCtrl.setValue(null);
     this.onChangeValue(this.selectedAuthors);
     this.additionCtrl.setValue(this.selectedAuthors);
   }
 
-  private _filter(value: string): string[] {
+  private _filter(value: IAuthor): IAuthor[] {
     console.log('inside FILTER: ', value);
-    const filterValue = value.toLowerCase();
+    const filterValue = value.firstName.toLowerCase();
 
-    return this.allAuthors.filter(author => author.toLowerCase().includes(filterValue));
+    return this.allAuthors.filter(author => author.firstName.toLowerCase().includes(filterValue));
   }
 
   /* MATERIAL END */
@@ -115,7 +116,7 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
   onChange: any = () => { }
   onTouch: any = () => { }
 
-  writeValue(value: string[]) {
+  writeValue(value: IAuthor[]) {
     this.selectedAuthors = value
   }
 
@@ -127,7 +128,7 @@ export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor,
     this.onTouch = fn;
   }
 
-  onChangeValue(value: string[]) {
+  onChangeValue(value: IAuthor[]) {
     this.selectedAuthors = value;
     this.onChange(value);
     this.onTouch();
