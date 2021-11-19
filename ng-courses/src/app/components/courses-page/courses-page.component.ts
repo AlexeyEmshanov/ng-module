@@ -7,6 +7,10 @@ import { BehaviorSubject, Observable, of, Subject, Subscribable } from 'rxjs';
 import { debounce, debounceTime, distinctUntilChanged, distinctUntilKeyChanged, filter, map, merge, switchMap, tap } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services/loading.service';
 import { FormControl } from '@angular/forms';
+import { CoreStoreModule } from 'src/app/core/+store/core-store.module';
+import { Store } from '@ngrx/store';
+import * as UsersActions from './../../core/+store/users/users.actions'
+
 
 @Component({
   selector: 'app-courses-page',
@@ -29,6 +33,7 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     public coursesService: CoursesService,
+    private store: Store,
   ) {  }
 
   ngOnInit(): void {
@@ -80,4 +85,8 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
     this.searchTermSubj.next(this.searchForm.value);
   }
 
+  onClick() {
+    console.log('Starting action!')
+    this.store.dispatch(UsersActions.getUsers());
+  }
 }

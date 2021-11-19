@@ -1,7 +1,6 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { CourseItemComponent } from './components/course-item/course-item.component';
@@ -14,21 +13,16 @@ import { AddPageModule } from './add-page/add-page.module';
 import { SharedModule } from './shared/shared.module';
 import { EditPageModule } from './edit-page/edit-page.module';
 import { NotFoundPageModule } from './not-found-page/not-found-page.module';
-import { BreadcrumbsComponent } from './breadcrumbs/components/breadcrumbs/breadcrumbs.component';
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LoadingWindowComponent } from './components/loading-window/loading-window.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DateFieldComponent } from './components/date-field/date-field.component';
-import { DurationFieldComponent } from './components/duration-field/duration-field.component';
-import { AuthorsInputFieldComponent } from './components/authors-input-field/authors-input-field.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { CoreStoreModule } from './core/+store/core-store.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -51,6 +45,8 @@ import { MatIconModule } from '@angular/material/icon'
     BreadcrumbsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument( {maxAge: 25, logOnly: environment.production } ),
 
   ],
   providers: [
