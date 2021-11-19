@@ -86,7 +86,6 @@ export class CoursesPageComponent implements OnInit, AfterViewInit {
   }
 
   onClick() {
-    console.log('Starting action!')
-    this.store.dispatch(UsersActions.getUsers());
+    console.log('Starting action!', this.store)
   }
 }

@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { CoreStoreModule } from './+store/core-store.module';
 import { StoreModule } from '@ngrx/store';
 import * as usersStore from './+store/users/users.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UsersEffects } from './+store/users/users.effects';
 
 
 
@@ -16,7 +18,8 @@ import * as usersStore from './+store/users/users.reducer';
     // FormsModule,
     AppRoutingModule,
     CoreStoreModule,
-    StoreModule.forFeature( usersStore.usersFeatureKey, usersStore.usersReducer )
+    StoreModule.forFeature( usersStore.usersFeatureKey, usersStore.usersReducer ),
+    // EffectsModule.forFeature([ UsersEffects ])
   ],
   exports: [ AppRoutingModule, CoreStoreModule ],
   providers: [ AuthService ],

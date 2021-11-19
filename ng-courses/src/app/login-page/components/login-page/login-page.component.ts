@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUser } from 'src/app/model/interfaces/iuser';
 import { AuthService } from 'src/app/services/auth.service';
+import * as UsersActions from './../../../core/+store/users/users.actions'
 
 
 
@@ -22,7 +24,12 @@ export class LoginPageComponent {
     password: new FormControl('', [Validators.required])
   })
 
-  constructor(public authService: AuthService, private router: Router) {
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private store: Store
+
+  ) {
 
   }
 
@@ -32,6 +39,7 @@ export class LoginPageComponent {
 
   public onSubmit() {
     this.authService.login(this.loginForm.get('login')?.value, this.loginForm.get('password')?.value);
+    this.store.dispatch(UsersActions.getUser({login: this.loginForm.get('login')?.value, password: this.loginForm.get('password')?.value}))
   }
 
 }

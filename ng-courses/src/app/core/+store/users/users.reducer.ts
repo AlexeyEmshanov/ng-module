@@ -8,20 +8,18 @@ export const usersFeatureKey = 'users';
 
 export const initialUsersState: IUsersState =
   {
-    data: new User(0 , 'testtoken', { first: 'testFirstName', last: 'testLastName'}, 'testLogin', 'testPasswors'),
+    currentUser: new User(0 , 'testtoken', { first: 'testFirstName', last: 'testLastName'}, 'testLogin', 'testPasswors'),
   }
 
 export const usersReducer = createReducer(
   initialUsersState,
-  on(UsersActions.getUsers, state => ({
+  on(UsersActions.getUser, state => ({
     ...state,
-    data: {
-      ...state.data,
-      name : {
-        ...state.data.name,
-        first: "Alex"
-      }
-    }
+  })),
+
+  on(UsersActions.getUserSuccess, ( state, { user } )  => ({
+    ...state,
+    currentUser: user[0],
   }))
 );
 
