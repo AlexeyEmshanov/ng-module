@@ -23,12 +23,11 @@ export class AuthService {
           this.router.navigate(['courses']);
         }
       },
-      (err: Error) => console.log('Invalid login / password pair', err),
+      (error: Error) => console.log('Invalid login / password pair', error),
     )
   }
 
   public getUserFromServer(login: string, password: string): Observable<IUser[]> {
-    console.log('inseide service', login, password)
     return this.http.get<IUser[]>(AppSettings.BASE_URL + `/users?login=${login}&password=${password}`);
   }
 
