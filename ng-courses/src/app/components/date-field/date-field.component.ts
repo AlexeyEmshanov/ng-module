@@ -18,36 +18,6 @@ export class DateFieldComponent implements  ControlValueAccessor, Validator {
 
   constructor() { }
 
-  // ngOnInit(): void {
-    // this.dateValue = new Date();
-  //   setTimeout(() => {
-  //     if (this.existingDate) {
-  //       this.dateValue = this.existingDate
-  //     } else {
-  //       this.dateValue = new Date();
-  //     }
-  //   }, 0);
-    // console.log('Date input', this.existingDate)
-    // if (this.existingDate) {
-    //   this.dateValue = this.existingDate
-    // } else {
-    //   this.dateValue = new Date();
-    // }
-  // }
-
-  // ngAfterViewInit(): void {
-  //   //Called after ngOnInit when the component's or directive's content has been initialized.
-  //   //Add 'implements AfterContentInit' to the class.
-  //   if (this.existingDate) {
-  //     setTimeout(() => {
-  //       this.dateValue = this.existingDate
-
-  //     }, 0);
-  //   // } else {
-  //     // this.dateValue = new Date();
-  //   }
-  // }
-
   onChange: any = () => { }
   onTouch: any = () => { }
 

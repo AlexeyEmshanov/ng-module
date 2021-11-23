@@ -20,10 +20,6 @@ export class DurationFieldComponent implements ControlValueAccessor, Validator {
 
   constructor() { }
 
-  // ngOnInit(): void {
-  //   this.durationValue = 0;
-  // }
-
   onChange: any = () => { }
   onTouch: any = () => { }
 

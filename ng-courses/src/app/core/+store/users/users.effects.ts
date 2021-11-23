@@ -15,20 +15,20 @@ export class UsersEffects {
 
   loggedInUser$ = createEffect((): Observable<Action> => {
     return this.actions$.pipe(
-      ofType(UserActions.getUser),
-      exhaustMap((action) => {
-        return this.authService.getUserFromServer(action.login, action.password).pipe(
-          map(user => UserActions.getUserSuccess({ user }) ),
-          catchError(error => {
-            console.log(error);
-            return of(UserActions.getUserFailure({ error }))
-          })
-        )
-      }
-      )
+      ofType(UserActions.loginUser),
+      exhaustMap( (action) => this.getUserFromService(action.login, action.password) )
     )
   });
 
   constructor(private actions$: Actions, private authService: AuthService) {}
 
+  getUserFromService(login: string, password: string): Observable<TypedAction<'[Users] Login User Success' | '[Users] Login User Failure'>> {
+    return this.authService.getUserFromServer(login, password).pipe(
+      map(user => UserActions.loginUserSuccess({ user }) ),
+      catchError(error => {
+        console.log(error);
+        return of(UserActions.loginUserFailure({ error }))
+      })
+    )
+  }
 }

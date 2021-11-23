@@ -39,7 +39,7 @@ export class LoginPageComponent {
 
   public onSubmit() {
     this.authService.login(this.loginForm.get('login')?.value, this.loginForm.get('password')?.value);
-    this.store.dispatch(UsersActions.getUser({login: this.loginForm.get('login')?.value, password: this.loginForm.get('password')?.value}))
+    this.store.dispatch(UsersActions.loginUser({login: this.loginForm.get('login')?.value, password: this.loginForm.get('password')?.value}))
   }
 
 }

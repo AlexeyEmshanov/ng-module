@@ -1,17 +1,17 @@
 import { createAction, props } from '@ngrx/store';
 import { IUser } from 'src/app/model/interfaces/iuser';
 
-export const getUser = createAction(
-  '[Users] Get User',
+export const loginUser = createAction(
+  '[Users] Login User',
   props< { login: string, password: string} >()
 );
 
-export const getUserSuccess = createAction(
-  '[Users] Get User Success',
+export const loginUserSuccess = createAction(
+  '[Users] Login User Success',
   props<{ user: IUser[] }>()
 );
 
-export const getUserFailure = createAction(
-  '[Users] Get User Failure',
+export const loginUserFailure = createAction(
+  '[Users] Login User Failure',
   props<{ error: any }>()
 );
