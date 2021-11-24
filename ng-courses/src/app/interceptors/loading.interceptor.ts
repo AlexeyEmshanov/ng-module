@@ -12,13 +12,16 @@ import { finalize } from 'rxjs/operators';
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(private loadingService: LoadingService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loadingService.showLoadingWindow();
 
     return next.handle(request).pipe(
-      finalize(() => { setTimeout(() => {this.loadingService.hideLoadingWindow(); console.log('finilize 2')}, 1000)})
+      finalize(() => { setTimeout(() => {
+        this.loadingService.hideLoadingWindow();
+        // console.log('finilize 2')
+      }, 1000)})
     );
   }
 }

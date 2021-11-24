@@ -4,16 +4,11 @@ import { IUsersState } from '.';
 import { IAppState } from '..';
 
 
-export const selectUserState = (state: IAppState) => state.users
-
-export const selectCurrentUserName = createSelector(
-  selectUserState,
-  (state: IUsersState) => state.currentUser
-)
-
 export const getUsersStateSelector = createFeatureSelector<IUsersState>('users');
 
-export const getCurrentUserNameSelector = createSelector(
+export const getCurrentUserNameSelector = createSelector<IAppState, IUsersState, string>(
   getUsersStateSelector,
-  (state: IUsersState) => state.currentUser.name.first
+  (state: IUsersState): string => {
+    return state.currentUser.name.first
+  }
 )

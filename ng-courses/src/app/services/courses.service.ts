@@ -17,7 +17,6 @@ export class CoursesService {
   constructor(private http: HttpClient) { }
 
   public getCoursesList(): Observable<ICourse[]> {
-    console.log('service started')
     return this.http.get<ICourse[]>(AppSettings.BASE_URL + `/courses?start=0&count=${this.counter * 5}`)
   }
 
