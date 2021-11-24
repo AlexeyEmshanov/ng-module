@@ -19,9 +19,8 @@
         type="text"
         placeholder="Enter new course title"
         id="title"
-        [(ngModel)]="selectedCourse.name"
         formControlName="titleCtrl"
-      >
+        >
     </section>
 
     <section class="edit-page__input-section">
@@ -42,9 +41,8 @@
         id="description"
         rows="5"
         cols="50"
-        [(ngModel)]="selectedCourse.description"
         formControlName="descriptionCtrl"
-      ></textarea>
+        ></textarea>
     </section>
 
     <app-date-field formControlName="dateCtrl" [childControl]="fromAbsToControl(editCourseForm)">

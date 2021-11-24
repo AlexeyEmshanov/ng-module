@@ -58,6 +58,8 @@ export class EditPageComponent implements OnInit {
   public onSubmit() {
     const updatedCourse = {
       ...this.selectedCourse,
+      name: this.editCourseForm.controls['titleCtrl'].value,
+      description: this.editCourseForm.controls['descriptionCtrl'].value,
       date: this.editCourseForm.controls['dateCtrl'].value,
       length: this.editCourseForm.controls['durationCtrl'].value,
       authors: this.editCourseForm.controls['authorsCtrl'].value
