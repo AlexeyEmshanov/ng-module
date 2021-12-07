@@ -20,6 +20,6 @@ export const metaReducers: MetaReducer[] = [ hydrationMetaReducer ]
     StoreModule.forFeature( usersStore.usersFeatureKey, usersStore.usersReducer, { metaReducers} ),
   ],
   exports: [ AppRoutingModule, CoreStoreModule ],
-  providers: [ AuthService ],
+  providers: [  ],
 })
 export class CoreModule { }
