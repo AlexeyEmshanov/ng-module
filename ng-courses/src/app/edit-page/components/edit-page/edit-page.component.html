@@ -50,7 +50,8 @@
 
     <app-duration-field formControlName="durationCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-duration-field>
 
-    <app-authors-input-field formControlName="authorsCtrl" [authorsFromCourse]="getAuthors()" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field>
+    <!-- <app-authors-input-field formControlName="authorsCtrl" [authorsFromCourse]="getAuthors()" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field> -->
+    <app-authors-input-field formControlName="authorsCtrl" [childControl]="fromAbsToControl(editCourseForm)"></app-authors-input-field>
 
     <div class="edit-page__controls">
 

@@ -15,12 +15,12 @@ const routes: Routes = [
   { path: 'courses', component: CoursesPageComponent, canActivate: [ AuthGuard ] },
   { path: 'courses/new', pathMatch: 'full', component: AddPageComponent, canActivate: [ AuthGuard ] },
   { path: 'courses/:id',
-  // pathMatch: 'full',
-  component: EditPageComponent,
-  canActivate: [ AuthGuard ],
-  resolve: { course: EditCourseResolver },
-},
-{ path: '404', component: NotFoundPageComponent },
+    // pathMatch: 'full',
+    component: EditPageComponent,
+    canActivate: [ AuthGuard ],
+    resolve: { course: EditCourseResolver },
+  },
+  { path: '404', component: NotFoundPageComponent },
 
   { path: '**', redirectTo: '/404' }
 ];

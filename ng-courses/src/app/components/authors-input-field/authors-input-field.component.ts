@@ -22,7 +22,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class AuthorsInputFieldComponent implements OnInit, ControlValueAccessor, Validator {
   @Input() childControl!: FormControl;
 
-  @Input() authorsFromCourse?: IAuthor[]
+  // @Input() authorsFromCourse?: IAuthor[]
 
   /* MATERIAL START */
 
